@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Journey To Create The inPulseNotifier For Jailbroken iPhones - Part 1 - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="Many of you may have seen my tweets or blog posts regarding my development of a native iOS interface for the inPulse Watch. I just wanted to share a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/my-journey-to-create-the-inpulsenotifier-for-jailbroken-iphones-part-1/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">My Journey to Create the inPulseNotifier for Jailbroken iPhones - Part 1</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-12T12:30:00-06:00" pubdate data-updated="true">Apr 12<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Many of you may have seen my tweets or blog posts regarding my development of a native iOS interface for the <a href="http://getinpulse.com">inPulse Watch</a>.  I just wanted to share a bit with you about the development process and talk about my updates moving forward.</p>
+
+<h4>What is the inPulse Watch?</h4>
+
+<p>For those of you who don&#8217;t know, the inPulse watch is a programmable wristwatch with a bluetooth controller.  It can run a single app at a time on top of it&#8217;s firmware that is installed on the watch via a bluetooth interface with your computer.  People have written all sorts of apps from analog clocks to roguelikes and Connway&#8217;s Game of Life.  Check out <a href="http://inpulsewatch.com/watchapps.asp">http://inpulsewatch.com/watchapps.asp</a> to see the latest apps.</p>
+
+<center>
+<img src="http://ec2-50-16-103-63.compute-1.amazonaws.com/images/inPulse.png" style="float:left;margin:25px;" width="100">
+<img src="http://inpulsewatch.com/apps/logo14.JPG" style="float:left;margin:25px;" width="100">
+<img src="http://inpulsewatch.com/apps/logo12.jpg" style="float:left;margin:25px;" width="100">
+</center>
+
+
+<div style="clear:both">&nbsp</div>
+
+
+<p></p>
+
+<h4>It Begins</h4>
+
+<p>After waiting about 10 days for my watch (yeah it&#8217;s a long waiting period since they have seen quite a bit of recent success), it finally came in the mail.  Enthusiastically, I opened it up and followed their <a href="http://www.getinpulse.com/guide/">getting started guide</a>. Within a few minutes I was running some of the sample applications in the forums.</p>
+
+<h4>No iOS Support?</h4>
+
+<p>One of the coolest features of the watch is the ability to have your smartphone notifications show up on it.  You are able to read SMS, Email, Calendar, etc&#8230; for a wide variety of Blackberry and Android phones.</p>
+
+<p>After digging around a bit, I was disappointed to see that there was limited (no) iPhone support.  They had some old file that used BTStack at some point to communicate a simple canned message to the iPhone. No documentation, no support, nada.</p>
+
+<h4>Building The App</h4>
+
+<p><img src="http://code.google.com/p/btstack/logo?cct=1278342571" style="float:left;margin:5px;"></p>
+
+<p>As I had no experience developing for a jailbroken iPhone, I had no idea how to even compile this sample app.  So, I used the Google machine and found the <a href="http://code.google.com/p/btstack/">Google repository</a> for BTStack (the bluetooth library of choice for jailbroken iOS apps). I was able to download the source and build a sample application that basically connected my iPhone to a bluetooth device.</p>
+
+<p>Well, this got me started.  So I did what any curious developer would do and started plugging crap in.  I replaced the sample file that was packaged with BTStack with a slightly modified version of inPulse&#8217;s sample iPhone file.  Sure enough, I was able to build and install it.</p>
+
+<h4>We Have Connection</h4>
+
+<p>After figuring out how to hardcode my watch&#8217;s address into the source, I was able to determine that the iPhone had actually connected to the watch.  I monitored the packets and threw up an alert view (No NSLogging available at this point) when a connection was made.</p>
+
+<p>So, now that we are connected, let&#8217;s trying sending the sample message&#8230;fail!  I couldn&#8217;t even send the time.</p>
+
+<p>At this point, I decided to move the code I had written into a sample iPhone project so that I could do attached debugging.  This showed me that the packets were arriving on the watch since I received an ack packet back.  So, the watch sees the messages, but doesn&#8217;t consider them notifications.</p>
+
+<h4>Time to hit the docs</h4>
+
+<p><img src="/img/post_images/2011/04/pulse_protocol.png" style="float:right">
+Knowing that the packets were received gave me quite a bit of hope.  I figured that I must have had the protocol incorrect.  So, I dug into the inPulse protocol document which outlined what the packet structures should look like.  My C skills aren&#8217;t the strongest so I had to look up quite a few things.</p>
+
+<p>Sure enough, they had upped the version number of their protocol by 1 and mine was outdated.  So, I updated what I could and gave it another shot&#8230;fail.</p>
+
+<p>No messages were displaying.  At this point I was ready to give up.  I read online somewhere that the BT implementation on the watch was not supported by inPulse and felt dead in the water.  So I took a break for a couple days.</p>
+
+<p>When I came back to it,  I was tapping through my watch and noticed that the calendar appointments had some data in them on the watch. Could it be? Did my notifications arrive? (I was trying to send SMS notifications).  So I dug into the docs again&#8230;</p>
+
+<h4>We have a message!!!</h4>
+
+<p><img src="/img/post_images/2011/04/hello_world.jpg" style="float:left;margin:10px;" width="200"></p>
+
+<p>Sure enough, I had some fields declared as <i> uint16_t </i> when they should have been <i> uint8_t </i> .  My headers were the wrong size!!!  All of a sudden I was able to send every type of notification to the watch and have it displayed.</p>
+
+<p>It was now time to build out an actual application for release to inPulse.  The next hurdle would be hooking into the iPhone&#8217;s messaging system and forwarding along the messages.  Now the real iPhone hacking begins.</p>
+
+<p><a href="/my-journey-to-create-the-inpulsenotifier-for-jailbroken-iphones-part-2">This post is continued here</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-12T12:30:00-06:00" pubdate data-updated="true">Apr 12<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/iphone/'>iPhone</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/my-journey-to-create-the-inpulsenotifier-for-jailbroken-iphones-part-1/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/my-journey-to-create-the-inpulsenotifier-for-jailbroken-iphones-part-1/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/beginning-jailbroken-ios-development-getting-the-tools/" title="Previous Post: Beginning Jailbroken iOS Development - Getting The Tools">&laquo; Beginning Jailbroken iOS Development - Getting The Tools</a>
+      
+      
+        <a class="basic-alignment right" href="/my-journey-to-create-the-inpulsenotifier-for-jailbroken-iphones-part-2/" title="Next Post: My Journey To Create The inPulseNotifier For Jailbroken iPhones - Part 2">My Journey To Create The inPulseNotifier For Jailbroken iPhones - Part 2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

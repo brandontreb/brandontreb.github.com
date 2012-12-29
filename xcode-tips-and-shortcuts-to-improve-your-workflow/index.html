@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>XCode Tips And Shortcuts To Improve Your Workflow - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="Intro This is my first #iDevBlogADay post and I wanted to give a quick intro before jumping in.  My name is Brandon Trebitowski and I&#8217;m a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/xcode-tips-and-shortcuts-to-improve-your-workflow/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">XCode Tips and Shortcuts to Improve Your Workflow</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-18T02:01:59-07:00" pubdate data-updated="true">Nov 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h4>Intro</h4>
+
+
+<p>This is my first <a href="http://idevblogaday.com">#iDevBlogADay</a> post and I wanted to give a quick intro before jumping in.  My name is Brandon Trebitowski and I&#8217;m a software developer and author from Albuquerque, New Mexico.  I graduated from the University of New Mexico in 2008 with a bachelors degree in computer science.  For the past 2 years, I have been writing mobile applications (primarily for the iPhone) for <a href="http://elctech.com/">ELC Technologies</a>.</p>
+
+<p>I also started <a href="http://icodeblog.com">http://icodeblog.com</a> and currently write on it about once a month.</p>
+
+<h4>A Post On XCode Shortcuts?</h4>
+
+
+<p><a href="http://www.1729.us/xcode/Xcode%20Shortcuts.png"><img class="alignleft" title="XCode Shortcuts" src="http://www.1729.us/xcode/Xcode%20Shortcuts.png" alt="" width="130" height="134" /></a>Well, I&#8217;m sure by now, you have seen countless <a href="http://www.1729.us/xcode/Xcode%20Shortcuts.png">infographics and &#8220;cheat sheets&#8221;</a> chock full of XCode shortcuts, tips, etc&#8230; These can be great resources, however, if you are anything like me, you see these, tweet the link, and move on never looking at them again.  The only difference between these and the XCode key-bindings menu IMHO is a fancy background. So, I thought I would share some of the most important shortcuts that I have adopted to really improve my workflow.  We spend so much time inside of XCode, it is worth the time to learn some of these.</p>
+
+<h4>Build Commands</h4>
+
+
+<p>By now, I would hope that you don&#8217;t click the &#8220;Build and Go/Debug&#8221; with your mouse whenever you want to run your application.  If you do, no worries, here are some of the build quick keys.</p>
+
+<p><strong>⌘ return - </strong>This builds and launches the application in debug mode.
+<strong>shift ⌘ return </strong>- Kills the running application in the simulator.
+<strong>shift ⌘ k - </strong>Cleans the build target.
+<strong>shift ⌘ a - </strong>Build and Analyze.  This is quite possible the most important command to learn.  This invokes the static analyzer to help spot memory issues in your code.  Run this as early and often as possible.</p>
+
+<p>My general workflow after writing a bit of code is to kill the last run, clean, analyze (hopefully not spend time on memory issues), and then build and debug.  These 4 commands in sequence are much faster than searching out the menu items for each of those commands.</p>
+
+<h4>File Management and Navigation</h4>
+
+
+<p>Navigating around files is one of the most common tasks you will perform in XCode.  It is really to your advantage to speed things up.</p>
+
+<p><strong>option ⌘ ↑</strong> - This quickly switches between your .h and .m file.
+<strong>⌘ ↑ - </strong>Move to the top of the file
+<strong>⌘ ↓ - </strong>Move to the bottom of the file <img class="size-full wp-image-1026 alignright" title="Screen shot 2010-11-18 at 8.14.35 AM" src="http://brandontreb.com/wp-content/uploads/2010/11/Screen-shot-2010-11-18-at-8.14.35-AM.png" alt="" width="265" height="188" />
+<strong>shift ⌘ d - </strong>This was recently showed to my by <a href="http://twitter.com/cruffenach">@cruffenach</a> and it has drastically sped up my workflow.  This is the command for &#8220;Open Quickly&#8221;.  It brings up a small window with a search box at the top.  Typing in the box instantly searches your project and allows you to quickly open up files by pressing return on the selected file.  I can&#8217;t believe I had been using XCode for so long before I found out about this command.</p>
+
+<h4>Binding Your Own Quick Keys</h4>
+
+
+<p>Some commands simply don&#8217;t have quick keys.  For example, I constantly use the <strong>Edit -&gt; Sort -&gt; By Name</strong> command to sort my source files alphabetically.  By default, you must click through all of the menus and select the command to get it to work.  However, XCode (like most OSX applications) will allow you to define your own quick keys and here&#8217;s how.</p>
+
+<ol>
+    <li>Open up the XCode Preferences</li>
+    <li>Click on the Key Bindings tab</li>
+    <li>Navigate to the command that you want to bind keys for. (hint: they are organized the same way they in the top menu)</li>
+    <li>Once you have found the command, double click in the Key column</li>
+    <li>Press the keys that you wish to bind (I bound <strong>option shift ⌘ s</strong> for sorting)</li>
+    <li>If there are any conflicts, XCode will let you know.  Otherwise, press apply and you&#8217;re good to go.</li>
+</ol>
+
+
+<h4>Wrap Up</h4>
+
+
+<p>Well, this concludes my relatively short first post for <a href="http://idevblogaday.com">#idevblogaday</a>.  If you have any shortcuts of your own that you can&#8217;t live without, please share them in the comments.  I&#8217;m always up to improve my workflow.</p>
+
+<p>Thank you to everyone (especially <a href="http://twitter.com/mysterycoconut ">@mysterycoconut</a>) for allowing me to be a part of this community and I look forward to sharing my knowledge and experiences with you.</p>
+
+<p>Happy Coding!</p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-18T02:01:59-07:00" pubdate data-updated="true">Nov 18<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>Articles</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/idevblogaday/'>iDevBlogADay</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/xcode-tips-and-shortcuts-to-improve-your-workflow/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/xcode-tips-and-shortcuts-to-improve-your-workflow/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/core-data-quicktip-inverse-relationships/" title="Previous Post: Core Data QuickTip: Inverse Relationships">&laquo; Core Data QuickTip: Inverse Relationships</a>
+      
+      
+        <a class="basic-alignment right" href="/promoting-your-other-apps-within-your-apps/" title="Next Post: Promoting Your Other Apps Within Your Apps">Promoting Your Other Apps Within Your Apps &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

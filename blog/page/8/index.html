@@ -1,0 +1,1023 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="First off, Happy Thanksgiving to my American readers. And a happy Thursday to everyone else.  I&#8217;m sitting here on Thursday morning drinking &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/blog/page/8/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/promoting-your-other-apps-within-your-apps/">Promoting Your Other Apps Within Your Apps</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-25T05:09:56-07:00" pubdate data-updated="true">Nov 25<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>First off, Happy Thanksgiving to my American readers. And a happy Thursday to everyone else.  I&#8217;m sitting here on Thursday morning drinking coffee and eating Sticky Buns (kind of like gooey doughnuts).  It&#8217;s been a hectic week of family and travel, so please forgive me if this is not the most verbose post.</p>
+
+<p>Showing your other applications within each of your applications (wow, the word application is starting to lose meaning) can have a tremendous impact on your sales.  It&#8217;s a great way to promote your other apps for free and will give them much more exposure across a wider audience.  Moving all of the promotion logic out to the web allows you to dynamically add and remove apps from the view without updating your apps in the store.</p>
+
+<p>[Insert Cool Graph Backing This Statement Up Here]  //I&#8217;m not that cool yet :(</p>
+
+<p>We have seen this in many popular apps.  Here is a screenshot from an iDevBlogADay veteran <a href="http://www.streamingcolour.com/blog/">Owen Goss</a> promoting his other applications from inside of <a href="http://www.streamingcolour.com/games/landformer/">LandFormer</a>.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/11/promo.png"><img class="alignnone size-medium wp-image-1080" title="promo" src="http://brandontreb.com/wp-content/uploads/2010/11/promo-500x333.png" alt="" width="300" height="200" /></a></p>
+
+<p>We are going to learn how to make something similar and I will provide you with a web template as well as the view controller to load it.</p>
+
+<h4>Download The Template</h4>
+
+
+<p>So, I&#8217;m sure there are a million more &#8220;elegant&#8221; ways to display your apps, but I went for super simple.  So, 1337 web dev idevblogadayers, please go easy on me in the comments.  Download the code below and look in the Web folder.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/11/promotion2.zip">Download The Code Files Here</a></p>
+
+<p>Here is a screenshot of what the template will look like:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/11/Screen-shot-2010-11-25-at-11.51.07-AM.png"><img class="alignnone size-medium wp-image-1085" title="Screen shot 2010-11-25 at 11.51.07 AM" src="http://brandontreb.com/wp-content/uploads/2010/11/Screen-shot-2010-11-25-at-11.51.07-AM-500x266.png" alt="" width="400" height="213" /></a></p>
+
+<p>It will also work in portrait mode.</p>
+
+<h4>Upload The Template Files To Your Web Server And Replace My Sample Data</h4>
+
+
+<p>If you have your own website (which you probably should ;) ), upload the template files to a subdirectory.  If not, or you don&#8217;t want to waste bandwidth on it, you can always <a href="http://wiki.dropbox.com/TipsAndTricks/HostWebsites">host the files on Dropbox</a>.</p>
+
+<p>Next, upload your icons (the template auto rounds the corners so you can just use the one&#8217;s bundled with your app) and replace my sample images with yours.</p>
+
+<p>Finally, replace the URL&#8217;s with the URLs to your applications. You can also add/remove table cells to match the number of applications you are promoting.</p>
+
+<h4>Add The Promotion Code To Your iPhone App</h4>
+
+
+<p>Look in the iPhone folder from the unzipped file you downloaded above and copy the following 3 files into your project:</p>
+
+<ul>
+    <li>PromotionViewController.m</li>
+    <li>PromotionViewController.h</li>
+    <li>PromotionViewController.xib</li>
+</ul>
+
+
+<p>Check the box to copy them into your project folder when prompted.</p>
+
+<p>We will now take a look at how to display the promotion view when a button is clicked.</p>
+
+<div>
+  <pre><code class='objc'>- (IBAction) moreAppsTouched:(id) sender {
+    PromotionViewController *controller = [[PromotionViewController alloc]
+        initWithNibName:@&quot;PromotionViewController&quot;
+        bundle:[NSBundle mainBundle]];
+    controller.promotionAddress = @&quot;http://brandontreb.com/apps/idevblogaday/promotion.html&quot;;
+    [self presentModalViewController:controller animated:YES];
+    [controller release];
+}</code></pre>
+</div>
+
+
+<p>Make sure you set controller.promotionAddress to the web address of your promotion.html file.</p>
+
+<p>And there you have it!  When the user tapps on a button it will display our promotion view modally and will load up your promo page.  I have provided a sample application that pulls up the promotion view when a button has been clicked.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/11/PromotionTest1.zip">Download The Sample App Here</a></p>
+
+<p>If you have any questions or comments, feel free to leave them in the comments.</p>
+
+<p>Happy Coding!</p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/xcode-tips-and-shortcuts-to-improve-your-workflow/">XCode Tips and Shortcuts to Improve Your Workflow</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-18T02:01:59-07:00" pubdate data-updated="true">Nov 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>Intro</h4>
+
+
+<p>This is my first <a href="http://idevblogaday.com">#iDevBlogADay</a> post and I wanted to give a quick intro before jumping in.  My name is Brandon Trebitowski and I&#8217;m a software developer and author from Albuquerque, New Mexico.  I graduated from the University of New Mexico in 2008 with a bachelors degree in computer science.  For the past 2 years, I have been writing mobile applications (primarily for the iPhone) for <a href="http://elctech.com/">ELC Technologies</a>.</p>
+
+<p>I also started <a href="http://icodeblog.com">http://icodeblog.com</a> and currently write on it about once a month.</p>
+
+<h4>A Post On XCode Shortcuts?</h4>
+
+
+<p><a href="http://www.1729.us/xcode/Xcode%20Shortcuts.png"><img class="alignleft" title="XCode Shortcuts" src="http://www.1729.us/xcode/Xcode%20Shortcuts.png" alt="" width="130" height="134" /></a>Well, I&#8217;m sure by now, you have seen countless <a href="http://www.1729.us/xcode/Xcode%20Shortcuts.png">infographics and &#8220;cheat sheets&#8221;</a> chock full of XCode shortcuts, tips, etc&#8230; These can be great resources, however, if you are anything like me, you see these, tweet the link, and move on never looking at them again.  The only difference between these and the XCode key-bindings menu IMHO is a fancy background. So, I thought I would share some of the most important shortcuts that I have adopted to really improve my workflow.  We spend so much time inside of XCode, it is worth the time to learn some of these.</p>
+
+<h4>Build Commands</h4>
+
+
+<p>By now, I would hope that you don&#8217;t click the &#8220;Build and Go/Debug&#8221; with your mouse whenever you want to run your application.  If you do, no worries, here are some of the build quick keys.</p>
+
+<p><strong>⌘ return - </strong>This builds and launches the application in debug mode.
+<strong>shift ⌘ return </strong>- Kills the running application in the simulator.
+<strong>shift ⌘ k - </strong>Cleans the build target.
+<strong>shift ⌘ a - </strong>Build and Analyze.  This is quite possible the most important command to learn.  This invokes the static analyzer to help spot memory issues in your code.  Run this as early and often as possible.</p>
+
+<p>My general workflow after writing a bit of code is to kill the last run, clean, analyze (hopefully not spend time on memory issues), and then build and debug.  These 4 commands in sequence are much faster than searching out the menu items for each of those commands.</p>
+
+<h4>File Management and Navigation</h4>
+
+
+<p>Navigating around files is one of the most common tasks you will perform in XCode.  It is really to your advantage to speed things up.</p>
+
+<p><strong>option ⌘ ↑</strong> - This quickly switches between your .h and .m file.
+<strong>⌘ ↑ - </strong>Move to the top of the file
+<strong>⌘ ↓ - </strong>Move to the bottom of the file <img class="size-full wp-image-1026 alignright" title="Screen shot 2010-11-18 at 8.14.35 AM" src="http://brandontreb.com/wp-content/uploads/2010/11/Screen-shot-2010-11-18-at-8.14.35-AM.png" alt="" width="265" height="188" />
+<strong>shift ⌘ d - </strong>This was recently showed to my by <a href="http://twitter.com/cruffenach">@cruffenach</a> and it has drastically sped up my workflow.  This is the command for &#8220;Open Quickly&#8221;.  It brings up a small window with a search box at the top.  Typing in the box instantly searches your project and allows you to quickly open up files by pressing return on the selected file.  I can&#8217;t believe I had been using XCode for so long before I found out about this command.</p>
+
+<h4>Binding Your Own Quick Keys</h4>
+
+
+<p>Some commands simply don&#8217;t have quick keys.  For example, I constantly use the <strong>Edit -&gt; Sort -&gt; By Name</strong> command to sort my source files alphabetically.  By default, you must click through all of the menus and select the command to get it to work.  However, XCode (like most OSX applications) will allow you to define your own quick keys and here&#8217;s how.</p>
+
+<ol>
+    <li>Open up the XCode Preferences</li>
+    <li>Click on the Key Bindings tab</li>
+    <li>Navigate to the command that you want to bind keys for. (hint: they are organized the same way they in the top menu)</li>
+    <li>Once you have found the command, double click in the Key column</li>
+    <li>Press the keys that you wish to bind (I bound <strong>option shift ⌘ s</strong> for sorting)</li>
+    <li>If there are any conflicts, XCode will let you know.  Otherwise, press apply and you&#8217;re good to go.</li>
+</ol>
+
+
+<h4>Wrap Up</h4>
+
+
+<p>Well, this concludes my relatively short first post for <a href="http://idevblogaday.com">#idevblogaday</a>.  If you have any shortcuts of your own that you can&#8217;t live without, please share them in the comments.  I&#8217;m always up to improve my workflow.</p>
+
+<p>Thank you to everyone (especially <a href="http://twitter.com/mysterycoconut ">@mysterycoconut</a>) for allowing me to be a part of this community and I look forward to sharing my knowledge and experiences with you.</p>
+
+<p>Happy Coding!</p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/core-data-quicktip-inverse-relationships/">Core Data QuickTip: Inverse Relationships</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-11T05:00:04-07:00" pubdate data-updated="true">Nov 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One thing I always wondered about Core Data is why the compiler would warn you if you didn&#8217;t specify the inverse relationship. After reading through Apple&#8217;s docs, they essentially say its to make your database more robust by reinforcing those relationships.  Plus, you never know when you may have one thing and need to get to the other.</p>
+
+<p>After working on a project with an Enormous Core Data database, I found one very useful thing about inverses.  When you specify one side of the relationship, core data automatically hooks up the other.  Allow me to explain in code.</p>
+
+<p>Let&#8217;s say we have a person object with many pets&#8230;</p>
+
+<div>
+  <pre><code class='objc'>Person *john = [[Person alloc] init];
+Pet *pet = [[Pet alloc] init];
+
+// Add the one to many relationship from john to pets
+[john addPetObject:pet];
+
+// Add the inverse relationship
+[pet setPerson:john];</code></pre>
+</div>
+
+
+<p>So, I was doing this in all of my code and then forgot to one time.  However, to my surprise, everything still worked.  Why, because once you set up one of the relationships, Core Data automatically handles the other.  So, the above code is redundant and could just as easily have been.</p>
+
+<div>
+  <pre><code class='objc'>[john addPetObject:pet];</code></pre>
+</div>
+
+
+<p>OR</p>
+
+<div>
+  <pre><code class='objc'>[pet setPerson:john];</code></pre>
+</div>
+
+
+<p>and both directions of the relationship would have been established.</p>
+
+<p>Not super exciting, but I found it to be pretty handy and also saved me quite a bit of extra code.</p>
+
+<p>Happy Coding!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/re-android-developer-income-report/">RE: Android Developer Income Report</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-08T06:58:13-07:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.kreci.net/reports/android-developer-income-report/">This article</a> was a very interesting with some insight into the Android Market.  Basically, this indie Android developer has published 6 free applications and is making more than $1,000.00 per month off of advertisements.</p>
+
+<blockquote>None of my apps has been ever promoted in Top of Android Market
+
+I am providing only free apps (mostly due of Android Market limitations)
+
+Even if I would be able to sell apps I would not use it as main income source… (I believe that you still can make more from ads…)</blockquote>
+
+
+<p>via <a href="http://www.kreci.net/reports/android-developer-income-report/">Android Developer Income Report</a>.</p>
+
+<p>I think there is an interesting experiment here.  I am going to attempt this. Making super simple novelty apps (very low barrier to entry) that are free with ad support.  I know this just further convolutes the crap that is the Android Market, but it would be fun to test.</p>
+
+<p>If I actually end up doing this, I will publish some results here.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/what-not-to-do-in-life-tks-weblog/">What Not to Do in Life | TKs Weblog</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-05T02:34:19-06:00" pubdate data-updated="true">Nov 5<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here is a great article about some advice given to a 22 year old starting his life journey.  These points are applicable to anyone, but found them especially applicable to software developers in general.</p>
+
+<p><a href="http://www.tawheedkader.com/2010/11/what-not-to-do-in-life/">http://www.tawheedkader.com/2010/11/what-not-to-do-in-life/</a></p>
+
+<p>Here are a few that I particularly enjoyed</p>
+
+<blockquote><strong>Do not ever work</strong>
+
+Picasso used to paint all the time, Henry Moore sculpt the whole day. Others would have thought they were working themselves to death. They actually were reenergizing and reinvigorating themselves. Do what you enjoy doing. Do not ever work.
+
+<strong>Do not go into any competition</strong>
+
+Quality has no competition. Only mediocrity has competition. If you do what you do at the highest quality you have no competition. Quality creates a moat around yourself.</blockquote>
+
+
+<p>What this says to me is &#8220;Love what you are doing, and don&#8217;t make crap!&#8221;.  These are super wise points that we often overlook.  Take for example the iTunes App Store.  300,000 apps where ~ 290,000 of them are total crap.  People just writing apps for the sake of making money and not truly enjoying what they are doing.</p>
+
+<p>If you are competing on crap, you are always going to lose.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tweetpress-plugin-updated/">Tweetpress Plugin Updated</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-28T01:10:02-06:00" pubdate data-updated="true">Oct 28<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just posted an update to my plugin Tweetpress!  In case you don&#8217;t know, Tweetpress is a plugin I created that allows you to post images to your Wordpress blog from mobile Twitter clients instead of a 3rd party service like Twitpic.  Here is what&#8217;s new in this version.</p>
+
+<div id="_mcePaste">
+<ul>
+    <li>Revert back to Wordpress login by default</li>
+    <li>Custom CSS</li>
+    <li>Updated so that the thumbs don&#8217;t get a size of 0px when used with SEO images plugin</li>
+    <li>Bug fixes</li>
+    <li>Revert back to Wordpress login by default* Custom CSS* Updated so that the thumbs don&#8217;t get a size of 0px when used with SEO images plugin* Bug fixes</li>
+</ul>
+</div>
+
+
+<div id="_mcePaste">This update really focused on authentication, I have also updated the about pages for installing the plugin as well as configuring your Twitter client.  Here are the important links.</div>
+
+
+<div><a href="http://wordpress.org/extend/plugins/tweetpress/">Download Tweetpress from Wordpress.org</a></div>
+
+
+<div><a href="http://brandontreb.com/tweetpress/">Tweetpress setup</a></div>
+
+
+<div><a href="http://brandontreb.com/tweetpress-now-supported-by-twittelator-pro/">Twittelator setup</a></div>
+
+
+<div><a href="http://brandontreb.com/tutorial-tweetpress-integration-with-tweetie/">Twitter for iPhone setup</a></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ludum-dare-competition-week-2-update/">Ludum Dare Competition: Week 2 Update</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-20T01:00:59-06:00" pubdate data-updated="true">Oct 20<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So another week has gone by and I have made quite a bit of progress, here are the additions since I last posted.</p>
+
+<ul>
+    <li>Texturing</li>
+    <li>Lighting</li>
+    <li>Skybox</li>
+    <li>Better Terrain generation</li>
+    <li>Environment Fog</li>
+    <li>Basic navigation</li>
+</ul>
+
+
+<p>So judging by the screenshot, you might really be thinking that I&#8217;m working on Minecraft for the iPhone (I used textures that someone created for Minecraft).  While this isn&#8217;t my intention, it is starting to look like my engine would be perfect for a simple port.  Perhaps, I may consider creating something inspired by Minecraft in the future.  For now, I will be sticking to my current game idea which I call Cube Hive.</p>
+
+<p>As I continue to update this blog, the game idea will become more and more apparent but basically I want to create a game <a href="http://sites.google.com/site/handkor/hive'sprojectpage">similar to this</a> on the iPhone in a cube environment.</p>
+
+<p>Anyway, here is a screenshot of where I&#8217;m at:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/10/Screen-shot-2010-10-19-at-2.37.00-PM.png"><img class="size-medium wp-image-983 alignnone" title="Screen shot 2010-10-19 at 2.37.00 PM" src="http://brandontreb.com/wp-content/uploads/2010/10/Screen-shot-2010-10-19-at-2.37.00-PM-500x350.png" alt="" width="500" height="350" /></a></p>
+
+<p>Oh, and BTW doing Fog in OpenGL ES is crazy easy.  Here is the code (thanks to <a href="http://twitter.com/#!/mikedaley">Mike Daley</a> of <a href="http://www.71squared.com/">71 Squared</a> for showing me this)</p>
+
+<div>
+  <pre><code class='objc'>GLfloat fogColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    glFogf(GL_FOG_MODE, GL_LINEAR);
+    glFogfv(GL_FOG_COLOR, fogColor);
+    glFogf(GL_FOG_DENSITY, 0.5f);
+    glHint(GL_FOG_HINT, GL_DONT_CARE);
+    glFogf(GL_FOG_START, 10);
+    glFogf(GL_FOG_END, 20);
+    glEnable(GL_FOG);</code></pre>
+</div>
+
+
+<p>That&#8217;s it! Such a great effect with so little effort.</p>
+
+<p>Anyway, I don&#8217;t foresee my game being completed by the end of this month for the Ludum Dare competition.  However, I have been working on a killer MUD client for the iPhone that I will most likely submit.  I feel that current solutions are clunky, ugly, and unintuitive (sorry if you are a reader and a dev of one of these :/).</p>
+
+<p>I should have some screenshots up soon.</p>
+
+<p>I would love to hear thoughts/opinions of doing a Minecraft inspired game as well?</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/calculator-creator-released-promo-codes/">Calculator Creator Released + Promo Codes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-14T01:29:46-06:00" pubdate data-updated="true">Oct 14<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div>
+<p style="text-align: center;"><a href="http://brandontreb.com/wp-content/uploads/2010/10/icon512x512.png"><img class="size-full wp-image-972  aligncenter" title="icon512x512" src="http://brandontreb.com/wp-content/uploads/2010/10/icon512x512.png" alt="" width="215" height="215" /></a></p>
+<a href="http://brandontreb.com/wp-content/uploads/2010/10/icon512x512.png"></a>I have recently been developing an iPhone app in my free time called <a href="http://bit.ly/bkOfAT">Calculator Creator</a>.  This application has been an idea of mine for quite some time and I finally found the time to complete it.  Here is the complete description of the app.
+
+The last calculation app you will need to buy!
+
+With Calculator Creator, you are easily able to build your own &#8220;Calculators&#8221; as long as you know their equations. The process couldn&#8217;t be easier.
+
+Simply:
+
+1. Name your calculator (ex Cost Per Square Foot)
+2. Add the fields involved (ex Cost, Square Foot)
+3. Create the equation (ex Cost/Square Foot)
+4. Use the calculator whenever you like
+
+Why purchase a unit conversion application for more, when you could have EVERY unit conversion in one clean application.
+
+Calculator Creator also comes packed with over 20 sample calculators including:
+
+- Unit Conversions
+- Mortgage Payments Calculator
+- Temperature Conversions
+- Tip Calculators
+- and more!
+
+If you are reading this and want a free copy of my Calculator Creator, try using one of the promo codes below.  Also, please consider leaving me an iTunes review (especially if you are getting the app for free! :))
+
+I would love to hear suggestions for future improvements and features.
+
+<a href="http://bit.ly/bkOfAT">Download Calculator Creator on iTunes</a>
+
+<strong>PROMO CODES</strong>
+LRREPTP3E64Y
+L6RPN9KYHLFR
+9P3YETKR4XTW
+H4HF4R4L9K7L
+KTRAJYF4M97L
+M34ALYRTHJRY
+MMFFM7LRJTAP
+A3WYL4EKF797
+T93FK4479AWX
+RHWWJEKNE3AM
+
+<img class="alignleft" title="CC1" src="http://a1.phobos.apple.com/us/r30/Purple/82/17/27/mzl.gjkqowqp.320x480-75.jpg" alt="" width="256" height="384" /><img class="alignnone" title="CC2" src="http://a1.phobos.apple.com/us/r30/Purple/b8/c2/49/mzl.pbjsknpd.320x480-75.jpg" alt="" width="256" height="384" />
+
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/povs-challenge-week-1/">PoV&#8217;s Challenge: Week 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-07T02:13:06-06:00" pubdate data-updated="true">Oct 7<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After a week of studying my butt off with OpenGL ES, I have finally started work on my game engine for my <a href="http://www.ludumdare.com/compo/2010/09/22/povs-challenge-make-a-game-sell-1-copy/">Pov&#8217;s Challenge</a> game.</p>
+
+<p>As you can tell from the screenshot below, I have been playing entirely too much Minecraft and have cube art on the brain.</p>
+
+<p>It&#8217;s not much right now, but I do have a basic cube rendering engine that takes in a level file and renders the environment.   Here is a screenshot of a very simple level.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/10/Screen-shot-2010-10-06-at-10.48.28-PM.png"><img class="size-medium wp-image-962 alignleft" title="Screen shot 2010-10-06 at 10.48.28 PM" src="http://brandontreb.com/wp-content/uploads/2010/10/Screen-shot-2010-10-06-at-10.48.28-PM-362x500.png" alt="" width="290" height="400" /></a>It&#8217;s not looking super killer at the moment, but I have yet to do fancier lighting or any texture mapping.</p>
+
+<p><strong>Ohh My Game Idea You Ask?</strong></p>
+
+<p>Well, without going into too much detail, it&#8217;s pretty much an epic battle of mass proportion set in a 3D cube environment (hint: it&#8217;s not iMinecraft ;)).</p>
+
+<p>I will give more details as I go about the month and near the completion of my game.</p>
+
+<p>Also, in case you are interested, here is what the level file looks like for the generated environment.</p>
+
+<pre><strong>GG,GG,GG,G,GG,GG,GG
+GG,G,G,G,G,G,GG
+GG,G,G,G,G,G,GG
+GG,G,G,G,G,G,GG
+G,G,G,GG,G,G,G
+GG,G,G,G,G,G,GG
+GG,G,G,G,G,G,GG
+GG,G,G,G,G,G,GG
+GG,GG,GG,G,GG,GG,GG</strong></pre>
+
+
+<p>The number of G&#8217;s that appear represent the height at that location.</p>
+
+<p><strong>The current roadmap is:</strong></p>
+
+<ul>
+    <li>Texturing &amp; Lighting</li>
+    <li>Collision Detection / Navigation</li>
+    <li>Gameplay &amp; Audio</li>
+    <li>AI</li>
+    <li>Menus / Title / Pause  (<a href="http://www.36peas.com/blog/2010/10/6/just-add-the-secret-sauce-a-tried-and-tested-recipe-for-a-fi.html">secret sauce ingredients</a>)</li>
+</ul>
+
+
+<p>By next week, I should have some sort of level editor and some basic skinning going on.</p>
+
+<p>Hopefully I can finish this sucker by the end of the month.  Its&#8217;s been an intense journey learning openGL from scratch in 7 days and I know that I still have quite a ways to go.  Again, if you are participating in this challenge, link me to your development blog in the comments.</p>
+
+<p>Happy coding!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/game-dev-challenge-opengl-es-resource-list/">Game Dev Challenge + OpenGL ES Resource List</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-30T02:37:30-06:00" pubdate data-updated="true">Sep 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The other day, I was reading <a href="http://www.ludumdare.com/">Ludum Dare</a> and saw a very interesting post.  It was a call to action for all game developers to get serious and actually put something out there.  Here is a link to the post:</p>
+
+<p><a title="Permanent Link: PoV’s Challenge: Make a game, sell 1 copy" rel="bookmark" href="http://www.ludumdare.com/compo/2010/09/22/povs-challenge-make-a-game-sell-1-copy/">PoV’s Challenge: Make a game, sell 1 copy</a></p>
+
+<p>The idea is for would-be indie game developers to create a game in the month of October and sell at least <strong>one copy</strong>.  There are no judges, it&#8217;s not a competition with anyone other than yourself. According to PoV from Ludum Dare:</p>
+
+<blockquote>Think of this as a race (or a <a href="http://www.nanowrimo.com/">Nanowrimo</a> for games+business). Have something <strong>new</strong> for sale and in a store by the end of October. And if you can sell a copy (or sign a licensing deal, or earn $1 in ad revenue), <strong><span style="text-decoration: underline;">you win</span></strong>.</blockquote>
+
+
+<p>I have been attempting to learn OpenGL since my early days of programming 10 years ago and it has never stuck.  I figured this would be a perfect opportunity to really buckle down and learn it.  Recently, I have stumbled upon some really great <strong>OpenGL ES resources and tutorials </strong>that have really made things &#8220;click&#8221; for me.  I wanted to share them in this post.</p>
+
+<h2>1. OpenGL ES From The Ground Up</h2>
+
+
+<p><img class="alignleft" title="iphone developement - opengl es" src="http://lh5.ggpht.com/_QLwms0mVa4w/SfpuxUUtxaI/AAAAAAAAATA/0cCN7dX_6Q4/colorico.jpg?imgmax=800" alt="" width="100" height="192" />URL: <a href="http://iphonedevelopment.blogspot.com/2009/05/opengl-es-from-ground-up-table-of.html">http://iphonedevelopment.blogspot.com/2009/05/opengl-es-from-ground-up-table-of.html</a></p>
+
+<p>This is a blog created by Apress author Jeff Lamarche.  Jeff has been blogging about opengl es for quite some time and probably has one of the best opengl series out there.  His tutorials are aimed at the absolute beginner and he takes a very nice approach to teaching OpenGL ES.</p>
+
+<p>The link above will take you to his table of contents of tutorials.  Where you can read up on his articles ranging from drawing basic triangles to importing 3D models from Blender.
+_</p>
+
+<h2>2. Simon Maurice iPhone OpenGL ES</h2>
+
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/09/3dimage.jpg"><img class="alignleft size-full wp-image-950" title="3dimage" src="http://brandontreb.com/wp-content/uploads/2010/09/3dimage.jpg" alt="" width="122" height="162" /></a>URL: <a href="http://www.cocoachina.com/wiki/index.php?title=Category:Simon_Maurice_iPhone_OpenGL_ES">http://www.cocoachina.com/wiki/index.php?title=Category:Simon_Maurice_iPhone_OpenGL_ES</a></p>
+
+<p>This is an incredible 20 part series that was translated from Chinese to English and posted on the CocoaChina Wiki.  These articles take a slightly different approach, while still doing a great job of teaching you OpenGL ES.</p>
+
+<p>The articles are well written and quite comprehensive.  It is obvious that the approach isn&#8217;t quite as professional as Jeff Lamarche&#8217;s blog, however this series goes a lot more in depth and will teach you more complex concepts such as handling touch and <strong>moving in 3D</strong>.</p>
+
+<h3>3. NeHe OpenGL Tutorials</h3>
+
+
+<p>URL : <a href="http://nehe.gamedev.net/lesson.asp?index=01">http://nehe.gamedev.net/lesson.asp?index=01</a></p>
+
+<p><img class="alignleft" title="neho" src="http://nehe.gamedev.net/data/lessons/lesson05.jpg" alt="" width="168" height="126" />These are oldies but goodies.  The NeHe tutorials have been around for years and years.  In fact, I attempted to understand them in my early days of coding when I declared every method as static in Java so I didn&#8217;t have to instantiate the class to call it (fail).  Either way, these tutorials are a staple in the Open GL community.</p>
+
+<p>Although they are not written for ES, they still provide some solid OpenGL concepts.  I would strongly suggest reading these after you have read through the other 2.  There are some limitation of OpenGL ES (like not supporting GL_QUADS), that will quickly confuse you if you try to write the Nehe tutorials on the iPhone.</p>
+
+<p>One killer thing about the first link I mentioned is, Jeff Lamarche actually ported the first 6 Nehe tutorials to the iPhone and they can be found on the page I linked to.</p>
+
+<p>I will be studying these resources carefully over the coming month.  I intend to take the plunge and developer a simple OpenGL ES game in the month of October and <strong>sell 1 copy</strong>.</p>
+
+<p>So, please join me! If you decide to do this and are journaling your progress, link your blog in the comments.  I would love to follow it.  I will be doing the same here.</p>
+
+<p>Happy Coding!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/9/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/7/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It&#8217;s Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

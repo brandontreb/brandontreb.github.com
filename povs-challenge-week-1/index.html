@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>PoV's Challenge: Week 1 - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="After a week of studying my butt off with OpenGL ES, I have finally started work on my game engine for my Pov&#8217;s Challenge game. As you can tell &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/povs-challenge-week-1/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">PoV's Challenge: Week 1</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-07T02:13:06-06:00" pubdate data-updated="true">Oct 7<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>After a week of studying my butt off with OpenGL ES, I have finally started work on my game engine for my <a href="http://www.ludumdare.com/compo/2010/09/22/povs-challenge-make-a-game-sell-1-copy/">Pov&#8217;s Challenge</a> game.</p>
+
+<p>As you can tell from the screenshot below, I have been playing entirely too much Minecraft and have cube art on the brain.</p>
+
+<p>It&#8217;s not much right now, but I do have a basic cube rendering engine that takes in a level file and renders the environment.   Here is a screenshot of a very simple level.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/10/Screen-shot-2010-10-06-at-10.48.28-PM.png"><img class="size-medium wp-image-962 alignleft" title="Screen shot 2010-10-06 at 10.48.28 PM" src="http://brandontreb.com/wp-content/uploads/2010/10/Screen-shot-2010-10-06-at-10.48.28-PM-362x500.png" alt="" width="290" height="400" /></a>It&#8217;s not looking super killer at the moment, but I have yet to do fancier lighting or any texture mapping.</p>
+
+<p><strong>Ohh My Game Idea You Ask?</strong></p>
+
+<p>Well, without going into too much detail, it&#8217;s pretty much an epic battle of mass proportion set in a 3D cube environment (hint: it&#8217;s not iMinecraft ;)).</p>
+
+<p>I will give more details as I go about the month and near the completion of my game.</p>
+
+<p>Also, in case you are interested, here is what the level file looks like for the generated environment.</p>
+
+<pre><strong>GG,GG,GG,G,GG,GG,GG
+GG,G,G,G,G,G,GG
+GG,G,G,G,G,G,GG
+GG,G,G,G,G,G,GG
+G,G,G,GG,G,G,G
+GG,G,G,G,G,G,GG
+GG,G,G,G,G,G,GG
+GG,G,G,G,G,G,GG
+GG,GG,GG,G,GG,GG,GG</strong></pre>
+
+
+<p>The number of G&#8217;s that appear represent the height at that location.</p>
+
+<p><strong>The current roadmap is:</strong></p>
+
+<ul>
+    <li>Texturing &amp; Lighting</li>
+    <li>Collision Detection / Navigation</li>
+    <li>Gameplay &amp; Audio</li>
+    <li>AI</li>
+    <li>Menus / Title / Pause  (<a href="http://www.36peas.com/blog/2010/10/6/just-add-the-secret-sauce-a-tried-and-tested-recipe-for-a-fi.html">secret sauce ingredients</a>)</li>
+</ul>
+
+
+<p>By next week, I should have some sort of level editor and some basic skinning going on.</p>
+
+<p>Hopefully I can finish this sucker by the end of the month.  Its&#8217;s been an intense journey learning openGL from scratch in 7 days and I know that I still have quite a ways to go.  Again, if you are participating in this challenge, link me to your development blog in the comments.</p>
+
+<p>Happy coding!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-07T02:13:06-06:00" pubdate data-updated="true">Oct 7<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/iphone/'>iPhone</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/povs-challenge-week-1/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/povs-challenge-week-1/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/game-dev-challenge-opengl-es-resource-list/" title="Previous Post: Game Dev Challenge + OpenGL ES Resource List">&laquo; Game Dev Challenge + OpenGL ES Resource List</a>
+      
+      
+        <a class="basic-alignment right" href="/calculator-creator-released-promo-codes/" title="Next Post: Calculator Creator Released + Promo Codes">Calculator Creator Released + Promo Codes &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

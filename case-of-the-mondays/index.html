@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Case Of The Mondays - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="Mondays&#8230; The other day, I was faced with an interesting programming challenge and wanted to share my solution.  I just submitted a pretty &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/case-of-the-mondays/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Case of the Mondays</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-14T05:00:28-07:00" pubdate data-updated="true">Feb 14<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div id="attachment_1421" class="wp-caption alignright" style="width: 330px"><a href="http://brandontreb.com/wp-content/uploads/2011/02/office-spacejpg.jpeg"><img class="size-full wp-image-1421 " title="office-spacejpg" src="http://brandontreb.com/wp-content/uploads/2011/02/office-spacejpg.jpeg" alt="" width="320" height="240" /></a><p class="wp-caption-text">Mondays&#8230;</p></div>
+
+
+<p></p>
+
+<p>The other day, I was faced with an interesting programming challenge and wanted to share my solution.  I just submitted a pretty interesting app to the app store that does a number of things (more details soon).  Among those things is the ability to generate a calendar.</p>
+
+<h4>The Problem</h4>
+
+
+<p>Generating the calendar was the easy part, however when displayed, I wanted it to highlight every Monday of the month.  This turned out to be a bit trickier than I imagined.</p>
+
+<p>Really the main challenge here was to determine which day contained the <em>first</em> Monday of the month. After that, we just loop incrementing by 7 and are done.</p>
+
+<h4>Looking At The Date Helpers</h4>
+
+
+<p>Looking at what I had to work with in NSDate, NSCalendar, and NSDateComponents, I really found only 2 things that could help me.  From NSDateComponents, I could figure out the current day (numeric) and the current day of the week (numeric).  Knowing this information was very important.</p>
+
+<h4>The Solution</h4>
+
+
+<p>Having the current day and day of the week allowed me to find the date of the Monday on the current week.  This was the first challenge as demonstrated below.  Assume weekdayComponents is the NSDateComponents generated from the current date.</p>
+
+<div>
+  <pre><code class='objc'>NSInteger weekday = [weekdayComponents weekday];
+NSInteger day         = [weekdayComponents day];
+
+// First, find how many days we are from Monday
+int daysAwayFromMonday = weekday - 2;
+
+// Now resolve the monday of this week
+int mondayThisWeek = day - daysAwayFromMonday;
+
+// Check if monday this week falls in last month
+if(mondayThisWeek &amp;lt;= 0) {
+    mondayThisWeek = day + (7 - daysAwayFromMonday);
+}</code></pre>
+</div>
+
+
+<p>mondayThisWeek will now contain the day number of the Monday of the current week.  If that Monday falls on the previous month, mondayThisWeek will be negative. Line 12 resolves that by carrying it into next week.</p>
+
+<p>Finally, we just loop subtracting 7 from that Monday until mondayThisWeek is less than 7 to get the first Monday of the month.</p>
+
+<div>
+  <pre><code class='objc'>while(mondayThisWeek &amp;gt; 7) {
+    mondayThisWeek -= 7;
+}</code></pre>
+</div>
+
+
+<p>And there you have it.  mondayThisWeek (improperly named at this point) will contain the day number of the first Monday for the current month.</p>
+
+<p>So, this was quite a round-a-bout way to find this value.  If you have a better solution, please feel free to trash on mine in the comments ;) .</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-14T05:00:28-07:00" pubdate data-updated="true">Feb 14<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>Articles</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/case-of-the-mondays/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/case-of-the-mondays/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/farewell-for-now-idevblogaday/" title="Previous Post: Farewell (For Now) iDevBlogADay">&laquo; Farewell (For Now) iDevBlogADay</a>
+      
+      
+        <a class="basic-alignment right" href="/its-elementary-my-dear-watson/" title="Next Post: It's Elementary My Dear Watson">It's Elementary My Dear Watson &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

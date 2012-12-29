@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Wordpress | Brandon Trebitowski]]></title>
+  <link href="http://brandontreb.github.com/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://brandontreb.github.com/"/>
+  <updated>2012-12-29T12:29:54-07:00</updated>
+  <id>http://brandontreb.github.com/</id>
+  <author>
+    <name><![CDATA[Brandon Trebitowski]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Considering Leaving Wordpress For Jekyll]]></title>
+    <link href="http://brandontreb.github.com/considering-leaving-wordpress-for-jekyll/"/>
+    <updated>2011-03-28T02:21:41-06:00</updated>
+    <id>http://brandontreb.github.com/considering-leaving-wordpress-for-jekyll</id>
+    <content type="html"><![CDATA[<p>So, after my 6 year relationship with Wordpress, I have been having some strong feelings for another (blog engine).  <a href="http://jekyllrb.com/">Jekyll</a> does everything that I want my wordpress to do.</p>
+
+<ol>
+    <li>Not suck at security</li>
+    <li>Not be bloated</li>
+    <li>Not have a sucky post editor</li>
+    <li>Expense - I have a few blogs hosted on Rackspace and my bill has gotten pretty pricey.  I'm hoping to host my Jekyll site on App Engine for frizzle (free).</li>
+</ol>
+
+
+<p>That's about it.  In case you live in a box (which most of us do since most houses are relatively square) and haven't hear of it, Jekyll is a new blogging engine written in Ruby.  Simply put, you write posts, run a command and it spits out static pages.  You just upload these pages to your server (how old skool right?)  Now you no longer have a dependancies on any server side language, fancy server configs, etc...</p>
+
+<p>Jekyll has no(minimal) features, no comments, track backs etc... and no built-in SEO.  It doesn't even have an admin (since you are serving up static content).  Sounds like a blast right? I'll blog a bit about it as I make the migration and you will see, it's going to be great!</p>
+
+<p>I just finished reading <a href="http://vitobotta.com/how-to-migrate-from-wordpress-to-jekyll/">this post</a> from Hacker News, which was pretty much the nail in the coffin.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tweet Press 3.2 Update - Sidebar Widget]]></title>
+    <link href="http://brandontreb.github.com/tweet-press-3-2-update-sidebar-widget/"/>
+    <updated>2011-02-16T10:54:51-07:00</updated>
+    <id>http://brandontreb.github.com/tweet-press-3-2-update-sidebar-widget</id>
+    <content type="html"><![CDATA[<p>I have recently had an overwhelming number of requests for a sidebar widget that displays your recent Tweetpress photos.  Well, it's finally here!  The update was actually quite trivial to make.  If I had known how simple it would be, I would have made it months ago.</p>
+
+<p>Make sure you update to the latest version: <a href="http://wordpress.org/extend/plugins/tweetpress/">tweetpress 3.2</a></p>
+
+<p><b>How to use it</b>
+In the Wordpress admin, click on Appearance and the Widgets from the sidebar menu.  If your theme supports widgets (which is should), you will see a Tweetpress widget in the available widgets list.</p>
+
+<p>Next drag that widget into the sidebar area and modify the settings.</p>
+
+<br/><a href="http://brandontreb.com/wp-content/uploads/2011/02/20110216-065023.jpg"><img src="http://brandontreb.com/wp-content/uploads/2011/02/20110216-065023.jpg" alt="" class="alignnone size-full" /></a>
+
+
+<p>You can configure the title of the widget as well as the number of photos to be displayed. Please comment here or shoot me an email if you experience any issues with it.  I'm also open to suggestions.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tweetpress Plugin Updated]]></title>
+    <link href="http://brandontreb.github.com/tweetpress-plugin-updated/"/>
+    <updated>2010-10-28T01:10:02-06:00</updated>
+    <id>http://brandontreb.github.com/tweetpress-plugin-updated</id>
+    <content type="html"><![CDATA[<p>I have just posted an update to my plugin Tweetpress!  In case you don't know, Tweetpress is a plugin I created that allows you to post images to your Wordpress blog from mobile Twitter clients instead of a 3rd party service like Twitpic.  Here is what's new in this version.</p>
+
+<div id="_mcePaste">
+<ul>
+    <li>Revert back to Wordpress login by default</li>
+    <li>Custom CSS</li>
+    <li>Updated so that the thumbs don't get a size of 0px when used with SEO images plugin</li>
+    <li>Bug fixes</li>
+    <li>Revert back to Wordpress login by default* Custom CSS* Updated so that the thumbs don't get a size of 0px when used with SEO images plugin* Bug fixes</li>
+</ul>
+</div>
+
+
+<div id="_mcePaste">This update really focused on authentication, I have also updated the about pages for installing the plugin as well as configuring your Twitter client.  Here are the important links.</div>
+
+
+<div><a href="http://wordpress.org/extend/plugins/tweetpress/">Download Tweetpress from Wordpress.org</a></div>
+
+
+<div><a href="http://brandontreb.com/tweetpress/">Tweetpress setup</a></div>
+
+
+<div><a href="http://brandontreb.com/tweetpress-now-supported-by-twittelator-pro/">Twittelator setup</a></div>
+
+
+<div><a href="http://brandontreb.com/tutorial-tweetpress-integration-with-tweetie/">Twitter for iPhone setup</a></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Great WordPress Plugin To Connect Your WordPress Blog To Your Tumblr]]></title>
+    <link href="http://brandontreb.github.com/great-wordpress-plugin-to-connect-your-wordpress-blog-to-your-tumblr/"/>
+    <updated>2010-09-17T01:00:14-06:00</updated>
+    <id>http://brandontreb.github.com/great-wordpress-plugin-to-connect-your-wordpress-blog-to-your-tumblr</id>
+    <content type="html"><![CDATA[<p>Ok, so maybe this is stupid, reposting your own content in multiple areas.  As far as SEO goes, it may not be the best idea.  However, I really love Tumblr and I really love Wordpress.  I can't seem to part with either yet I don't quite have the time for both.</p>
+
+<p>I put out a quick tweet earlier today (and this is why I flippin love Twitter), asking if anyone knew of a good way to connect Wordpress to Twitter.  Here are the popular options.</p>
+
+<ol>
+    <li>Use Tumblr's feed importer (suggested by <a href="http://twitter.com/abrahamvegh">@abrahamvegh</a>).  This option requires you to enter your blog's RSS feed.  Tumblr then scans your RSS feed every so often and pulls the new posts.  I didn't care too much for this approach because it's not instantaneous.  I added my feed and it told me that it would refresh in about an hour.  After an hour it still didn't pull my Wordpress posts and had a status of queued.
+<a href="http://brandontreb.com/wp-content/uploads/2010/09/Screen-shot-2010-09-16-at-10.20.58-PM.png"><img class="alignnone size-full wp-image-919" title="Screen shot 2010-09-16 at 10.20.58 PM" src="http://brandontreb.com/wp-content/uploads/2010/09/Screen-shot-2010-09-16-at-10.20.58-PM.png" alt="" width="313" height="253" /></a></li>
+    <li><a href="http://brandontreb.com/wp-content/uploads/2010/09/Screen-shot-2010-09-16-at-10.20.58-PM.png"></a> There are quite a few Tumblr Wordpress plugins out there.  I have tried a few and have seen no success.  Until one of my twitter followers (<strong><a href="http://twitter.com/#!/TheSilber">@TheSilber</a>) </strong>suggested that I use <a href="http://wordpress.org/extend/plugins/tumblrize/">tumblrize</a>.  Tumblrize is a great plugin that worked perfectly right out of the box.  It was easy to set up and boasts quite a few options."Tumblrize posts to Tumblr whenever you hit the "publish" button. It uses Tumblr's simple API to keep posts in sync; when you edit your WordPress post, it updates your Tumblr post."
+<img class="alignnone" title="Tumblrize" src="http://id.ijulien.com/img/tumblrize.png" alt="" width="290" height="49" /></li>
+</ol>
+
+
+<p>I would highly recommend option 2 if you are planning on syncing your Wordpress blog with your Tumblr.</p>
+
+<p><a href="http://wordpress.org/extend/plugins/tumblrize/">Download Tumblr.ize Here</a></p>
+
+<p>Would love to hear about some other interesting solutions.  Feel free to post them in the comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress For iPhone/iPad NSXMLParserErrorDomain Error 64 Resolved]]></title>
+    <link href="http://brandontreb.github.com/wordpress-for-iphoneipad-nsxmlparsererrordomain-error-64-resolved/"/>
+    <updated>2010-08-30T05:00:53-06:00</updated>
+    <id>http://brandontreb.github.com/wordpress-for-iphoneipad-nsxmlparsererrordomain-error-64-resolved</id>
+    <content type="html"><![CDATA[<p>If you have a Wordpress blog and an iPhone/iPad, then you most likely have the <a href="http://itunes.apple.com/us/app/wordpress/id335703880?mt=8">Wordpress for iOS</a> app.  If you don't, you <a href="http://itunes.apple.com/us/app/wordpress/id335703880?mt=8">should</a>.</p>
+
+<p>Over the past couple of days, I have been receiving the following error when trying to add my blog to the iPhone app.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/08/photo.png"><img class="size-medium wp-image-859 alignnone" title="photo" src="http://brandontreb.com/wp-content/uploads/2010/08/photo-333x500.png" alt="" width="333" height="500" /></a></p>
+
+<p>After scouring the internet, I found that this could be the result of a few issues.</p>
+
+<ul>
+    <li>Special characters in a post body that are not supported by NSXMLParser</li>
+    <li>Special characters in a comment</li>
+    <li>Invalid post or comment RSS</li>
+    <li>An error in a theme/plugin file</li>
+</ul>
+
+
+<p>For me, this turned out to be an issue with the comments RSS feed.  I loaded it up in the browser and long behold, even the browser threw an error.  But what could be causing this?  Turns out, I had left a space in a plugin that I created.  This caused a space to be output at the beginning of the comments XML, causing it to error. Notice the space between ?&gt; and &lt;?php below.  (Face Palm)</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/08/Screen-shot-2010-08-30-at-10.05.22-AM.png"><img class="size-full wp-image-860 alignnone" title="Screen shot 2010-08-30 at 10.05.22 AM" src="http://brandontreb.com/wp-content/uploads/2010/08/Screen-shot-2010-08-30-at-10.05.22-AM.png" alt="" width="498" height="180" /></a></p>
+
+<p>After removing the space from this plugin, I loaded up Wordpress for iPhone and it added my blog without a problem.</p>
+
+<p>So, the take away from this is <strong>don't output spaces when you create a plugin.</strong></p>
+
+<p>I hope this post has proven useful for you, I can't imagine that I'm the only person with this issue ;)</p>
+]]></content>
+  </entry>
+  
+</feed>

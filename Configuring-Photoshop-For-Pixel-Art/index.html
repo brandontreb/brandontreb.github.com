@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Configuring Photoshop For Pixel Art - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="First things first. My wife and I had welcomed a new baby boy into the world on Monday so you guys are going to have to see the obligatory &#8220;dad &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/Configuring-Photoshop-For-Pixel-Art/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Configuring Photoshop for Pixel Art</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-02T08:00:00-06:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>First things first.  My wife and I had welcomed a new baby boy into the world on Monday so you guys are going to have to see the obligatory &#8220;dad&#8221; pics.</p>
+
+<p>Here they are</p>
+
+<p><img src="http://images.instagram.com/media/2011/06/30/a63ad6fab0dc4839a604e885a8a85f50_7.jpg" alt="Jack" /></p>
+
+<p><img src="http://images.instagram.com/media/2011/07/01/e77e30a4d504437ba75df8a7129f7d9d_7.jpg" alt="Jack" /></p>
+
+<p>Ok, now that&#8217;s past us, let&#8217;s chat about pixel art.  I have always been a HUGE fan of pixel art both in games and as a form of art.  As an aspiring game developer (games coming soon ;) ), I found pixel art a great fit for me.  Not only is is aesthetically pleasing, it also allows developers to create &#8220;better&#8221; art than developer art.  All it takes is a little patience.</p>
+
+<p>Today, I&#8217;m going to share with you how I have configured Photoshop to create some pixel art and eventually show you how to make your own Bitizens from <a href="http://itunes.apple.com/us/app/tiny-tower/id422667065?mt=8">Tiny Tower</a> in a follow up post.</p>
+
+<p>Some of you might argue that Photoshop is not the way to go and that there are <em>better</em> tools for Pixel art.  I have tried quite a few and keep coming back to PS because of some of it&#8217;s great features (shapes, layering, masks, gradients, noise filters, etc&#8230;).  We can use a lot of these tools to our advantage when creating pixel art, PS just needs to be set up correctly.</p>
+
+<p>Just a heads up before I start, I&#8217;m using Adobe Photoshop CS3 for Mac.</p>
+
+<h4>Change The Way Photoshop Scales Images</h4>
+
+<p><img src="/img/post_images/2011/07/bitizens-compare.png"></p>
+
+<p>First, we need to change the way PS scales images.  This is useful for when you are ready to export your sprites for production.  By default, PS uses a Bicubic algorithm when you want to enlarge an image.  This generally produces a very blurry effect.  It&#8217;s quite useful in many cases, but terrible for pixel art.  Here, we need to tell PS to use a &#8220;Nearest Neighbor&#8221; scaling algorithm.  This will preserver all of our edges without PS mucking with the blending.</p>
+
+<p>To change this setting, navigate to <strong>Photoshop->Preferences->General</strong></p>
+
+<p><img src="http://f.cl.ly/items/023E3D060e2T420f013j/Screen%20shot%202011-07-02%20at%2010.34.22%20AM.png" alt="Nearest Neighbor" /></p>
+
+<p>The only setting you need to modify is &#8220;Image Interpolation&#8221;.  Make sure to change it to &#8220;Nearest Neighbor&#8221;.</p>
+
+<h4>Enabling A Grid</h4>
+
+<p>When creating pixel art, it is very useful to have a grid in place in order to determine where to place your next pixel.  Without it, you are just blindly placing them.  To turn on and configure a grid in PS, navigate to <strong>Photoshop->Preferences->Guides, Grid, Slices &amp; Count&#8230;</strong></p>
+
+<p><img src="http://f.cl.ly/items/3c1g0r1g1n3S020z3G1K/Screen%20shot%202011-07-02%20at%2010.42.00%20AM.png" alt="1px gridlines" /></p>
+
+<p>Make sure to set <strong>Gridline every</strong> to 1 and <strong>Subdivisions</strong> to 1.  This will create a 1px grid on for you to use as a guide.</p>
+
+<p>Once you have configured the grid, click on <strong>View->Show->Grid</strong> to display it.  You might have to do this for every document.</p>
+
+<h4>Configuring the Pencil Tool</h4>
+
+<p>When creating pixel art in PS, the pencil tool is your best friend.  You will use it ~95% of the time when drawing.  We need to make sure that the pencil draws single pixel dots without any interpolation.  With the pencil tool selected, click the dropdown next to <strong>brush</strong>, tap the <strong>arrow</strong> and then select <strong>basic brushes</strong>.  When prompted to replace current brushes, click <strong>OK</strong>.</p>
+
+<p><img src="http://f.cl.ly/items/3G3M3s0M0O2H3J332x0M/Screen%20shot%202011-07-02%20at%2010.57.03%20AM.png" alt="Basic Brushes" /></p>
+
+<p>Next, select the 1 px brush (it should be in the top left). Most of the time, you will want to draw with single pixels.</p>
+
+<p><img src="http://f.cl.ly/items/3L132f1e2y2z0Y291e0i/Screen%20shot%202011-07-02%20at%2010.53.40%20AM.png" alt="1 px brush" /></p>
+
+<h4>Creating A New Document</h4>
+
+<p>Deciding on a document size can be tricky.  You generally want to create your document as small as possible to avoid having to do more work than you need.  The size depends on how &#8220;pixellated&#8221; you want your art to look after scaling.  Basically, using the scaling we chose above (nearest neighbor), the &#8220;pixels&#8221; will just increase in size.</p>
+
+<p>Here is a blown up view of our 15x25 image that we will use in the next tutorial to create a Bitizen from Tiny Tower.</p>
+
+<p><img src="http://f.cl.ly/items/110e2542012Y3I3Y2L1i/Screen%20shot%202011-07-02%20at%2012.31.54%20PM.png" alt="New Document" /></p>
+
+<p>Since the zoom level isn&#8217;t too high, we are seeing grid slices every 2 pixels rather than 1.  As you zoom, you will see the grid size increasing.</p>
+
+<h4>Multiple Zoom Levels In View</h4>
+
+<p>One cool trick with PS is, it allows you to have multiple windows of the same document open.  The reason this is handy is you can see various zoom levels for your artwork all at once.  While drawing each pixel zoomed in, you can see the result in the desired resolution.  This helps out dramatically when you are trying to fine tune your work.</p>
+
+<p>To do this, go to <strong>Window->Arrange->New Window for [projectname.psd]</strong>  Now you can control the zoom level of each window individually.</p>
+
+<p><img src="http://f.cl.ly/items/0o2A0E3h0K470v02273G/Screen%20shot%202011-07-02%20at%2012.39.07%20PM.png" width="450"></p>
+
+<p>In the next post, I will go over how to make these Bitizens as well as some tips for customization as an example for creating dynamic characters.  We will also go over some of the basic techniques that were used.</p>
+
+<p>If you have any comments, questions, or Photoshop Pixel Art Tips, please feel free to post them in the comments.</p>
+
+<p>Happy coding!</p>
+
+<p><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-02T08:00:00-06:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>Articles</a>, <a class='category' href='/blog/categories/game-development/'>Game Development</a>, <a class='category' href='/blog/categories/idevblogaday/'>iDevBlogADay</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/Configuring-Photoshop-For-Pixel-Art/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/Configuring-Photoshop-For-Pixel-Art/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/Announcing-iOS4-In-Action/" title="Previous Post: Announcing iOS 4 In Action + Free Chapter!">&laquo; Announcing iOS 4 In Action + Free Chapter!</a>
+      
+      
+        <a class="basic-alignment right" href="/Pixel-Art-Character-Tutorial-Create-A-Bitizen/" title="Next Post: Pixel Art Character Tutorial - Creating And Customizing A Bitizen">Pixel Art Character Tutorial - Creating And Customizing A Bitizen &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

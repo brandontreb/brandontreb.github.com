@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Creating A Twitter Client For OSX - Part 1 - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="With the upcoming release of the Mac App Store, I can only imagine another gold rush is upon us. Clever Indie developers making money hand over fist &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-1/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Creating a Twitter Client for OSX - Part 1</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-02T15:23:53-07:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>With the upcoming release of the Mac App Store, I can only imagine another gold rush is upon us.  Clever Indie developers making money hand over fist while the store as well as developers find their identities.  With that being said, I feel that there is a serious lack of interesting (maintained) Twitter clients for OSX.  I say &#8220;maintained&#8221; because Tweetie for OSX is just fantastic, however Twitter said they don&#8217;t have any plans for it at this time.  So, I want to provide devs with the tools to create an amazing Twitter client for the Mac that I will want to use :)</p>
+
+<p>Quite some time ago, I began (and never completed) a series on <a href="http://brandontreb.com/objective-c-programming-tutorial-creating-a-twitter-client-part-1/">writing a Twitter client for OSX</a>.  It was very well received by the development community, however once Twitter switched over to OAUTH, I became too lazy to update it :( . So, I figured a tutorial series for <a href="http://idevblogaday">#iDevBlogADay</a> would be the perfect opportunity to complete it.</p>
+
+<p>So we are going to start from the ground up.  In today&#8217;s tutorial, we are going walk through getting the initial resources and setting up Twitter to authenticate our application.  We will also post a basic tweet.</p>
+
+<h4>Setting Up Twitter</h4>
+
+
+<p>In order for your application to interface with Twitter, you must register it with them over at <a href="http://developer.twitter.com">http://developer.twitter.com</a>.</p>
+
+<ol>
+    <li>Go to <a href="http://developer.twitter.com">http://developer.twitter.com</a> and sign up if needed</li>
+    <li>Click on <a href="http://developer.twitter.com/apps">Your Apps</a></li>
+    <li>Click <a href="http://developer.twitter.com/apps/new">Register A New App</a> and fill out all of the information about your client</li>
+    <li>You&#8217;re all set!</li>
+</ol>
+
+
+<h4>Getting Necessary Resources</h4>
+
+
+<p>I spent a bit of time researching the various options for handling OAUTH and all of the fun stuff that goes along with Twitter integration and found that <a href="https://github.com/mattgemmell/MGTwitterEngine/">MGTwitterEngine</a> was the least painful to implement. I say least painful because it has a few quirks of it&#8217;s own along with not having the best documentation in the world.</p>
+
+<p>So after battling for a bit to get the thing compiled, I have figured out the setup process :).  You could also read <a href="https://github.com/mattgemmell/MGTwitterEngine/wiki/Building-and-testing-MGTwitterEngine">Matt&#8217;s installation instructions</a>, but I will regurgitate them here a little differently and hopefully be more clear.   So here it is:</p>
+
+<ol>
+    <li>Make sure you have git installed.  If not, <a href="http://code.google.com/p/git-osx-installer/">download it for OSX here</a>.</li>
+    <li>cd to the directory that you want to clone the files to</li>
+    <li>Clone the MGTwitterEngine repository. Type:
+$ <strong>git clone git://github.com/mattgemmell/MGTwitterEngine.git</strong></li>
+    <li>cd into the MGTwitterEngine folder (we will install the dependancies at this level)</li>
+    <li>Now install the dependancies (<a href="https://github.com/schwa/TouchJSON">TouchJSON</a> and <a href="https://github.com/ctshryock/oauthconsumer">OAUTHConsumer</a>). Note: There is an option to use yajl (yet another json library), but I found it a pain to integrate, so we will just throw it out.
+$ <strong>git clone git://github.com/schwa/TouchJSON.git</strong>
+$ <strong>git clone git://github.com/ctshryock/oauthconsumer.git</strong></li>
+</ol>
+
+
+<p>Altogether, this is the order of commands you should have:</p>
+
+<div>
+  <pre><code class='bash'>$ cd ~/Desktop
+$ git clone git://github.com/mattgemmell/MGTwitterEngine.git
+$ cd MGTwitterEngine
+$ git clone git://github.com/schwa/TouchJSON.git
+$ git clone git://github.com/ctshryock/oauthconsumer.git</code></pre>
+</div>
+
+
+
+
+<h4>Building MGTwitterEngine (What a freakin pain)</h4>
+
+
+<p>I find it interesting that this project is riddled with errors directly upon download.  So much work went into it, yet it&#8217;s so challenging to get working.</p>
+
+<p>Now open up MGTwitterEngine.xcodeproj.  You will notice that there are quite a few missing files (they show in red).  That&#8217;s fine.  DELETE THEM ALL&#8230;</p>
+
+<ol>
+    <li>Delete the <strong>yajl</strong> group with everything in it</li>
+    <li>Delete the <strong>Twitter YAJL Parsers</strong> group and everything in it</li>
+    <li>Delete <strong>OAToken_KeychainExtensions.m</strong> and <strong>OAToken_KeychainExtensions.h</strong> (they are not used)</li>
+    <li>Delete <strong>CJSONDataSerializer.h</strong> and <strong>CJSONDataSerializer.m</strong></li>
+    <li>Delete <strong>CSerializedJSONData.h</strong> and <strong>CSerializedJSONData.m</strong></li>
+    <li>Click the arrow on the OAuthConsumer group and you will notice that the <strong>Crypto</strong> is missing.  We still need this group, but it&#8217;s in the wrong place. Delete this group and then open up your MGTwitterEngine folder in Finder. Navigate to <strong>MGTwitterEngine-&gt;oauthconsumer</strong>.  Drag the <strong>Crypto</strong> folder into your project.</li>
+    <li>We need to change the C Language Dialect to C99.  To do this right click on MGTwitterEngine in XCode and click Get Info.  Scroll down to C Language Dialect and click the drop down changing it to C99
+<a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.22.12-PM.png"><img class="alignnone size-full wp-image-1097" title="Screen shot 2010-12-02 at 9.22.12 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.22.12-PM.png" alt="" width="474" height="64" /></a></li>
+    <li>Finally, we need to tell MGTwitterEngine that we want to use TouchJSON instead of yajl.  To do this open up <strong>MGTwitterEngineGlobalHeader.h</strong> and set TOUCHJSON_AVAILABLE to 1.</li>
+    <li>If you still have any hair left at this point, click Build and Run to and check out the output in the Console</li>
+    <li>If you don&#8217;t feel like jumping through all of these hoops you can download my MGTwitterEngine project with all of this fun stuff completed. <a href="http://brandontreb.com/wp-content/uploads/2010/12/MGTwitterEngine.zip">Download it here</a>.</li>
+</ol>
+
+
+<h4>Testing MGTwitterEngine</h4>
+
+
+<p>For today&#8217;s tutorial, we will just be displaying our timeline and updating our status using the demo file provided by MGTwitterEngine.  In the next tutorial, we will actually be integrating the engine into a new project.  So, open up <strong>AppController.m</strong> in the <strong>Demo</strong> group.  Matt has given us some nice variables to fill in, in order to make this thing work.  Let&#8217;s update to applicationDidFinishLaunching method to look like the code below:</p>
+
+<div>
+  <pre><code class='objc'>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+        // Put your Twitter username and password here:
+        NSString *username = @&quot;brandontreb&quot;;
+    NSString *consumerKey = @&quot;aKKEsJHTDNsv4xVlMHmMqw&quot;;
+    NSString *consumerSecret = @&quot;oldpeoplenakedcriscotwister&quot;;
+
+        // Create a TwitterEngine and set our login details.
+        twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
+    [twitterEngine setUsesSecureConnection:NO];
+    [twitterEngine setConsumerKey:consumerKey secret:consumerSecret];
+    [twitterEngine setUsername:username];
+
+    token = [[OAToken alloc] initWithKey:@&quot;16369316-GgqA00WO0poCAj0XAFhJYDDRthVvWMxTnVyKdfWa1&quot;
+                                  secret:@&quot;StrongEnoughForAManButMadeForAWoman&quot;];
+    [twitterEngine setAccessToken:token];
+    [twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
+}</code></pre>
+</div>
+
+
+<p>So obviously I changed my consumer secret and Access Token Secret. You will need to fill this out with your information.  Here is how to obtain them.</p>
+
+<p><strong>Consumer Key &amp; Consumer Secret</strong></p>
+
+<p>When logged into http://developer.twitter.com/apps/ , click on the application that you created in the first step:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.51.55-PM.png"><img class="alignnone size-full wp-image-1101" title="Screen shot 2010-12-02 at 9.51.55 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.51.55-PM.png" alt="" width="322" height="133" /></a></p>
+
+<p>Scroll down and you should see the Consumer Key and the Consumer Secret.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.50.46-PM.png"><img class="alignnone size-full wp-image-1102" title="Screen shot 2010-12-02 at 9.50.46 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.50.46-PM.png" alt="" width="399" height="158" /></a></p>
+
+<p><strong>Access Token &amp; Access Token Secret</strong></p>
+
+<p>In the right column, you should see a link titled &#8220;My Access Token&#8221;.  Click on it.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.52.05-PM.png"><img class="alignnone size-full wp-image-1103" title="Screen shot 2010-12-02 at 9.52.05 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.52.05-PM.png" alt="" width="218" height="38" /></a></p>
+
+<p>Now you should see YOUR Access Token and Access Token Secret</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.52.15-PM.png"><img class="alignnone size-full wp-image-1104" title="Screen shot 2010-12-02 at 9.52.15 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.52.15-PM.png" alt="" width="444" height="156" /></a></p>
+
+<h4>Have Fun!</h4>
+
+
+<p>After you copy the tokens, keys, and secrets into the app, you should be able start making calls to Twitter using the engine.  Build and run the application at this point and watch your home timeline get output to the console.  One thing I want to point out is we are displaying an NSDictionary.  That means MGTwitterEngine did all of the parsing for us (using TouchJSON), which is super rad.</p>
+
+<p>One more thing to try for fun is to update your status.  It will even show that you updated it from YOUR application on Twitter.  Add the following line and run it again.</p>
+
+<div>
+  <pre><code class='objc'>[twitterEngine sendUpdate:@&quot;@brandontreb is a code gangster!  Check out his #iDevBlogADay post on making your own Twitter client here http://bit.ly/gGrZvI&quot;];</code></pre>
+</div>
+
+
+<p>Well, that does it for today.  Join me next week when I will show you how to move the engine into your own project and we will begin displaying tweets in a basic table view.</p>
+
+<p>Happy Coding!</p>
+
+<p><a href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets/">Click Here To Go To Part 2</a></p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-02T15:23:53-07:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/idevblogaday/'>iDevBlogADay</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-1/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-1/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/promoting-your-other-apps-within-your-apps/" title="Previous Post: Promoting Your Other Apps Within Your Apps">&laquo; Promoting Your Other Apps Within Your Apps</a>
+      
+      
+        <a class="basic-alignment right" href="/creating-a-twitter-client-for-osx-part-2-displaying-tweets/" title="Next Post: Creating A Twitter Client For OSX â Part 2: Displaying Tweets">Creating A Twitter Client For OSX â Part 2: Displaying Tweets &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

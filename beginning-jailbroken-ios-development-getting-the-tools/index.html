@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Beginning Jailbroken iOS Development - Getting The Tools - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="Developing for jailbroken is actually quite similar to regular iOS development with one addition. More Power! oh oh oh (said in a Tim Taylor voice ( &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/beginning-jailbroken-ios-development-getting-the-tools/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Beginning Jailbroken iOS Development - Getting the Tools</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-11T09:00:00-06:00" pubdate data-updated="true">Apr 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Developing for <a href="http://en.wikipedia.org/wiki/IOS_jailbreaking">jailbroken</a> is actually quite similar to regular iOS development with one addition.  More Power! oh oh oh (said in a Tim Taylor voice (sorry for non-Americans that don&#8217;t get the reference)).  With your device jailbroken, you have the ability to hook in to pretty much every class that Apple writes allowing you quite a bit of control over the iPhone&#8217;s functionality.</p>
+
+<p>In today&#8217;s tutorial, I will simply be discussing the best way to get up and running with the tools necessary to write a jailbroken iPhone app. We will not be doing any coding, however this tutorial will be necessary for all posts going forward.</p>
+
+<p><b>Theos</b></p>
+
+<p>There are many ways to go about writing a jailbroken iOS app.  Most of them are quite complex.  <a href="http://twitter.com/dhowett">@DHowett</a> has come up with a brilliant tool called <a href="http://iphonedevwiki.net/index.php/Theos/Getting_Started">theos</a> which drastically simplifies the process.  My tutorial will pretty much be a regurgitation of his tutorial <a href="http://iphonedevwiki.net/index.php/Theos/Getting_Started">found here</a> with some added cheesy jokes.</p>
+
+<p>Theos is a command line utility that essentially generates a template for creating applications, libraries, preference bundles, tools, and mobile substrate hacks.  These cover 99% of the jailbroken apps that you are likely to create.</p>
+
+<p>One thing to note is DHowett talks about doing jailbroken iOS development on both Mac and Linux; my tutorials will be Mac-only.</p>
+
+<h4>Step 1: Install the iOS SDK</h4>
+
+<p>You will first need to install the official iOS SDK.</p>
+
+<p><a href="http://developer.apple.com/devcenter/ios/index.action">http://developer.apple.com/devcenter/ios/index.action</a></p>
+
+<p>You can register for a free account and download the latest SDK.  Once installed reboot your Mac and come back here. I&#8217;ll wait&#8230;</p>
+
+<h4>Step 2: Setting Up The Environment Variables</h4>
+
+<p>Start by deciding on a good location to install theos.  The suggested location is <i>/opt/theos</i>.   The only issue with doing it here is you will need to have administrator permissions as well as have to enter your password when updating files.  For teaching purposes, I am going to assume you will install it here too.</p>
+
+<p>Open the terminal and type:</p>
+
+<div>
+  <pre><code class='bash'>export THEOS=/opt/theos</code></pre>
+</div>
+
+
+<p>What we are doing is setting an environment variable.  You can always see if this variable is set by typing <i>echo $THEOS</i> in the command line.  It will need to be (re)set every time you reopen the terminal to develop a jailbroken app.</p>
+
+<h4>Step 3: Getting theos</h4>
+
+<p>DHowett uses subversion for version control on theos, so you need to make sure and have it installed.  If you followed step one above, it should have been installed by default.  We will be checking out theos into the THEOS directory specified in step 2.</p>
+
+<p>In the terminal type:</p>
+
+<div>
+  <pre><code class='bash'>svn co http://svn.howett.net/svn/theos/trunk $THEOS</code></pre>
+</div>
+
+
+<p>You most likely will be asked for your password.  You should now see the <i>/opt/theos</i> directory created with theos installed.</p>
+
+<h4>Step 4: Getting ldid</h4>
+
+<p>We now need to install the ldid tool.  ldid is a tool written by <a href="http://www.saurik.com/">Saurik</a> (if you don&#8217;t know who he is, stop reading now).  Basically, it simulates the signing process for the iPhone, allowing you to install your jailbroken apps/hacks on an actual device.</p>
+
+<p>You can find this tool in many places, however DHowett has generously hosted it for us on his dropbox account.</p>
+
+<p>Now, I had a tricky time getting this to download directly to my <i>/opt/theos</i> folder.  So, I downloaded it to my desktop and then moved it in to <i>/opt/theos/bin/ldid</i></p>
+
+<div>
+  <pre><code class='bash'>curl -s http://dl.dropbox.com/u/3157793/ldid &gt; ~/Desktop/ldid
+chmod +x ~/Desktop/ldid
+mv ~/Desktop/ldid $THEOS/bin/ldid</code></pre>
+</div>
+
+
+<p>Alternatively, if you can get it to work properly, do it like DHowett suggests and download it directly into place.</p>
+
+<div>
+  <pre><code class='bash'>curl -s http://dl.dropbox.com/u/3157793/ldid &gt; $THEOS/bin/ldid; chmod +x $THEOS/bin/ldid</code></pre>
+</div>
+
+
+<h4>Step 5: Install dpkg</h4>
+
+<p>Dpkg is a tool to bundle up your app into a Debian package for distribution in a Cydia repository. You can install it through Macports.</p>
+
+<div>
+  <pre><code class='bash'>sudo port install dpkg</code></pre>
+</div>
+
+
+<h4>Step 6: Creating A New Project</h4>
+
+<p>theos uses a tool called nic (new instance creator) to create a new project.  Simply run nic by typing:</p>
+
+<div>
+  <pre><code class='bash'>$THEOS/bin/nic.pl</code></pre>
+</div>
+
+
+<p>and it starts the new instance creator.  Here is a sample of making a jailbroken application.</p>
+
+<div>
+  <pre><code class='bash'>brandon-trebitowskis-macbook-pro:Desktop brandontreb$ $THEOS/bin/nic.pl
+NIC 1.0 - New Instance Creator
+------------------------------
+  [1.] iphone/application
+  [2.] iphone/library
+  [3.] iphone/preference_bundle
+  [4.] iphone/tool
+  [5.] iphone/tweak
+Choose a Template (required): 1
+Project Name (required): FartLight
+Package Name [com.yourcompany.fartlight]: com.brandontreb.fartlight
+Author/Maintainer Name [Brandon Trebitowski]: 
+Instantiating iphone/application in fartlight/...
+Done.</code></pre>
+</div>
+
+
+<p>This will create a new folder with a basic template called fartlight (killer project, I know).  In addition to the usual files it will contain a Makefile (for building the application) and a control file (information about the application when it&#8217;s in a Cydia repository).</p>
+
+<p>This should now give you the basis for creating a jailbroken application/tweak/hack.  In the next tutorial we will go over building, signing, and deployment.  For now, you can check out the project I created with nic called <a href="https://github.com/brandontreb/inPulseNotifier">inPulseNotifier</a>.  It&#8217;s a combination of a tweak (5) and a preference bundle (3) for the app settings.</p>
+
+<p>Feel free to ask me a question in the comments and check out #theos on IRC.</p>
+
+<p><strong>Update</strong> <a href="/beginning-jailbroken-ios-development-building-and-deployment/">Check out the next tutorial in this series here</a>.</p>
+
+<p>Happy coding!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-11T09:00:00-06:00" pubdate data-updated="true">Apr 11<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/iphone/'>iPhone</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/beginning-jailbroken-ios-development-getting-the-tools/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/beginning-jailbroken-ios-development-getting-the-tools/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/jailbroken-iphone-development/" title="Previous Post: Jailbroken iPhone Development - Would You Be Into It?">&laquo; Jailbroken iPhone Development - Would You Be Into It?</a>
+      
+      
+        <a class="basic-alignment right" href="/my-journey-to-create-the-inpulsenotifier-for-jailbroken-iphones-part-1/" title="Next Post: My Journey To Create The inPulseNotifier For Jailbroken iPhones - Part 1">My Journey To Create The inPulseNotifier For Jailbroken iPhones - Part 1 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

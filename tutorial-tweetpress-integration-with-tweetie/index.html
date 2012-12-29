@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Tutorial â Tweetpress Integration With Tweetie - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="Tweetpress now supports the hugely popular iPhone Twitter client Twitter for iPhone.  Here are the steps to set it up: Configure TweetPress Set you &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/tutorial-tweetpress-integration-with-tweetie/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Tutorial â Tweetpress Integration With Tweetie</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-15T13:35:21-06:00" pubdate data-updated="true">Oct 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p style="text-align: center;"><a href="http://brandontreb.com/wp-content/uploads/2009/10/tweetiei2-large.png"><img class="alignnone size-full wp-image-544" title="tweetiei2-large" src="http://brandontreb.com/wp-content/uploads/2009/10/tweetiei2-large.png" alt="tweetiei2-large" width="180" height="180" /></a></p>
+
+
+<p><a href="http://wordpress.org/extend/plugins/tweetpress/">Tweetpress</a> now supports the hugely popular iPhone Twitter client <a href="http://www.atebits.com/tweetie-iphone/">T</a>witter for iPhone.  Here are the steps to set it up:</p>
+
+<h2>Configure TweetPress</h2>
+
+
+<ol>
+    <li>Set you blog permissions.  As of version 2.0.2, Tweetpress requires that your wp-content directory is 777 during install. This is because Tweetpress needs to make a folder to store your images in.  Once this folder is made, you can set the wp-content permissions back to 755.  Just make sure the Tweetpress directory remains 777 (as well as the sub directory). If you change it back, Tweetpress might yell at you but it will still work as long as wp-content/tweetpress is writable (777).  I hope to change this in the future.
+<a href="http://brandontreb.com/wp-content/uploads/2009/10/screenshot_03.png"><img class="alignnone size-full wp-image-537" title="screenshot_03" src="http://brandontreb.com/wp-content/uploads/2009/10/screenshot_03.png" alt="screenshot_03" width="427" height="83" /></a></li>
+    <li><a href="http://wordpress.org/extend/plugins/tweetpress/">Download</a> and install the TweetPress plugin on your Wordpress site.</li>
+    <li>Configure TweetPress.  In your Wordpress admin, navigate to Settings -&gt; Tweetpress.
+<ol>
+    <li>Select a page from the drop down for your gallery to appear on.  If you don&#8217;t select a page, Tweetpress will try to use your homepage. You may want to create a separate &#8220;Gallery&#8221; page for the plugin to go on. Then select authentication type.  You can select either:
+<ol>
+    <li>none: anyone can post</li>
+    <li>Wordpress Login: validates on your wordpress username and password</li>
+    <li>Twitter: Requires you to enter your twitter username and password both in the admin and in the Twitter client (note: this is no longer the recommended way for authentication, and you should use Wordpress auth)</li>
+</ol>
+</li>
+    <li><a href="http://brandontreb.com/wp-content/uploads/2009/10/Screen-shot-2010-10-28-at-7.46.22-AM.png"><img class="alignnone size-full wp-image-989" title="Screen shot 2010-10-28 at 7.46.22 AM" src="http://brandontreb.com/wp-content/uploads/2009/10/Screen-shot-2010-10-28-at-7.46.22-AM.png" alt="" width="403" height="161" /></a></li>
+    <li>If you selected Twitter Login (which you shouldn&#8217;t, but it&#8217;s here for legacy support) <span style="color: #ff0000;">Note</span>: Twittelator Pro ONLY supports Wordpress login.
+<ol>
+    <li>Add your Twitter username</li>
+    <li>Add your Twitter password</li>
+    <li>Click &#8220;Save Twitter settings&#8221;</li>
+    <li><a href="http://brandontreb.com/wp-content/uploads/2009/10/screenshot_01.png"><img class="alignnone size-full wp-image-539" title="screenshot_01" src="http://brandontreb.com/wp-content/uploads/2009/10/screenshot_01.png" alt="screenshot_01" width="464" height="254" /></a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+
+<h2>Configure Tweetie</h2>
+
+
+<ol>
+    <li>Open your Tweetie settings
+<a href="http://brandontreb.com/wp-content/uploads/2009/10/photo.jpg"><img class="alignnone size-full wp-image-540" title="photo" src="http://brandontreb.com/wp-content/uploads/2009/10/photo.jpg" alt="photo" width="320" height="480" /></a></li>
+    <li>Tap <strong>Image Service</strong></li>
+    <li>Tap <strong>Custom&#8230;</strong>
+<a href="http://brandontreb.com/wp-content/uploads/2009/10/photo-2.jpg"><img class="alignnone size-full wp-image-541" title="photo 2" src="http://brandontreb.com/wp-content/uploads/2009/10/photo-2.jpg" alt="photo 2" width="320" height="480" /></a></li>
+    <li>In the <strong>Image Service API Endpoint</strong> type in the URL to the <strong>homepage</strong> of your blog.  Note, this is NOT your gallery page.  Also, and this is REALLY IMPORTANT.  If Wordpress is installed in a sub-directory (ie http://brandontreb.com/blog), you need to include the <strong>/index.php </strong>at the end.  This is a weird Wordpress issue.
+Also, Twitter for iPhone does not send any login information, so you MUST send your Wordpress (or Twitter if you selected it) username and password in the URL by adding ?username=WPUsername&amp;password=WPPassword to the end of the URL.  I know this isn&#8217;t ideal, but Twitter made this change when they purchased Tweetie from Atebits.
+So, as an example, if wordpress is installed at http://brandontreb.com/blog, I would want to enter http://brandontreb.com/blog/index.php?username=WPUsername&amp;password=WPPassword.</li>
+    <li> <a href="http://brandontreb.com/wp-content/uploads/2009/10/photo-5.jpg"><img class="alignnone size-full wp-image-542" title="photo 5" src="http://brandontreb.com/wp-content/uploads/2009/10/photo-5.jpg" alt="photo 5" width="320" height="480" /></a></li>
+    <li>Tap <strong>Save</strong></li>
+    <li>Upload photos as usual and forget about Twitpic!</li>
+</ol>
+
+
+<h2>Troubleshooting</h2>
+
+
+<ol>
+<li><p>The most common issues are related to file permissions.  If you are having a problem, check to make sure that the tweetpress directory has been created inside your wp-content folder.  If not, try manually creating a folder named tweetpress inside of wp-content. Set its file permissions to 777.  Then, create a folder inside of the tweetpress folder. Name it thumbs. Make sure its file permissions are set to 777.</p></li>
+<li><p>Another problem could be that Wordpress is having trouble with the upload.  Try adding /index.php to your web address in the Tweetie custom image settings.  Again, this is very important if Wordpress is installed in a directory that is not the root.</p></li>
+<li><p>Uninstall and reinstall.  Sounds dumb, but this is always a good step when troubleshooting plugin issues.</p></li>
+<li><p>Make sure you are up-to-date on your Tweetpress and Wordpress installations.</p></li>
+</ol>
+
+
+<p>So, one thing I want to mention.  Wordpress is a very large application with many different configuration options.  I have tried to cover all types of installations with TweetPress. If Tweetpress is not working for you, don&#8217;t bug Loren, send me an email at brandontreb [at] gmail [dot] com.  Include the following information:</p>
+
+<ul>
+    <li>If WP is installed in the root directory or a sub-directory</li>
+    <li>The URL rewrite settings your are using (if any). this is also known as your permalink structure.</li>
+    <li>The location of your blog and gallery page (so I can check it out)</li>
+    <li>Any other info you think might be helpful</li>
+</ul>
+
+
+<p>You can also <a href="http://twitter.com/brandontreb">ping me on Twitter</a>.</p>
+
+<p>Thanks for checking out Tweetpress and please send me all of your suggestions for features.  While I won&#8217;t get to all of them, I will certainly add the one&#8217;s that are most requested.  So feel free to send me any and all suggestions.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-15T13:35:21-06:00" pubdate data-updated="true">Oct 15<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/wordpress/'>Wordpress</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/tutorial-tweetpress-integration-with-tweetie/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/tutorial-tweetpress-integration-with-tweetie/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tweetpress-now-supported-by-twittelator-pro/" title="Previous Post: TweetPress Now Supported By Twittelator Pro">&laquo; TweetPress Now Supported By Twittelator Pro</a>
+      
+      
+        <a class="basic-alignment right" href="/new-alice-in-wonderland-poster-is-sweet/" title="Next Post: New Alice in Wonderland Poster Is Sweet">New Alice in Wonderland Poster Is Sweet &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

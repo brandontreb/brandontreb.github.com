@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Image Manipulation: Retrieving And Updating Pixel Values For A UIImage - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="Grayscale Jobs With the recent success of cool photo manipulation apps such as Camera+ and Instagram, it got me wondering.  How do these photo apps &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/image-manipulation-retrieving-and-updating-pixel-values-for-a-uiimage/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Image Manipulation: Retrieving and Updating Pixel Values for a UIImage</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-06T10:15:58-07:00" pubdate data-updated="true">Jan 6<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div id="attachment_1371" class="wp-caption alignright" style="width: 410px"><a href="http://brandontreb.com/wp-content/uploads/2011/01/jobs.png"><img class="size-full wp-image-1371 " title="jobs" src="http://brandontreb.com/wp-content/uploads/2011/01/jobs.png" alt="" width="400" height="224" /></a><p class="wp-caption-text">Grayscale Jobs</p></div>
+
+
+<p></p>
+
+<p>With the recent success of cool photo manipulation apps such as Camera+ and Instagram, it got me wondering.  How do these photo apps modify the pixel data of the image.</p>
+
+<p>After doing a bit of research on the subject, I found countless posts on Stack Overflow and the Developer forums about various methods to get and set the pixel values of a UIImage.  Most of them unanswered or partially answered.  I tested out many solutions and banged my head on my computer into the whee hours of the morning with no success.  Every solution I tried seemed to completely destroy the image.</p>
+
+<p>It wasn&#8217;t until this morning, I had an &#8220;aha&#8221; moment, changed one line of code and was able to produce a grayscale version of a UIImage.</p>
+
+<p>Having the ability to get and set pixel values of a UIImage is super important if you want to create a photo related app that has &#8220;Filters&#8221;.  Once you know the basics, you can apply your ninja math skillz to implement cool filter algorithms on the pixels.  Below, I will show you onc such algorithm for converting an image to grayscale (it&#8217;s not <em>that</em> clever).</p>
+
+<p>I should note, that a good majority of my code comes from Olie&#8217;s solution on this <a href="http://stackoverflow.com/questions/448125/how-to-get-pixel-data-from-a-uiimage-cocoa-touch-or-cgimage-core-graphics">Stack Overflow post</a>.  His example simply returns and array of UIColor objects for a given image.  Mine will modify those colors and write them back to a UIImage.</p>
+
+<h4>Converting A UIImage Into A Pixel Array</h4>
+
+
+<p>Here is the first part of our grayscale method.  It is creating a char array from a global UIImage property named workingImage.</p>
+
+<div>
+  <pre><code class='objc'>- (IBAction) grayscale:(id) sender {
+    CGContextRef ctx;
+    CGImageRef imageRef = [self.workingImage CGImage];
+    NSUInteger width = CGImageGetWidth(imageRef);
+    NSUInteger height = CGImageGetHeight(imageRef);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char *rawData = malloc(height * width * 4);
+    NSUInteger bytesPerPixel = 4;
+    NSUInteger bytesPerRow = bytesPerPixel * width;
+    NSUInteger bitsPerComponent = 8;
+    CGContextRef context = CGBitmapContextCreate(rawData, width, height,
+    bitsPerComponent, bytesPerRow, colorSpace,
+    kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(colorSpace);
+
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+    CGContextRelease(context);
+    .
+    .
+    .</code></pre>
+</div>
+
+
+<p>This is a lot of Core Graphics fanciness that isn&#8217;t super important to understand.  It&#8217;s just getting the RGBA values from the image and writing them into the rawData char array.  There are 4 bytes per pixel (red, green, blue, alpha), so this array contains 4 * height * width elements.</p>
+
+<h4>Modifying The Pixels of a UIImage</h4>
+
+
+<p>Here is where the magic happens.  You can replace this code with the logic necessary to apply the filter you are making.  Another clever way to approach this would be to pass this code in as a block into the method (I&#8217;ll leave that as an exercise for the reader :)).</p>
+
+<div>
+  <pre><code class='objc'>.
+.
+.
+    int byteIndex = 0;
+    for (int ii = 0 ; ii &amp;lt; width * height ; ++ii)
+    {
+    int outputColor = (rawData[byteIndex] + rawData[byteIndex+1] +
+        rawData[byteIndex+2]) / 3;
+
+    rawData[byteIndex] = (char) (outputColor);
+    rawData[byteIndex+1] = (char) (outputColor);
+    rawData[byteIndex+2] = (char) (outputColor);
+
+        byteIndex += 4;
+    }
+
+.
+.
+.</code></pre>
+</div>
+
+
+<p>The first part is pretty straight forward, we have a for loop that goes from 0 to width * height.  We index into the rawData array using a counter that we increment by 4 each time (remember 4 bytes per pixel).  As you can imagine, the first pixel (rawData[byteIndex]) represents the red pixel, then green for +1, blue for +2, and finally alpha for +3.  Note that the alpha byte is last because kCGImageAlphaPremultipliedLast flag above.</p>
+
+<p>In order to do grayscale, we simple set all of the color values to the average color value.  So, for example the color [218,232,244] (which is the light blue color of the Wordpress editor&#8217;s toolbar) would be converted to [231,231,231] which is a fairly light gray color.</p>
+
+<p>The most important step that everyone in the forums seemed to miss was casting the new value to a char.  Remember we are using a char array, setting ints as values will generally screw up your image. (This was my &#8220;aha&#8221; moment that I mentioned above)</p>
+
+<h4>Writing The Pixels Back To a UIImage</h4>
+
+
+<p>The final step is to write the pixel data back to a UIImage.  Again, I borrowed some of this code from somewhere else and unfortunately lost the link.  If I find it, I will update the post.</p>
+
+<div>
+  <pre><code class='objc'>.
+.
+.
+    ctx = CGBitmapContextCreate(rawData,
+        CGImageGetWidth( imageRef ),
+        CGImageGetHeight( imageRef ),
+        8,
+        CGImageGetBytesPerRow( imageRef ),
+        CGImageGetColorSpace( imageRef ),
+        kCGImageAlphaPremultipliedLast ); 
+
+    imageRef = CGBitmapContextCreateImage (ctx);
+    UIImage* rawImage = [UIImage imageWithCGImage:imageRef];  
+
+    CGContextRelease(ctx);  
+
+    self.workingImage = rawImage;  
+
+    free(rawData);
+}</code></pre>
+</div>
+
+
+<p>All we are doing here is creating a new Bitmap Context, writing it to our CGImageRef and constructing a new UIImage from that CGImageRef. Finally, we just update our workingImage with the modified one.  Fancy, I know&#8230;</p>
+
+<p>Now, much of this code is to work with my example (download below), but it could easily be tweaked to fit within your super awesome photo app.  If you have any questions or comments PLEASE leave them here or send them to me on Twitter (but probably leave them here ;) ).</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2011/01/ImageManip.zip">Download The Sample Source Project</a></p>
+
+<ul>
+<li>Note on the sample code: Before you give me crap about doing this in the main thread, I know.  Don&#8217;t do these operation on the main thread.  The example is meant to be quick and dirty and by no means is ready for production. Enjoy!</li>
+</ul>
+
+
+<p><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-06T10:15:58-07:00" pubdate data-updated="true">Jan 6<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/idevblogaday/'>iDevBlogADay</a>, <a class='category' href='/blog/categories/iphone/'>iPhone</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/image-manipulation-retrieving-and-updating-pixel-values-for-a-uiimage/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/image-manipulation-retrieving-and-updating-pixel-values-for-a-uiimage/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/pimp-wallpaper/" title="Previous Post: [Pi]mp Wallpaper ">&laquo; [Pi]mp Wallpaper </a>
+      
+      
+        <a class="basic-alignment right" href="/appblogger-a-tool-for-ios-app-developers-and-bloggers/" title="Next Post: AppBlogger: A Tool For iOS App Developers And Bloggers">AppBlogger: A Tool For iOS App Developers And Bloggers &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

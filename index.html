@@ -1,1 +1,722 @@
-My Octopress Page is coming soon &hellip;
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="As I mature as a developer, I try to rely on other people&#8217;s code more an more. Why build something from scratch when a solution already exists &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-24T00:00:00-06:00" pubdate data-updated="true">Aug 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As I mature as a developer, I try to rely on other people&#8217;s code more an more.  Why build something from scratch when a solution already exists that you can fit in your project.  In <a href="http://itunes.apple.com/us/app/pocket-mud-pro/id511678455?mt=8">Pocket MUD Pro</a>, I used <strong>13</strong> 3rd party libraries and am using quite a bit more in the project that I&#8217;m currently working on.  I figured that I would share some of the libraries that I have been using so that it might save you some time in the future.</p>
+
+<h2>1. CocoaAsyncSocket</h2>
+
+<p><strong>Link:</strong> <a href="https://github.com/robbiehanson/CocoaAsyncSocket">https://github.com/robbiehanson/CocoaAsyncSocket</a></p>
+
+<p>Many of my applications involve TCP or UDP networking. There is a lot of boiler plate code involved in every networked application, and CocoaAsyncSocket solves much of that for you.</p>
+
+<h2>2. Appirater</h2>
+
+<p><strong>Link:</strong> <a href="http://github.com/arashpayan/appirater/">http://github.com/arashpayan/appirater/</a></p>
+
+<p><img src="http://arashpayan.com/blog/wp-content/uploads/2009/09/AppiraterScreenshot.png" alt="Screenshot" /></p>
+
+<p>Hopefully, you have heard of this one or a similar library by now.  It&#8217;s very challenging to get users to want to review your applications, let alone give you a positive review.  AppiRater allows you to prompt a user to rate your application based on either number of launches or &#8220;significant events&#8221; which you specify.</p>
+
+<h2>3. Zip Archive</h2>
+
+<p><strong>Link:</strong> <a href="http://code.google.com/p/ziparchive/">http://code.google.com/p/ziparchive/</a></p>
+
+<p>I try to ship small applications that download assets upon launch.  A good way to send these assets over the wire is to zip them up and stick them on your server.  I have written an article about this on <a href="http://www.icodeblog.com/2012/08/13/unzipping-files-using-zip-archive/">iCodeBlog</a>.</p>
+
+<h2>4. Quick Dialog</h2>
+
+<p><strong>Link: </strong> <a href="https://github.com/escoz/QuickDialog">https://github.com/escoz/QuickDialog</a></p>
+
+<p>Creating forms in iOS is pretty painful. It usually involves custom table cells and a lot of delegate nonsense.  QuickDialog takes away some of this pain and allows you to easily create iOS forms.  You can even design them using JSON.</p>
+
+<p><img src="https://github.com/escoz/QuickDialog/raw/master/other/quickdialog2.png" alt="QuickDialog Screenshot" /></p>
+
+<h2>5. TSMiniWebBrowser</h2>
+
+<p><strong>Link:</strong> <a href="https://github.com/tonisalae/TSMiniWebBrowser">https://github.com/tonisalae/TSMiniWebBrowser</a></p>
+
+<p>Often times, you want a quick and dirty browser in your application.  I generally use it to point to in-app documentation or take the user to a page after tapping on a link. It&#8217;s quick and easy.</p>
+
+<p><img src="https://a248.e.akamai.net/camo.github.com/1cae2dfc9160aa6a8e0583d0682d78462c97d60f/687474703a2f2f646c2e64726f70626f782e636f6d2f752f373630343232322f4769744875622f54534d696e6957656242726f777365722f73686f745f30315f7468756d622e706e67" alt="Screenshot" /></p>
+
+<p>I hope you find some value in this list.  I&#8217;d love to hear about the libraries <strong>you</strong> use frequently.</p>
+
+<p>Happy Coding!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/how-to-become-an-indie-game-developer/">How to Become an Indie Game Developer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-13T00:00:00-06:00" pubdate data-updated="true">Jun 13<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div>What programmer doesn&#8217;t want to be an indie game developer?  A great article with tons of tips to help you on your way.</div>
+
+
+<div></div>
+
+
+<p>[<a title="" href="http://www.mode7games.com/blog/2012/06/12/how-to-be-an-indie-game-developer/" target="">Article Link</a>]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request for iOS 6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-08T00:00:00-06:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Fix the Snooze button</strong>! I have no idea how this UI component got to Apple&#8217;s review team and they were like &#8221;<em>Yep, that looks beautiful! Ship it!</em>&#8221;. If Apple changes the snooze button and slaps a 6 on iOS, I will be happy.  If not, more rants to follow. Stay tuned&#8230;.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2012/06/photo.png"><img class="wp-image-208 alignleft" title="photo" src="http://brandontreb.com/wp-content/uploads/2012/06/photo.png" alt="" width="269" height="403" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever a Time to Submit a Show HN Article, It&#8217;s Right Now</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-01T00:00:00-06:00" pubdate data-updated="true">Jun 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Earlier today a post titled &#8221;<a href="http://tortillasinbed.tumblr.com/post/24175048206/i-up-vote-everything" title="" target="">I Try to Up Vote Every ‘Show HN’ Post and You Should Too</a>&#8221; made it to the top of HN. &nbsp;It basically talked about people posting &#8220;Show HN&#8221; posts are putting themselves out there and the least we can do is give them an up vote. &nbsp;Well, people are listening and as of this posting, there are currently 15 Show HN posts in the top 30. &nbsp;That&#8217;s incredible.<div><br></div><div>So, if you have recently created something cool. &nbsp;Head over to HN&#8217;s <a href="http://news.ycombinator.com/submit" title="" target="">submission page</a> and add your link making sure to add &#8220;Show HN&#8221; in the title. &nbsp;You might get some great traffic/feedback out of it.</div></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting the UI for Pocket MUD Pro</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-29T00:00:00-06:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just updated my MUD client [<a href="http://itunes.apple.com/us/app/pocket-mud-pro/id511678455?mt=8">Pocket MUD Pro</a>] to be a universal library.  It was surprisingly easy to add the iPad support as most of the application was comprised of UITableViews.</p>
+
+<p>The main &#8220;MUD&#8221; view was the most challenging part as it contains a couple UIWebViews, UIButons, and a UITextField. However, I chose to do something I feel is pretty cool.</p>
+
+<h4>Scripting The UI With Lua</h4>
+
+
+<p>If I haven&#8217;t said it enough, I love lua. Especially in the context of scripting within other applications.  Pocket MUD Pro already has complete lua support in triggers in aliases, so I figured I might as well apply that same logic to the UI.</p>
+
+<p>Pocket MUD Pro has 3 core sections for the UI not counting the text input field. The main view (UIWebview), the prompt view (UIWebview), and the button bar (custom UIView).</p>
+
+<p>One of the core challenges I faced on the iPhone, was resizing/reorienting all of these views on orientation change as well as when the keyboard was visible and when it wasn&#8217;t.  To be honest, I spent most of my cycles getting this part right.  On the iPad, I decided to things a little differently which improved the speed of my development overall and paved the way for future updates that will allow user-scripted UIs.</p>
+
+<h4>The UI Script</h4>
+
+
+<p>I want to start by showing you the lua code that is used to script the UI by default.</p>
+
+<div>
+  <pre><code class='lua'>--MUD 
+mudFrame = Frame:new(&amp;quot;mud_frame&amp;quot;) 
+mudFrame.type = FrameTypeMUD
+mudFrame.portraitFrame = {0,0,768,931}
+mudFrame.portraitFrameKeyboard = {0,0,768,667}
+mudFrame.landscapeFrame = {0,0,1024,675}
+mudFrame.landscapeFrameKeyboard = {0,0,1024,323}
+createFrame(mudFrame)</code></pre>
+</div>
+
+
+<p>What&#8217;s happening here is, I have created a Frame class that has some properties (type, name, etc&#8230;) and injected it into the global lua space for use inside of the UIScripts.  Then when the interface gets drawn, I reference the UI script for each of the MUD servers and use it to render the interface.</p>
+
+<p>One interesting thing here is, I set the frames for each of the possible layout scenarios.  Portrait, Landscape, with and without the keyboard. That way, when the keyboard hides/dismisses or the user rotates the device, I just reference the this script again and re-render the frame accordingly.  This could have been achieved with auto-resizing masks however, it gets much more complex and things get tricky when you want to have a dynamic number of windows.</p>
+
+<p>I follow this exact pattern for the button frames and the prompt frames. As you might have guessed, in a future release, I will open this script area up to MUDders and give the user the ability to script the interface however they would like.  Some examples might be:</p>
+
+<ul>
+<li>Dedicated map window</li>
+<li>Dedicated chat window</li>
+<li>Customized movement buttons</li>
+<li>Customized backgrounds/borders/themes</li>
+<li>Custom health/status/mana</li>
+</ul>
+
+
+<p>Given this powerful UI Scripting style, a user will be able to create complex interfaces such as the one below from inside the app:</p>
+
+<p><img width="450" alt="" src="http://img.brothersoft.com/screenshots/softimage/a/achaea-300819-1263188763.jpeg" title="Achaea" class="alignnone" /></p>
+
+<p>I still have a ways to go with exposing various functionalities via my custom lua bridge. But things seem to be moving along quite smoothly.</p>
+
+<p>If you want to learn how I was able to bridge lua into my application, consider checking out my talk on lua scripting at <a href="http://360idev.com/">360iDev 2012</a> later this year!</p>
+
+<p>Happy Coding!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/jailbreak-ios-5-1-1-with-absinthe-2-0-more-watch-dev-coming/">Jailbreak iOS 5.1.1 With Absinthe 2.0 + More Watch Dev Coming</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-25T00:00:00-06:00" pubdate data-updated="true">May 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The GreenPois0n team has just announced Absinthe 2.0 allowing users of all iDevices (except Apple TV 3) to jailbreak iOS 5.1.1. This is especially good news for me as I can now continue development on my jailbroken app for the <a href="http://getinpulse.com" title="" target="">inPulse</a> watch,&nbsp;<a href="http://www.myrepospace.com/profile/brandontreb/140058/inPulse" title="" target="">iOS notifier</a>.&nbsp;<div><br></div><div>[<a href="http://greenpois0n.com/?p=324" title="" target="">Link URL</a>]</div></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/join-me-at-360idev-2012/">Join Me at 360iDev 2012</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-24T00:00:00-06:00" pubdate data-updated="true">May 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I mentioned this on Twitter last week, so I might as well post it here to make it <em>more</em> official. My talk <strong>Making Your Games More Dynamic With Lua Scripting</strong> was accepted for <a href="http://360idev.com/">360iDev 2012</a>! This will be my first official speaking engagement and I could not be more excited/nervous.</p>
+
+<h4>The Talk</h4>
+
+
+<p>I have had a huge interest in lua for some time now, especially as it applies to scripting games.  In my last project, <a href="http://itunes.apple.com/us/app/pocket-mud-pro/id511678455?mt=8">Pocket MUD Pro</a>, I even embedded lua 5.1 and created my own bridge in order to allow players to fully script the gameplay.  This got me very excited for the future as it was so easy to get lua up and running.</p>
+
+<p>My talk will cover the basics of setting lua up in your own iOS projects.  I will be using a simple tile based RPG (written in Cocos2D) for the demo and will demonstrate how you might use lua to script the behaviors of the NPCs as well as dynamically add new ones to the game.  This opens up a whole world of possibility as you can now ship code over the wire and modify your game content without ever submitting an update to Apple.</p>
+
+<p>It appears my talk has some pretty steep competition in its timeslot. There are two other incredible talks going on at the same time, so I&#8217;m starting to campaign for it now :)</p>
+
+<p>Please comment on this post if you plan on attending 360iDev.  I would love to connect with you.</p>
+
+<p>[<a href="http://360idev.com/schedule">360 iDev Schedule</a>]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/incredible-list-of-popular-indie-iosandroidsteam-titles-on-sale/">Incredible List of Popular Indie iOS/Android/Steam Titles on Sale</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-24T00:00:00-06:00" pubdate data-updated="true">May 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote>We believe that developers should have the freedom to price their games how they like, without interference from the online stores that sell the games. Why? Because it allows us to promote our games more freely, as we are doing here! We rely on the ability to promote our games for our livelihood and control over pricing is an important tool for this purpose.</blockquote>
+
+
+
+
+<p>Because We May is doing something very incredible here. They are a website to help you promote your game by listing it on sale. Any developer can submit their game(s) as long as they put it on sale for the given duration (May 24-June 1). There are currently some amazing games on sale including Osmos, Super Brothers, World Of Goo HD, and more.</p>
+
+
+<p>[<a href="http://www.becausewemay.com/ios.html" title="" target="">Games Link</a>]</p>
+
+
+<p>[<a href="http://2dboy.com/BWM/AddGame.html" title="" target="">Submission Link</a>]</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/why-facebook-is-people/">Why Facebook IS People</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-23T00:00:00-06:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is a very well written article detailing some of the inner workings of Facebook and why its business is YOU. &nbsp;<div><br></div><div>I wonder when a distributed, self-hosted solution (like <a href="https://joindiaspora.com/" title="" target="">Diaspora<em></a>) will become popular. &nbsp;Have you tried Diaspora</em> or others?<br><div><br></div><div>[<a href="http://observer.com/2012/05/23/facebook-is-people-why-i-quit-mark-zuckerbergs-online-collective-data-farm/?show=all" title="" target="">Article Link</a>]</div></div></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/the-guide-to-implementing-2d-platformers/">The Guide to Implementing 2D Platformers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-23T00:00:00-06:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/" title="" target="">http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/</a><div><br></div><div>An incredible guide detailing many of the tricks/design patterns used in 2D platformers. &nbsp;Although there isn&#8217;t much code to look at, the higher level ideas detailed in the article are invaluable.</div></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It&#8217;s Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

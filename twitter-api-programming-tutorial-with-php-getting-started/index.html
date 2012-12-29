@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Twitter API Programming Tutorial With PHP - Intro - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="I have recently started using Twitter and completely fell in love with it. Being a programming, this naturally made me want to develop applications &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/twitter-api-programming-tutorial-with-php-getting-started/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Twitter API Programming Tutorial With PHP - Intro</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-20T02:32:51-07:00" pubdate data-updated="true">Feb 20<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><center><a href="http://brandontreb.com/wp-content/uploads/2009/02/picture-15.png"><img src="http://brandontreb.com/wp-content/uploads/2009/02/picture-15.png" alt="picture-15" title="picture-15" width="400" height="125" class="alignnone size-full wp-image-85" /></a></center>
+
+
+<br /><br /> 
+
+
+<p><span color="#000000">I have recently started using Twitter and completely fell in love with it.  Being a programming, this naturally made me want to develop applications for interfacing with it.  So, I scoured the internet (checking Twitter&#8217;s website as well) to find good *<span style="color: #ff0000;">simple</span> tutorials for doing this.  After searching for a while, I couldn&#8217;t really find any.  Ok, I lied, I found a few but they were terrible.  I hate tutorials that assume the reader knows more than they actually do.  </span></p>
+
+<p><span style="color: #000000;">So, I am taking it upon myself to write a series of comprehensive tutorials for interfacing with Twitter.  I will first do them all in PHP and then maybe in some other languages.  I may even do some in Objective-C to be implemented on the iPhone.  These would be written of course at iCodeBlog.com ;) .</span></p>
+
+<p><span style="color: #ff0000;"><span style="color: #000000;">Let&#8217;s just jump right in. Twitter offers a few ways to interface with their web services, which are all documented on their <a href="http://apiwiki.twitter.com/">API Wiki</a>. The documentation is great, assuming you know the code to get connected and make the calls.  So, let&#8217;s skip all of the nerdy low level stuff and write an application.</span></span></p>
+
+<p><span style="color: #ff0000;"><span style="color: #000000;">Today, I will be teaching you how to simply connect to Twitter and update your status.  This will be pretty straight forward and require very little PHP code. So, grab some coffee, open up your favorite PHP editor (notepad?).</span></span></p>
+
+<p><span>Ok, so let&#8217;s start by wrapping our code into an easy to call function. We don&#8217;t want to have to copy and paste our Twitter interface code every time we need it in a project. Wouldn&#8217;t it be nice if we could just call it like this</span></p>
+
+<div>
+  <pre><code class='php'>updateTwitter(&quot;Just Rockin Out&quot;)</code></pre>
+</div>
+
+
+<p><span>So let&#8217;s begin by declaring a function called <b>updateTwitter</b>. Type the following code</p>
+
+<div>
+  <pre><code class='php'>function updateTwitter($status){ 
+    // Twitter login information 
+    $username = &quot;TwitterUsername&quot;; 
+    $password = &quot;TwitterPassword&quot;;</code></pre>
+</div>
+
+
+<p><span>Our function begins with a declaration of a username and password. This will be <i>your</i> Twitter login information. Every Twitter API call requires that you authenticate yourself. Make sure you update the code to include <i>your</i> username and password/</span></p>
+
+<p><span>Next, we will add the following code to initialize the variables needed to make our Twitter API call. Continue by adding the following code.</span></p>
+
+<div>
+  <pre><code class='php'>// The url of the update function 
+    $url = 'http://twitter.com/statuses/update.xml'; 
+    // Arguments we are posting to Twitter 
+    $postargs = 'status='.urlencode($status); 
+    // Will store the response we get from Twitter 
+    $responseInfo=array(); 
+    // Initialize CURL 
+    $ch = curl_init($url);</code></pre>
+</div>
+
+
+<p><span>One thing I want to point out is the URL. Notice the update.xml at the end of it. This is telling the Twitter API we want to call the <b>update</b> function and we expect to receive <b>xml</b> back. You could also change it to be <b>update.json</b> if you want to receive json data back.</span></p>
+
+<p><span>The next variable <b>postargs</b> is simply the arguments we will pass to the update function. Since these arguments get appended to the URL, they need to be urlencoded. The <b>responseInfo</b> array will contain the return data from the cURL request to Twitter. Finally, we just initialize a new cURL session. cURL is just a protocol for transferring data. You can read up on it <a href="http://en.wikipedia.org/wiki/CURL">on Wikipedia</a> if you feel so inclined.</span></p>
+
+<p><span>Next, we need to tell cURL to do a POST rather than a GET and pass it our argument string</span></p>
+
+<div>
+  <pre><code class='php'>// Tell CURL we are doing a POST 
+    curl_setopt ($ch, CURLOPT_POST, true); 
+    // Give CURL the arguments in the POST 
+    curl_setopt ($ch, CURLOPT_POSTFIELDS, $postargs);</code></pre>
+</div>
+
+
+<p><span>The next part is where the magic happens. Here is the next bit of code (I&#8217;ll explain it below)&#8230;</span></p>
+
+<div>
+  <pre><code class='php'>// Set the username and password in the CURL call 
+    curl_setopt($ch, CURLOPT_USERPWD, $username.':'.$password); 
+    // Set some cur flags (not too important) 
+    curl_setopt($ch, CURLOPT_VERBOSE, 1); 
+    curl_setopt($ch, CURLOPT_NOBODY, 0); 
+    curl_setopt($ch, CURLOPT_HEADER, 0); 
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+    // execute the CURL call 
+    $response = curl_exec($ch); 
+    // Get information about the response 
+    $responseInfo=curl_getinfo($ch); 
+    // Close the CURL connection curl_close($ch);</code></pre>
+</div>
+
+
+<p><span>Wow! that looks like a lot of nerdy code. Good thing you only have to write it once and don&#8217;t have to understand it (unless you want to). The first line sets the username and password fields in our cURL call. When we first connect with the Twitter API, it will prompt for a username and password. cURL will automatically feed the username and password to the API. </span> <span>The next few lines are not super important. If you one of those people that get hung up on that sort of thing, you can read about them <a href="http://us.php.net/curl">here</a>. We&#8217;re almost done, I promise&#8230;</span> <span>Finally, we make the cURL call itself by calling curl_exec. This will return a response <b>from Twitter</b> which will contains some XML if your call completed successfully. The next line, gets the http response (makes sure you were able to connect to Twitter). If it is anything other than 200 (HTTP OK), it means your cURL request never even reached Twitter.</span> <span>Here is the last bit of code</span></p>
+
+<div>
+  <pre><code class='php'>// Make sure we received a response from Twitter 
+    if(intval($responseInfo['http_code'])==200){ 
+        // Display the response from Twitter 
+        echo $response; 
+    }else{ 
+        // Something went wrong 
+        echo &quot;Error: &quot; . $responseInfo['http_code']; 
+    } 
+} 
+?&gt;</code></pre>
+</div>
+
+
+<p><span>All this code really does is makes sure we got a 200 code (successfully reached Twitter). If so, it prints out the XML that Twitter returned to us. </span> <span>Now you have a handy-dandy function you can call whenever we want to update your Twitter status from your website. Simply type</span></p>
+
+<div>
+  <pre><code class='php'>updateTwitter(&quot;Just finished a sweet tutorial on http://brandontreb.com&quot;)</code></pre>
+</div>
+
+
+<p><span>and like magic, your Twitter status will be updated. This has many different uses as you can imagine. Join me next time when I will be putting this code into a PHP class as well as implementing the rest of the Twitter API functions. We will then be able to use this Twitter class in a variety of PHP applications. So , be sure to <a href="http://feeds2.feedburner.com/brandontreb">subscribe to my RSS feed</a> and feel free to ask me any questions in the comments section of this post. You can also download the source code of this tutorial here&#8230; (insert clever tag line here (iCodeBlog&#8217;s is happy iCoding, I need a new one)). </span></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-20T02:32:51-07:00" pubdate data-updated="true">Feb 20<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>Articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/twitter-api-programming-tutorial-with-php-getting-started/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/twitter-api-programming-tutorial-with-php-getting-started/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/binary-game-iphone-app-review/" title="Previous Post: Binary Game - iPhone App Review">&laquo; Binary Game - iPhone App Review</a>
+      
+      
+        <a class="basic-alignment right" href="/buzzword-is-now-in-the-app-store/" title="Next Post: Buzzword Is Now In The App Store">Buzzword Is Now In The App Store &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mac | Brandon Trebitowski]]></title>
+  <link href="http://brandontreb.github.com/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://brandontreb.github.com/"/>
+  <updated>2012-12-29T12:29:54-07:00</updated>
+  <id>http://brandontreb.github.com/</id>
+  <author>
+    <name><![CDATA[Brandon Trebitowski]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Case Of The Mondays]]></title>
+    <link href="http://brandontreb.github.com/case-of-the-mondays/"/>
+    <updated>2011-02-14T05:00:28-07:00</updated>
+    <id>http://brandontreb.github.com/case-of-the-mondays</id>
+    <content type="html"><![CDATA[<div id="attachment_1421" class="wp-caption alignright" style="width: 330px"><a href="http://brandontreb.com/wp-content/uploads/2011/02/office-spacejpg.jpeg"><img class="size-full wp-image-1421 " title="office-spacejpg" src="http://brandontreb.com/wp-content/uploads/2011/02/office-spacejpg.jpeg" alt="" width="320" height="240" /></a><p class="wp-caption-text">Mondays...</p></div>
+
+
+<p></p>
+
+<p>The other day, I was faced with an interesting programming challenge and wanted to share my solution.  I just submitted a pretty interesting app to the app store that does a number of things (more details soon).  Among those things is the ability to generate a calendar.</p>
+
+<h4>The Problem</h4>
+
+
+<p>Generating the calendar was the easy part, however when displayed, I wanted it to highlight every Monday of the month.  This turned out to be a bit trickier than I imagined.</p>
+
+<p>Really the main challenge here was to determine which day contained the <em>first</em> Monday of the month. After that, we just loop incrementing by 7 and are done.</p>
+
+<h4>Looking At The Date Helpers</h4>
+
+
+<p>Looking at what I had to work with in NSDate, NSCalendar, and NSDateComponents, I really found only 2 things that could help me.  From NSDateComponents, I could figure out the current day (numeric) and the current day of the week (numeric).  Knowing this information was very important.</p>
+
+<h4>The Solution</h4>
+
+
+<p>Having the current day and day of the week allowed me to find the date of the Monday on the current week.  This was the first challenge as demonstrated below.  Assume weekdayComponents is the NSDateComponents generated from the current date.</p>
+
+<p><div>
+  <pre><code class='objc'>NSInteger weekday = [weekdayComponents weekday];
+NSInteger day         = [weekdayComponents day];&lt;/p&gt;
+
+&lt;p&gt;// First, find how many days we are from Monday
+int daysAwayFromMonday = weekday - 2;&lt;/p&gt;
+
+&lt;p&gt;// Now resolve the monday of this week
+int mondayThisWeek = day - daysAwayFromMonday;&lt;/p&gt;
+
+&lt;p&gt;// Check if monday this week falls in last month
+if(mondayThisWeek &amp;lt;= 0) {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mondayThisWeek = day + (7 - daysAwayFromMonday);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>mondayThisWeek will now contain the day number of the Monday of the current week.  If that Monday falls on the previous month, mondayThisWeek will be negative. Line 12 resolves that by carrying it into next week.</p>
+
+<p>Finally, we just loop subtracting 7 from that Monday until mondayThisWeek is less than 7 to get the first Monday of the month.</p>
+
+<p><div>
+  <pre><code class='objc'>while(mondayThisWeek &amp;gt; 7) {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mondayThisWeek -= 7;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>And there you have it.  mondayThisWeek (improperly named at this point) will contain the day number of the first Monday for the current month.</p>
+
+<p>So, this was quite a round-a-bout way to find this value.  If you have a better solution, please feel free to trash on mine in the comments ;) .</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating A Twitter Client For OSX â Part 3: Publishing Tweets]]></title>
+    <link href="http://brandontreb.github.com/creating-a-twitter-client-for-osx-%25e2%2580%2593-part-3-publishing-tweets/"/>
+    <updated>2010-12-16T07:03:29-07:00</updated>
+    <id>http://brandontreb.github.com/creating-a-twitter-client-for-osx-%e2%80%93-part-3-publishing-tweets</id>
+    <content type="html"><![CDATA[<p>Welcome to part 3 of my #iDevblogaday series about creating a Twitter client for OSX</p>
+
+<p>Now that we have some of our UI built, we need to add a key feature to our Twitter client: The ability to write and publish a tweet.  We will be adding a textbox that the user can type their tweet into along with a live character counter to ensure the character length does not go beyond 140 characters.  Finally, we will be using  MGTwitterEngine to publish the tweet to Twitter.</p>
+
+<p>In case you didn't read it,<a href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets/"> here is a link</a> to the previous tutorial in this series.  We will be using the interface created in it as a basis for this tutorial.</p>
+
+<h4>Updating and Preparing Our Code</h4>
+
+
+<p>Before we jump into the new stuff, I want to back up for a second and do some simple refactoring.  In our last tutorial, we just loaded the new tweets when our application fired up.  That's great and all, but it's not reusable.  So, we need to make a class property for our MGTwitterEngine and a method that we can call to refresh the tweets.  This will also come in handy later when we implement an auto refresh feature.</p>
+
+<p>Let's start by updating our header file TweetsController.h
+<div>
+  <pre><code class='objc'>#import&lt;/p&gt;
+
+&lt;p&gt;@class MGTwitterEngine;&lt;/p&gt;
+
+&lt;p&gt;@interface TweetsController : NSViewController{&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;IBOutlet NSTableView *tableView;
+NSMutableArray *tweets;
+MGTwitterEngine *twitterEngine;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;@property (retain) IBOutlet NSTableView &lt;em&gt;tableView;
+@property (retain) NSMutableArray &lt;/em&gt;tweets;
+@property (retain) MGTwitterEngine *twitterEngine;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(void) refreshTweets;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;@end</code></pre>
+</div>
+
+As you can see we have added a few things.  First, at the top we see a forward class declaration for our MGTwitterEngine.  If you recall, forward class declarations are to combat circular imports. Here is a snippet from the objective-c documentation about forward class declarations.</p>
+
+<blockquote>The @class directive minimizes the amount of code seen by the compiler and linker, and is therefore the simplest way to give a forward declaration of a class name. Being simple, it avoids potential problems that may come with importing files that import still other files. For example, if one class declares a statically typed instance variable of another class, and their two interface files import each other, neither class may compile correctly.</blockquote>
+
+
+<p>Next, we create a property called twitterEngine.  It goes without saying by now that you should synthesize this property and release it in your .m file.  I'm not going to show that code.  Finally, we declare a method called refreshTweets.  This will be the method we will call to when we want to refresh the list of tweets.  At some point we will alter this method to take an additional argument that will allow us to differentiate between timeline, replies, and messages.  For now, we will stick with timeline.</p>
+
+<p>Now let's take a look at the updates in the .m file.
+<div>
+  <pre><code class='objc'>.
+.
+.
+- (void)awakeFromNib {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;self.tweets = [[NSMutableArray alloc] init];
+
+OAToken *token = [[OAToken alloc] initWithKey:@&quot;&quot;
+                                  secret:@&quot;&quot;];;
+
+// Put your Twitter username and password here:
+NSString *username = @&quot;brandontreb&quot;;
+NSString *consumerKey = @&quot;&quot;;
+NSString *consumerSecret = @&quot;&quot;;
+
+// Create a TwitterEngine and set our login details.
+self.twitterEngine = [[[MGTwitterEngine alloc] initWithDelegate:self] autorelease];
+[twitterEngine setUsesSecureConnection:NO];
+[twitterEngine setConsumerKey:consumerKey secret:consumerSecret];
+[twitterEngine setUsername:username];
+[twitterEngine setAccessToken:token];
+[self refreshTweets];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(void) refreshTweets {
+  [twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
+}
+.
+.
+.</code></pre>
+</div>
+
+So, nothing really new here, we are just moving the scope of our twitter engine out of the awakeFromNib method and creating a reusable way to grab the user's timeline.  We are now ready to declare our IBOutlets and IBActions for our interface.</li>
+</ul>
+
+
+<h4>Setting Up IBOutlets and IBActions</h4>
+
+
+<p>Two additional IBOutlets will need to be set up for our Twitter client.  The first is an NSTextView in which the user will by composing their Tweet in to.  And the other is an NSTextField that is not editable.  This will essentially be a label that displays the number of remaining characters to the user.</p>
+
+<p>In addition to the IBOutlets, we need an IBAction that responds when the user clicks the Tweet button.</p>
+
+<p>Our TweetsController.h header file should now look like this.
+<div>
+  <pre><code class='objc'>#import&lt;/p&gt;
+
+&lt;p&gt;@class MGTwitterEngine;&lt;/p&gt;
+
+&lt;p&gt;@interface TweetsController : NSViewController{&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;IBOutlet NSTableView *tableView;
+IBOutlet NSTextView *tweetTextView;
+IBOutlet NSTextField *tweetCountLabel;
+NSMutableArray *tweets;
+MGTwitterEngine *twitterEngine;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;@property (retain) IBOutlet NSTableView &lt;em&gt;tableView;
+@property (retain) IBOutlet NSTextView &lt;/em&gt;tweetTextView;
+@property (retain) IBOutlet NSTextField &lt;em&gt;tweetCountLabel;
+@property (retain) NSMutableArray &lt;/em&gt;tweets;
+@property (retain) MGTwitterEngine *twitterEngine;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(void) refreshTweets;&lt;/li&gt;
+&lt;li&gt;(IBAction) tweetButtonClicked:(id) sender;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;@end</code></pre>
+</div>
+
+One other thing  that I failed to mention above is we tell our class to implement the NSTextViewDelegate protocol.  This will allow us to have a live counter of the characters being entered in our text view.</p>
+
+<p>Now, let's work on the interface...</p>
+
+<h4>Updating The Interface</h4>
+
+
+<p>Open up MainMenu.xib and drag an NSTextView, Label, and Button on to your view resizing as necessary. Your interface should now look something like this:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.26.02-PM.png"><img class="alignnone size-full wp-image-1172" title="Screen shot 2010-12-16 at 1.26.02 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.26.02-PM.png" alt="" width="423" height="517" /></a></p>
+
+<p>Make sure that you click on the NSTextView that you added and uncheck the box that says "show vertical scroller".  Also, drag from the text view to TweetsController to set the delegate.  I found that I had to expand the view tree to get at the TextView as in the screenshot below:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.42.02-PM.png"><img class="alignnone size-full wp-image-1177" title="Screen shot 2010-12-16 at 1.42.02 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.42.02-PM.png" alt="" width="439" height="372" /></a></p>
+
+<p>Next, click on  TweetsController in the explorer window and hook up each of the 2 IBOutlets.  Here is a screenshot of the explorer window and the Connections window with the connections made.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.27.44-PM.png"><img class="alignnone size-full wp-image-1173" title="Screen shot 2010-12-16 at 1.27.44 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.27.44-PM.png" alt="" width="472" height="209" /></a></p>
+
+<p>Also, you will want to control-click and drag from your button to the TweetsController to hook it up to your tweetButtonClicked IBAction.</p>
+
+<p>You can now close Interface Builder and jump back to the code...</p>
+
+<h4>Implementing Live Character Counting</h4>
+
+
+<p>This process is actually pretty simple.  We just need to implement one delegate method of our NSTextView.  Open TweetsController.m and add the following method:
+<div>
+  <pre><code class='objc'>- (BOOL)textView:(NSTextView &lt;em&gt;)aTextView
+   shouldChangeTextInRange:(NSRange)affectedCharRange
+   replacementString:(NSString &lt;/em&gt;)replacementString {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NSString *text = [tweetTextView string];
+int length = [text length] + 1;
+[tweetCountLabel setStringValue:[NSString stringWithFormat:@&quot;%d&quot;,(140 - length)]];
+// Allows user to delete characters
+if([replacementString length] == 0) return YES;
+return length &amp;amp;lt; 140;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+
+The shouldChangeTextInRange delegate method gets called every time the user types a character.  We first check the length of the string currently in the box.   1 is added to it since we are looking at adding a potential character.  Next, we update our character label to 140-(length of current string).  Following that is a line to check if the replacement string is 0.  This is needed for when the user presses backspace and they have already entered 140 characters.  The final line will only return true if the character count in the text box is less than 140, otherwise it will prevent the user from typing anything else.</p>
+
+<h4>Publishing The Tweet To Twitter</h4>
+
+
+<p>Our final step is to actually publish the tweet to Twitter and update the timeline.  We need to implement the tweetButtonClicked method and update the statusesReceived delegate method.  So in, TweetsController.m, update to the following code:
+<div>
+  <pre><code class='objc'>- (IBAction) tweetButtonClicked:(id) sender {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[twitterEngine sendUpdate:[tweetTextView string]];
+[tweetTextView setString:@&quot;&quot;];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;h1&gt;pragma mark -&lt;/h1&gt;
+
+&lt;h1&gt;pragma mark MGTwitterEngineDelegate&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(void)statusesReceived:(NSArray &lt;em&gt;)statuses forRequest:(NSString &lt;/em&gt;)connectionIdentifier {&lt;/p&gt;
+
+&lt;p&gt;  if([statuses count] == 1) { // when user updates their status&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  NSDictionary *tweetDict = [statuses objectAtIndex:0];
+  NSString *screenName = [[tweetDict objectForKey:@&quot;user&quot;] objectForKey:@&quot;screen_name&quot;];
+  NSString *text = [tweetDict objectForKey:@&quot;text&quot;];
+  Tweet *tweet = [[Tweet alloc] init];
+  tweet.screenName = screenName;
+  tweet.text = text;
+  [self.tweets insertObject:tweet atIndex:0];
+  [tweet release];
+&lt;/code&gt;&lt;/pre&gt;
+
+  } else {
+
+&lt;pre&gt;&lt;code&gt;  for(NSDictionary *tweetDict in statuses) {
+      NSString *screenName = [[tweetDict objectForKey:@&quot;user&quot;] objectForKey:@&quot;screen_name&quot;];
+      NSString *text = [tweetDict objectForKey:@&quot;text&quot;];
+      Tweet *tweet = [[Tweet alloc] init];
+      tweet.screenName = screenName;
+      tweet.text = text;
+      [self.tweets addObject:tweet];
+      [tweet release];
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  }&lt;/p&gt;
+
+&lt;p&gt;  [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}</code></pre>
+</div>
+
+First, we see the implementation of our IBAction.  It simply calls one of our super handy methods in MGTwitterEngine.  The sendUpdate method, will asynchronously update your Twitter status and post back to the statusesReceived method with YOUR status info.  After that, we clear the text box that the user typed into.</p></li>
+</ul>
+
+
+<p>The statusReceived method gets updated because we need to handle things differently when the user updates their status verses when we are pulling down the timeline.  If there is only one status (ie the user just posted), we want to push it on to the head of the tweets array.  We do this so that it displays at the top of our client as the timeline that comes down from Twitter is ordered from newest to oldest.  Other than that, there are no major changes to this method.</p>
+
+<p>After building and running, your client should now look something like this:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.54.56-PM.png"><img class="alignnone size-full wp-image-1178" title="Screen shot 2010-12-16 at 1.54.56 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.54.56-PM.png" alt="" width="423" height="517" /></a></p>
+
+<p>Well, that about does it for today.  I hope you have enjoyed this one.  If you have any comments or questions, feel free to leave them here. You can even write them to me using your new "fancy" Twitter client to <a href="http://twitter.com/brandontreb">@brandontreb</a>.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/iChirpie2.zip">Download The Source Here</a></p>
+
+<p>Until next time, happy coding!</p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating A Twitter Client For OSX â Part 2: Displaying Tweets]]></title>
+    <link href="http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets/"/>
+    <updated>2010-12-09T00:53:36-07:00</updated>
+    <id>http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets</id>
+    <content type="html"><![CDATA[<p>Welcome to the second installment of my <a href="http://idevblogaday.com">#iDevBlogADay</a> tutorial series entitled "Creating A Twitter Client For OSX".  In case you missed it,<a href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-1/"> here is a link to the previous tutorial in the series</a>.  From the last tutorial, you should have a basic understanding of the folllowing:</p>
+
+<ul>
+    <li>Checking out the MGTwitterEngine code from github</li>
+    <li>Setting up Twitter and creating a new application</li>
+    <li>Building and running the MGTwitterEngine</li>
+    <li>Basic usage of the MGTwitterEngine including retrieving Tweets and updating your status</li>
+</ul>
+
+
+<p>In today's tutorial, we are going to go a bit further and begin work on our very own Twitter app for OSX.  By the end of this tutorial, you should have a simple OSX application that displays tweets in a table view.</p>
+
+<h4>Creating A New Project And Integrating MGTwitter Engine</h4>
+
+
+<p>We will start off by creating a new Cocoa Application.  This will provide us with a simple window that we will later fill with a table.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-08-at-1.18.50-PM.png"><img class="alignnone size-medium wp-image-1134" title="Screen shot 2010-12-08 at 1.18.50 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-08-at-1.18.50-PM-500x446.png" alt="" width="350" height="312" /></a></p>
+
+<p>Now, I'm sure there are several ways we can integrate the MGTwitterEngine framework into the project, but I'm going to go the route that I found to be the easiest. We are going to simply go folder by folder and copy all of the source files into our project.  That way we don't have to deal with header search paths and all of that fun stuff.</p>
+
+<p>Here are the steps to get MGTwitterEngine into your project.  It was actually much easier to do this, than to build the sample project that came with the source ;) .</p>
+
+<ol>
+    <li>Create a new group in your project called MGTwitterEngine</li>
+    <li>Copy all source files (except AppController.m/h) in the MGTwitterEngine root folder into the group.  (Make sure you tick the box that says "Copy items into destination's group folder"</li>
+    <li>Copy the entire TouchJSON folder into the project.  Then, expand it and delete the Support folder from your project (it causes some errors)</li>
+    <li>Copy the entire oauthconsumer folder into your project.</li>
+</ol>
+
+
+<p>When you are done, your project directory should look something like this (I made a subgroup called core to put the engine files into).</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.05.13-AM.png"><img class="alignnone size-full wp-image-1136" title="Screen shot 2010-12-09 at 12.05.13 AM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.05.13-AM.png" alt="" width="287" height="172" /></a></p>
+
+<p>The last dependency is on the libxml2 framework.  We need to add it to the project.  So, rightclick on the Frameworks folder and click Add -&gt; Existing Frameworks... Search this list for libxml2.dylib and click Add.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-08-at-11.59.20-PM.png"><img class="alignnone size-full wp-image-1137" title="Screen shot 2010-12-08 at 11.59.20 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-08-at-11.59.20-PM.png" alt="" width="283" height="326" /></a></p>
+
+<p>Next, we need to set up the header search path to use this library.  Right click on your project and click Get Info.  Scroll down to the cell that's labeled "Header Search Paths". Double click in the empty cell on the right, and then click the + button on the next window. Then enter /usr/include/libxml2 into the path and click ok.</p>
+
+<p>At this point, try to build your project.  It may contain a few warnings, but no errors.</p>
+
+<h4>Creating The Tweet Model</h4>
+
+
+<p>We could simply take the dictionaries that TouchJSON returns to us, stick them in an array and display them in the table, but that wouldn't be very clean.  So, we are going to create a simple Tweet model.  Keep in mind, we are only storing the necessary data for this stage in the tutorial.  We will be adding the rest of the data later.</p>
+
+<p>Go to File -&gt; New File and select <strong>Objective-C Class</strong>.  Name the file Tweet.m. And here is the code:</p>
+
+<p>The header...
+<div>
+  <pre><code class='objc'>// Tweet.h
+@interface Tweet : NSObject {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NSString *screenName;
+NSString *text;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+@property(retain) NSString &lt;em&gt;screenName;
+@property(retain) NSString &lt;/em&gt;text;
+@end</code></pre>
+</div>
+
+And the source...
+<div>
+  <pre><code class='objc'>// Tweet.m&lt;/p&gt;
+
+&lt;h1&gt;import &quot;Tweet.h&quot;&lt;/h1&gt;
+
+&lt;p&gt;@implementation Tweet
+@synthesize screenName;
+@synthesize text;
+- (void) dealloc {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[screenName release];
+[text release];
+[super dealloc];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+@end</code></pre>
+</div>
+
+Next, we are going to set up our table view that will display the tweets.</p>
+
+<h4>Creating An NSTableView And ViewController</h4>
+
+
+<p>So, there are 2 ways to populate a table view in Cocoa.  The "newest" way is to use Cocoa bindings, however we are not going to do that today.  Since I assume most of you are coming from iOS dev, we will stick with the "old Skool" way which is actually quite similar to how the iPhone populates a UITableView.</p>
+
+<p>Start by adding a new Objective-C file to your project called TweetsController. Just take the default subclass of NSObject.  Once it's added, change it to be a subclass of NSViewController and let it implement NSTableViewDelegate.  Here is what the code for the header file should look like (The NSTableViewDelegate stuff isn't appear because of this WP plugin I'm using to display code &lt;NSTableViewDelegate&gt;). :
+<div>
+  <pre><code class='objc'>@interface TweetsController : NSViewController{&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;IBOutlet NSTableView *tableView;
+NSMutableArray *tweets;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+@property (retain) IBOutlet NSTableView &lt;em&gt;tableView;
+@property (retain) NSMutableArray &lt;/em&gt;tweets;
+@end</code></pre>
+</div>
+
+We have an IBOutlet to the table and an array of tweets that will populate the table.  Also, make sure to synthesize these properties in the .m file as well as release them in your dealloc method (not created automatically like the iPhone does).  We will come back to the implementation of the .m file.</p>
+
+<p>Now, double click on MainMenu.xib opening it up in Interface Builder.  There are a few steps involved here.</p>
+
+<ol>
+    <li>Double click on Window in the content explorer and you should see the main application's window</li>
+    <li>Drag an NSTableView from the library on to your view and size it accordingly.  By default the NSTableView will have 2 columns, delete on of them and stretch the other the width of the table.
+<a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.04.40-AM.png"><img class="alignnone size-full wp-image-1141" title="Screen shot 2010-12-09 at 1.04.40 AM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.04.40-AM.png" alt="" width="237" height="264" /></a></li>
+    <li>From the library, drag ViewController object into the content explorer.
+<a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.06.25-AM.png"><img class="alignnone size-full wp-image-1142" title="Screen shot 2010-12-09 at 1.06.25 AM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.06.25-AM.png" alt="" width="286" height="79" /></a></li>
+    <li><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.06.25-AM.png"></a>Click on it and from the top menu click Tools -&gt; Identity Inspector.</li>
+    <li>In the box that says Class, type in TweetsController.</li>
+    <li>Right-click drag from your table view to your new Tweets controller to connect both the delegate and datasource (same as you would do for the iPhone)
+<a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.09.05-AM.png"><img class="alignnone size-full wp-image-1143" title="Screen shot 2010-12-09 at 1.09.05 AM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.09.05-AM.png" alt="" width="267" height="223" /></a></li>
+    <li>Finally, drag from the controller to the table view to hook up the tableview outlet.</li>
+</ol>
+
+
+<p>We are done in interface builder and you can now close it.</p>
+
+<h4>Populating The TableView With Tweets</h4>
+
+
+<p>The last steps are to pull the tweets using the MGTwitterEngine and display them in the tableview.  Open up TweetsController.m and let's add the first bit of code:
+<div>
+  <pre><code class='objc'>#import &quot;TweetsController.h&quot;&lt;/p&gt;
+
+&lt;h1&gt;import &quot;MGTwitterEngine.h&quot;&lt;/h1&gt;
+
+&lt;h1&gt;import &quot;Tweet.h&quot;&lt;/h1&gt;
+
+&lt;p&gt;@implementation TweetsController&lt;/p&gt;
+
+&lt;p&gt;@synthesize tableView;
+@synthesize tweets;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(void)awakeFromNib {
+  self.tweets = [[NSMutableArray alloc] init];&lt;/p&gt;
+
+&lt;p&gt;  MGTwitterEngine &lt;em&gt;twitterEngine = [MGTwitterEngine twitterEngineWithDelegate:self];
+  OAToken &lt;/em&gt;token = [[OAToken alloc] initWithKey:@&quot;16369316-GgqA00WO0poCAj0XAFhJYDDRthVvWMxTnVyKdfWa1&quot;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;                                     secret:@&quot;someSecret&quot;];;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  // Put your Twitter username and password here:
+  NSString &lt;em&gt;username = @&quot;brandontreb&quot;;
+  NSString &lt;/em&gt;consumerKey = @&quot;aKKEsJHTDNsv4xVlMHmMqw&quot;;
+  NSString *consumerSecret = @&quot;AnotherSecret&quot;;&lt;/p&gt;
+
+&lt;p&gt;  // Create a TwitterEngine and set our login details.
+  twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
+  [twitterEngine setUsesSecureConnection:NO];
+  [twitterEngine setConsumerKey:consumerKey secret:consumerSecret];
+  [twitterEngine setUsername:username];
+  [twitterEngine setAccessToken:token];&lt;/p&gt;
+
+&lt;p&gt;  [twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
+}</code></pre>
+</div>
+
+So we see some of the usual suspects (imports, synthesize, etc...).  Now, take a look at the awakeFromNib method.  Like on the iPhone, this method fires when this controller is loaded from the nib.  This is where we will initialize our engine, and grab the user's timeline.  Most of this code should be familiar from the last tutorial.  We have one new addition, and that's setting ourself as the delegate. MGTwitterEngine has some nice delegate methods that it calls back to when it has grabbed all of the data.  Let's add that method to our code:
+<div>
+  <pre><code class='objc'>.
+.
+.&lt;/p&gt;
+
+&lt;h1&gt;pragma mark -&lt;/h1&gt;
+
+&lt;h1&gt;pragma mark MGTwitterEngineDelegate&lt;/h1&gt;&lt;/li&gt;
+&lt;li&gt;(void)statusesReceived:(NSArray &lt;em&gt;)statuses forRequest:(NSString &lt;/em&gt;)connectionIdentifier {
+  for(NSDictionary *tweetDict in statuses) {
+
+&lt;pre&gt;&lt;code&gt;  NSString *screenName = [[tweetDict objectForKey:@&quot;user&quot;] objectForKey:@&quot;screen_name&quot;];
+  NSString *text = [tweetDict objectForKey:@&quot;text&quot;];
+  Tweet *tweet = [[Tweet alloc] init];
+  tweet.screenName = screenName;
+  tweet.text = text;
+  [self.tweets addObject:tweet];
+  [tweet release];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  }&lt;/p&gt;
+
+&lt;p&gt;  [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}</code></pre>
+</div>
+
+This method simply returns an NSArray of NSDictionaries containing all of the information about each tweet in the user's timeline.  We loop over this array, build a new Tweet object, and add it to our tweets array.  Finally, we reload the table view on the main application's thread (UI operations should always be done in the main thread).</p></li>
+</ul>
+
+
+<p>The last step is to implement the delgate/datasource methods for the tableview that will feed our tweets into it.  Let's add the final bit of code to TweetsController.m:
+<div>
+  <pre><code class='objc'>the#pragma mark -&lt;/p&gt;
+
+&lt;h1&gt;pragma mark TableView Data Source&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
+  return [self.tweets count];
+}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(id)tableView:(NSTableView &lt;em&gt;)aTableView objectValueForTableColumn:(NSTableColumn &lt;/em&gt;)aTableColumn row:(NSInteger)rowIndex {
+  return nil;
+}&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt;pragma mark -&lt;/h1&gt;
+
+&lt;h1&gt;pragma mark TableView Delegate&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+  return 50.0;
+}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(void)tableView:(NSTableView &lt;em&gt;)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn &lt;/em&gt;)aTableColumn row:(NSInteger)rowIndex {
+  Tweet *tweet = [self.tweets objectAtIndex:rowIndex];
+  [aCell setTitle:[NSString stringWithFormat:@&quot;%@: %@&quot;,tweet.screenName,tweet.text]];
+  [aCell setWraps:YES];
+}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(void) dealloc {
+  [tableView release];
+  [tweets release];
+  [super dealloc];
+}</code></pre>
+</div>
+
+These methods should look vaguely familiar to the iOS developer.  The method objectValueForTableColumn is not needed here but is required for a table view datasource so we just make it return nil.  willDisplayCell is very similar to the iOS cellForRowAtIndexPath only this time it passes the cell to us and we do the configuration.  In this case we display the tweet and tell the cell text to wrap.</p></li>
+</ul>
+
+
+<p>Finally, we just see our dealloc method for cleanup.</p>
+
+<p>That's it for the code. Go ahead and hit Build and Run to see what we have created (spoiler alert: look below).</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.23.49-AM.png"><img class="alignnone size-full wp-image-1145" title="Screen shot 2010-12-09 at 1.23.49 AM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-1.23.49-AM.png" alt="" width="423" height="471" /></a></p>
+
+<p>Ok, so it's not much to look at in its current stage, but we will improve on it.  In the next tutorial, we will be displaying a bit more data as well as adding more functionality.</p>
+
+<p>If you have any questions or comments, please feel free to leave them in the comments section.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/iChirpie.zip">Download The Source For This Tutorial</a></p>
+
+<p>Until next time, happy coding!</p>
+
+<p><a href="http://brandontreb.com/creating-a-twitter-client-for-osx-%E2%80%93-part-3-publishing-tweets/">Click here to go to part 3</a></p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating A Twitter Client For OSX - Part 1]]></title>
+    <link href="http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-1/"/>
+    <updated>2010-12-02T15:23:53-07:00</updated>
+    <id>http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-1</id>
+    <content type="html"><![CDATA[<p>With the upcoming release of the Mac App Store, I can only imagine another gold rush is upon us.  Clever Indie developers making money hand over fist while the store as well as developers find their identities.  With that being said, I feel that there is a serious lack of interesting (maintained) Twitter clients for OSX.  I say "maintained" because Tweetie for OSX is just fantastic, however Twitter said they don't have any plans for it at this time.  So, I want to provide devs with the tools to create an amazing Twitter client for the Mac that I will want to use :)</p>
+
+<p>Quite some time ago, I began (and never completed) a series on <a href="http://brandontreb.com/objective-c-programming-tutorial-creating-a-twitter-client-part-1/">writing a Twitter client for OSX</a>.  It was very well received by the development community, however once Twitter switched over to OAUTH, I became too lazy to update it :( . So, I figured a tutorial series for <a href="http://idevblogaday">#iDevBlogADay</a> would be the perfect opportunity to complete it.</p>
+
+<p>So we are going to start from the ground up.  In today's tutorial, we are going walk through getting the initial resources and setting up Twitter to authenticate our application.  We will also post a basic tweet.</p>
+
+<h4>Setting Up Twitter</h4>
+
+
+<p>In order for your application to interface with Twitter, you must register it with them over at <a href="http://developer.twitter.com">http://developer.twitter.com</a>.</p>
+
+<ol>
+    <li>Go to <a href="http://developer.twitter.com">http://developer.twitter.com</a> and sign up if needed</li>
+    <li>Click on <a href="http://developer.twitter.com/apps">Your Apps</a></li>
+    <li>Click <a href="http://developer.twitter.com/apps/new">Register A New App</a> and fill out all of the information about your client</li>
+    <li>You're all set!</li>
+</ol>
+
+
+<h4>Getting Necessary Resources</h4>
+
+
+<p>I spent a bit of time researching the various options for handling OAUTH and all of the fun stuff that goes along with Twitter integration and found that <a href="https://github.com/mattgemmell/MGTwitterEngine/">MGTwitterEngine</a> was the least painful to implement. I say least painful because it has a few quirks of it's own along with not having the best documentation in the world.</p>
+
+<p>So after battling for a bit to get the thing compiled, I have figured out the setup process :).  You could also read <a href="https://github.com/mattgemmell/MGTwitterEngine/wiki/Building-and-testing-MGTwitterEngine">Matt's installation instructions</a>, but I will regurgitate them here a little differently and hopefully be more clear.   So here it is:</p>
+
+<ol>
+    <li>Make sure you have git installed.  If not, <a href="http://code.google.com/p/git-osx-installer/">download it for OSX here</a>.</li>
+    <li>cd to the directory that you want to clone the files to</li>
+    <li>Clone the MGTwitterEngine repository. Type:
+$ <strong>git clone git://github.com/mattgemmell/MGTwitterEngine.git</strong></li>
+    <li>cd into the MGTwitterEngine folder (we will install the dependancies at this level)</li>
+    <li>Now install the dependancies (<a href="https://github.com/schwa/TouchJSON">TouchJSON</a> and <a href="https://github.com/ctshryock/oauthconsumer">OAUTHConsumer</a>). Note: There is an option to use yajl (yet another json library), but I found it a pain to integrate, so we will just throw it out.
+$ <strong>git clone git://github.com/schwa/TouchJSON.git</strong>
+$ <strong>git clone git://github.com/ctshryock/oauthconsumer.git</strong></li>
+</ol>
+
+
+<p>Altogether, this is the order of commands you should have:
+<div>
+  <pre><code class='bash'>$ cd ~/Desktop
+$ git clone git://github.com/mattgemmell/MGTwitterEngine.git
+$ cd MGTwitterEngine
+$ git clone git://github.com/schwa/TouchJSON.git
+$ git clone git://github.com/ctshryock/oauthconsumer.git</code></pre>
+</div>
+</p>
+
+<h4>Building MGTwitterEngine (What a freakin pain)</h4>
+
+
+<p>I find it interesting that this project is riddled with errors directly upon download.  So much work went into it, yet it's so challenging to get working.</p>
+
+<p>Now open up MGTwitterEngine.xcodeproj.  You will notice that there are quite a few missing files (they show in red).  That's fine.  DELETE THEM ALL...</p>
+
+<ol>
+    <li>Delete the <strong>yajl</strong> group with everything in it</li>
+    <li>Delete the <strong>Twitter YAJL Parsers</strong> group and everything in it</li>
+    <li>Delete <strong>OAToken_KeychainExtensions.m</strong> and <strong>OAToken_KeychainExtensions.h</strong> (they are not used)</li>
+    <li>Delete <strong>CJSONDataSerializer.h</strong> and <strong>CJSONDataSerializer.m</strong></li>
+    <li>Delete <strong>CSerializedJSONData.h</strong> and <strong>CSerializedJSONData.m</strong></li>
+    <li>Click the arrow on the OAuthConsumer group and you will notice that the <strong>Crypto</strong> is missing.  We still need this group, but it's in the wrong place. Delete this group and then open up your MGTwitterEngine folder in Finder. Navigate to <strong>MGTwitterEngine-&gt;oauthconsumer</strong>.  Drag the <strong>Crypto</strong> folder into your project.</li>
+    <li>We need to change the C Language Dialect to C99.  To do this right click on MGTwitterEngine in XCode and click Get Info.  Scroll down to C Language Dialect and click the drop down changing it to C99
+<a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.22.12-PM.png"><img class="alignnone size-full wp-image-1097" title="Screen shot 2010-12-02 at 9.22.12 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.22.12-PM.png" alt="" width="474" height="64" /></a></li>
+    <li>Finally, we need to tell MGTwitterEngine that we want to use TouchJSON instead of yajl.  To do this open up <strong>MGTwitterEngineGlobalHeader.h</strong> and set TOUCHJSON_AVAILABLE to 1.</li>
+    <li>If you still have any hair left at this point, click Build and Run to and check out the output in the Console</li>
+    <li>If you don't feel like jumping through all of these hoops you can download my MGTwitterEngine project with all of this fun stuff completed. <a href="http://brandontreb.com/wp-content/uploads/2010/12/MGTwitterEngine.zip">Download it here</a>.</li>
+</ol>
+
+
+<h4>Testing MGTwitterEngine</h4>
+
+
+<p>For today's tutorial, we will just be displaying our timeline and updating our status using the demo file provided by MGTwitterEngine.  In the next tutorial, we will actually be integrating the engine into a new project.  So, open up <strong>AppController.m</strong> in the <strong>Demo</strong> group.  Matt has given us some nice variables to fill in, in order to make this thing work.  Let's update to applicationDidFinishLaunching method to look like the code below:
+<div>
+  <pre><code class='objc'>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    // Put your Twitter username and password here:
+    NSString *username = @&quot;brandontreb&quot;;
+NSString *consumerKey = @&quot;aKKEsJHTDNsv4xVlMHmMqw&quot;;
+NSString *consumerSecret = @&quot;oldpeoplenakedcriscotwister&quot;;
+
+    // Create a TwitterEngine and set our login details.
+    twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
+[twitterEngine setUsesSecureConnection:NO];
+[twitterEngine setConsumerKey:consumerKey secret:consumerSecret];
+[twitterEngine setUsername:username];
+
+token = [[OAToken alloc] initWithKey:@&quot;16369316-GgqA00WO0poCAj0XAFhJYDDRthVvWMxTnVyKdfWa1&quot;
+                              secret:@&quot;StrongEnoughForAManButMadeForAWoman&quot;];
+[twitterEngine setAccessToken:token];
+[twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+
+So obviously I changed my consumer secret and Access Token Secret. You will need to fill this out with your information.  Here is how to obtain them.</p>
+
+<p><strong>Consumer Key &amp; Consumer Secret</strong></p>
+
+<p>When logged into http://developer.twitter.com/apps/ , click on the application that you created in the first step:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.51.55-PM.png"><img class="alignnone size-full wp-image-1101" title="Screen shot 2010-12-02 at 9.51.55 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.51.55-PM.png" alt="" width="322" height="133" /></a></p>
+
+<p>Scroll down and you should see the Consumer Key and the Consumer Secret.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.50.46-PM.png"><img class="alignnone size-full wp-image-1102" title="Screen shot 2010-12-02 at 9.50.46 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.50.46-PM.png" alt="" width="399" height="158" /></a></p>
+
+<p><strong>Access Token &amp; Access Token Secret</strong></p>
+
+<p>In the right column, you should see a link titled "My Access Token".  Click on it.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.52.05-PM.png"><img class="alignnone size-full wp-image-1103" title="Screen shot 2010-12-02 at 9.52.05 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.52.05-PM.png" alt="" width="218" height="38" /></a></p>
+
+<p>Now you should see YOUR Access Token and Access Token Secret</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.52.15-PM.png"><img class="alignnone size-full wp-image-1104" title="Screen shot 2010-12-02 at 9.52.15 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-02-at-9.52.15-PM.png" alt="" width="444" height="156" /></a></p>
+
+<h4>Have Fun!</h4>
+
+
+<p>After you copy the tokens, keys, and secrets into the app, you should be able start making calls to Twitter using the engine.  Build and run the application at this point and watch your home timeline get output to the console.  One thing I want to point out is we are displaying an NSDictionary.  That means MGTwitterEngine did all of the parsing for us (using TouchJSON), which is super rad.</p>
+
+<p>One more thing to try for fun is to update your status.  It will even show that you updated it from YOUR application on Twitter.  Add the following line and run it again.
+<div>
+  <pre><code class='objc'>[twitterEngine sendUpdate:@&quot;@brandontreb is a code gangster!  Check out his #iDevBlogADay post on making your own Twitter client here http://bit.ly/gGrZvI&quot;];</code></pre>
+</div>
+
+Well, that does it for today.  Join me next week when I will show you how to move the engine into your own project and we will begin displaying tweets in a basic table view.</p>
+
+<p>Happy Coding!</p>
+
+<p><a href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets/">Click Here To Go To Part 2</a></p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[XCode Tips And Shortcuts To Improve Your Workflow]]></title>
+    <link href="http://brandontreb.github.com/xcode-tips-and-shortcuts-to-improve-your-workflow/"/>
+    <updated>2010-11-18T02:01:59-07:00</updated>
+    <id>http://brandontreb.github.com/xcode-tips-and-shortcuts-to-improve-your-workflow</id>
+    <content type="html"><![CDATA[<h4>Intro</h4>
+
+
+<p>This is my first <a href="http://idevblogaday.com">#iDevBlogADay</a> post and I wanted to give a quick intro before jumping in.  My name is Brandon Trebitowski and I'm a software developer and author from Albuquerque, New Mexico.  I graduated from the University of New Mexico in 2008 with a bachelors degree in computer science.  For the past 2 years, I have been writing mobile applications (primarily for the iPhone) for <a href="http://elctech.com/">ELC Technologies</a>.</p>
+
+<p>I also started <a href="http://icodeblog.com">http://icodeblog.com</a> and currently write on it about once a month.</p>
+
+<h4>A Post On XCode Shortcuts?</h4>
+
+
+<p><a href="http://www.1729.us/xcode/Xcode%20Shortcuts.png"><img class="alignleft" title="XCode Shortcuts" src="http://www.1729.us/xcode/Xcode%20Shortcuts.png" alt="" width="130" height="134" /></a>Well, I'm sure by now, you have seen countless <a href="http://www.1729.us/xcode/Xcode%20Shortcuts.png">infographics and "cheat sheets"</a> chock full of XCode shortcuts, tips, etc... These can be great resources, however, if you are anything like me, you see these, tweet the link, and move on never looking at them again.  The only difference between these and the XCode key-bindings menu IMHO is a fancy background. So, I thought I would share some of the most important shortcuts that I have adopted to really improve my workflow.  We spend so much time inside of XCode, it is worth the time to learn some of these.</p>
+
+<h4>Build Commands</h4>
+
+
+<p>By now, I would hope that you don't click the "Build and Go/Debug" with your mouse whenever you want to run your application.  If you do, no worries, here are some of the build quick keys.</p>
+
+<p><strong>⌘ return - </strong>This builds and launches the application in debug mode.
+<strong>shift ⌘ return </strong>- Kills the running application in the simulator.
+<strong>shift ⌘ k - </strong>Cleans the build target.
+<strong>shift ⌘ a - </strong>Build and Analyze.  This is quite possible the most important command to learn.  This invokes the static analyzer to help spot memory issues in your code.  Run this as early and often as possible.</p>
+
+<p>My general workflow after writing a bit of code is to kill the last run, clean, analyze (hopefully not spend time on memory issues), and then build and debug.  These 4 commands in sequence are much faster than searching out the menu items for each of those commands.</p>
+
+<h4>File Management and Navigation</h4>
+
+
+<p>Navigating around files is one of the most common tasks you will perform in XCode.  It is really to your advantage to speed things up.</p>
+
+<p><strong>option ⌘ ↑</strong> - This quickly switches between your .h and .m file.
+<strong>⌘ ↑ - </strong>Move to the top of the file
+<strong>⌘ ↓ - </strong>Move to the bottom of the file <img class="size-full wp-image-1026 alignright" title="Screen shot 2010-11-18 at 8.14.35 AM" src="http://brandontreb.com/wp-content/uploads/2010/11/Screen-shot-2010-11-18-at-8.14.35-AM.png" alt="" width="265" height="188" />
+<strong>shift ⌘ d - </strong>This was recently showed to my by <a href="http://twitter.com/cruffenach">@cruffenach</a> and it has drastically sped up my workflow.  This is the command for "Open Quickly".  It brings up a small window with a search box at the top.  Typing in the box instantly searches your project and allows you to quickly open up files by pressing return on the selected file.  I can't believe I had been using XCode for so long before I found out about this command.</p>
+
+<h4>Binding Your Own Quick Keys</h4>
+
+
+<p>Some commands simply don't have quick keys.  For example, I constantly use the <strong>Edit -&gt; Sort -&gt; By Name</strong> command to sort my source files alphabetically.  By default, you must click through all of the menus and select the command to get it to work.  However, XCode (like most OSX applications) will allow you to define your own quick keys and here's how.</p>
+
+<ol>
+    <li>Open up the XCode Preferences</li>
+    <li>Click on the Key Bindings tab</li>
+    <li>Navigate to the command that you want to bind keys for. (hint: they are organized the same way they in the top menu)</li>
+    <li>Once you have found the command, double click in the Key column</li>
+    <li>Press the keys that you wish to bind (I bound <strong>option shift ⌘ s</strong> for sorting)</li>
+    <li>If there are any conflicts, XCode will let you know.  Otherwise, press apply and you're good to go.</li>
+</ol>
+
+
+<h4>Wrap Up</h4>
+
+
+<p>Well, this concludes my relatively short first post for <a href="http://idevblogaday.com">#idevblogaday</a>.  If you have any shortcuts of your own that you can't live without, please share them in the comments.  I'm always up to improve my workflow.</p>
+
+<p>Thank you to everyone (especially <a href="http://twitter.com/mysterycoconut ">@mysterycoconut</a>) for allowing me to be a part of this community and I look forward to sharing my knowledge and experiences with you.</p>
+
+<p>Happy Coding!</p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+]]></content>
+  </entry>
+  
+</feed>

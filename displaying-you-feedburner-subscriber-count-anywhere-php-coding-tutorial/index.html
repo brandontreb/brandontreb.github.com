@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Displaying Your FeedBurner Subscriber Count Anywhere - PHP Coding Tutorial - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="If you are a serious blogger (and I&#8217;m sure you are), you probably track your RSS subscribers with FeedBurner.  If you don&#8217;t, you should &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/displaying-you-feedburner-subscriber-count-anywhere-php-coding-tutorial/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Displaying Your FeedBurner Subscriber Count Anywhere - PHP Coding Tutorial</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-10T01:00:27-06:00" pubdate data-updated="true">Aug 10<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><center><a href="http://feedburner.com"><img src="http://brandontreb.com/wp-content/uploads/2009/08/feedburner-logo1.png" alt="feedburner-logo1" title="feedburner-logo1" width="200" height="200" class="alignnone size-full wp-image-438" /></a></center>
+
+
+<p>If you are a serious blogger (and I&#8217;m sure you are), you probably track your RSS subscribers with <a href="http://feedburner.com">FeedBurner</a>.  If you don&#8217;t, you should be.  One thing that has always bugged me about FeedBurner is if you ever wanted to display the number of subscribers on your blog, you were stuck using their image.  The image looks like this:</p>
+
+<p><a href="http://feeds.feedburner.com/brandontreb"><img style="border:0" src="http://feeds.feedburner.com/~fc/brandontreb?bg=99ccff&amp;fg=444444&amp;anim=0" alt="" width="88" height="26" /></a></p>
+
+<p>I&#8217;m sure you have seen this logo everywhere.  Well, not too many people know it, but FeedBurner actually has a very simple API that allows you to just get the subscriber count so you can display it however you would like.</p>
+
+<p>So rather than being limited to this boring icon, you can display your live subscriber count anywhere on your blog.  If you are feeling adventurous, you could even super impose it on to your own custom image using the GD library (tutorial to come if sufficient interest, post in the comments if you would like to see it).</p>
+
+<p>Let&#8217;s get started&#8230;</p>
+
+<h2>1. Activate the Awareness API Inside Of Feedburner</h2>
+
+
+<p>Log in to FeedBurner.  Click the <strong>Publicize</strong> tab and the click <strong>Awareness API</strong>.  Finally, click <strong>Activate</strong>.  The service is now enabled.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2009/08/awareness_api.jpg"><img class="alignnone size-full wp-image-420" title="awareness_api" src="http://brandontreb.com/wp-content/uploads/2009/08/awareness_api.jpg" alt="awareness_api" width="477" height="331" /></a></p>
+
+<h2>2. Write The PHP Code To Interface With FeedBurner</h2>
+
+
+<p>There is a lot of data that you could potentially get from FeedBurner, but the code below will just show you how to get your <strong>subscriber count</strong>.</p>
+
+<p>All you need to do is make a simple GET request using CURL to the URL https://feedburner.google.com/api/awareness/1.0/GetFeedData?uri=brandontreb . Of course replacing <b>brandontreb</b> with your feed&#8217;s name.</p>
+
+<ul>
+
+<div>
+  <pre><code class='php'>&lt;?php
+
+$url    = &quot;https://feedburner.google.com/api/awareness/1.0/GetFeedData?uri=brandontreb&quot;;
+$ch     = curl_init();
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $url);
+$data = curl_exec($ch); 
+curl_close($ch);        
+if ($data) {
+    echo $data;
+    preg_match('/circulation=\&quot;([0-9]+)\&quot;/',$data, $matches);
+    if ($matches[1] != 0) {
+        $subscriberCount = $matches[1];
+    }
+}
+
+echo &quot;Join the other $subscriberCount people and subscriber to my RSS feed.&quot;
+
+?&gt;</code></pre>
+</div>
+
+
+This code is pretty straight forward with a little trickiness to parse the XML.  We first make a <a href="http://us3.php.net/curl">CURL</a> connection to the URL.  Just replace <b>brandontreb</b> with the title of your RSS feed inside of FeedBurner.
+
+Next we print the data.  Note: You won&#8217;t see the data in your browser unless you do a <b>view source</b>.  Since it is XML, your browser will treat it like HTML and not display it.  So, we do a <a href="http://us3.php.net/manual/en/function.preg-match.php">preg_match</a> for the element <b>circulation</b> and get it&#8217;s value. (Pretty sick right?).  The value of our <b>subscriber count</b> will be at index 1 of the matches array.
+
+Then, we just print the subscriber count and voila! 
+
+Now, you are no longer a slave to that generic FeedBurner subscriber count icon.  Be sure to <a href="http://code.google.com/apis/feedburner/awareness_api.html">check out their API</a> for other cool things that you can do with their web services. If you have any questions, feel free to leave them in the comments section of this post. Happy Coding!
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-10T01:00:27-06:00" pubdate data-updated="true">Aug 10<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>Articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/displaying-you-feedburner-subscriber-count-anywhere-php-coding-tutorial/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/displaying-you-feedburner-subscriber-count-anywhere-php-coding-tutorial/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/easily-create-and-manage-sqlite-databases-with-a-firefox-plugin/" title="Previous Post: Easily Create And Manage SQLite Databases With A Firefox Plugin">&laquo; Easily Create And Manage SQLite Databases With A Firefox Plugin</a>
+      
+      
+        <a class="basic-alignment right" href="/iphone-in-action-book/" title="Next Post: iPhone In Action Book">iPhone In Action Book &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

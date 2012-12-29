@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: icodeblog | Brandon Trebitowski]]></title>
+  <link href="http://brandontreb.github.com/blog/categories/icodeblog/atom.xml" rel="self"/>
+  <link href="http://brandontreb.github.com/"/>
+  <updated>2012-12-29T12:29:54-07:00</updated>
+  <id>http://brandontreb.github.com/</id>
+  <author>
+    <name><![CDATA[Brandon Trebitowski]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[5 Third Party iOS Libraries I Have Found Useful Lately]]></title>
+    <link href="http://brandontreb.github.com/five-third-party-libraries/"/>
+    <updated>2012-08-24T00:00:00-06:00</updated>
+    <id>http://brandontreb.github.com/five-third-party-libraries</id>
+    <content type="html"><![CDATA[<p>As I mature as a developer, I try to rely on other people's code more an more.  Why build something from scratch when a solution already exists that you can fit in your project.  In <a href="http://itunes.apple.com/us/app/pocket-mud-pro/id511678455?mt=8">Pocket MUD Pro</a>, I used <strong>13</strong> 3rd party libraries and am using quite a bit more in the project that I'm currently working on.  I figured that I would share some of the libraries that I have been using so that it might save you some time in the future.</p>
+
+<h2>1. CocoaAsyncSocket</h2>
+
+<p><strong>Link:</strong> <a href="https://github.com/robbiehanson/CocoaAsyncSocket">https://github.com/robbiehanson/CocoaAsyncSocket</a></p>
+
+<p>Many of my applications involve TCP or UDP networking. There is a lot of boiler plate code involved in every networked application, and CocoaAsyncSocket solves much of that for you.</p>
+
+<h2>2. Appirater</h2>
+
+<p><strong>Link:</strong> <a href="http://github.com/arashpayan/appirater/">http://github.com/arashpayan/appirater/</a></p>
+
+<p><img src="http://arashpayan.com/blog/wp-content/uploads/2009/09/AppiraterScreenshot.png" alt="Screenshot" /></p>
+
+<p>Hopefully, you have heard of this one or a similar library by now.  It's very challenging to get users to want to review your applications, let alone give you a positive review.  AppiRater allows you to prompt a user to rate your application based on either number of launches or "significant events" which you specify.</p>
+
+<h2>3. Zip Archive</h2>
+
+<p><strong>Link:</strong> <a href="http://code.google.com/p/ziparchive/">http://code.google.com/p/ziparchive/</a></p>
+
+<p>I try to ship small applications that download assets upon launch.  A good way to send these assets over the wire is to zip them up and stick them on your server.  I have written an article about this on <a href="http://www.icodeblog.com/2012/08/13/unzipping-files-using-zip-archive/">iCodeBlog</a>.</p>
+
+<h2>4. Quick Dialog</h2>
+
+<p><strong>Link: </strong> <a href="https://github.com/escoz/QuickDialog">https://github.com/escoz/QuickDialog</a></p>
+
+<p>Creating forms in iOS is pretty painful. It usually involves custom table cells and a lot of delegate nonsense.  QuickDialog takes away some of this pain and allows you to easily create iOS forms.  You can even design them using JSON.</p>
+
+<p><img src="https://github.com/escoz/QuickDialog/raw/master/other/quickdialog2.png" alt="QuickDialog Screenshot" /></p>
+
+<h2>5. TSMiniWebBrowser</h2>
+
+<p><strong>Link:</strong> <a href="https://github.com/tonisalae/TSMiniWebBrowser">https://github.com/tonisalae/TSMiniWebBrowser</a></p>
+
+<p>Often times, you want a quick and dirty browser in your application.  I generally use it to point to in-app documentation or take the user to a page after tapping on a link. It's quick and easy.</p>
+
+<p><img src="https://a248.e.akamai.net/camo.github.com/1cae2dfc9160aa6a8e0583d0682d78462c97d60f/687474703a2f2f646c2e64726f70626f782e636f6d2f752f373630343232322f4769744875622f54534d696e6957656242726f777365722f73686f745f30315f7468756d622e706e67" alt="Screenshot" /></p>
+
+<p>I hope you find some value in this list.  I'd love to hear about the libraries <strong>you</strong> use frequently.</p>
+
+<p>Happy Coding!</p>
+]]></content>
+  </entry>
+  
+</feed>

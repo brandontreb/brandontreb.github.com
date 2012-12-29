@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="Tweetpress now supports the hugely popular iPhone Twitter client Twitter for iPhone.  Here are the steps to set it up: Configure TweetPress Set you &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/blog/page/13/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutorial-tweetpress-integration-with-tweetie/">Tutorial â Tweetpress Integration With Tweetie</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-15T13:35:21-06:00" pubdate data-updated="true">Oct 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p style="text-align: center;"><a href="http://brandontreb.com/wp-content/uploads/2009/10/tweetiei2-large.png"><img class="alignnone size-full wp-image-544" title="tweetiei2-large" src="http://brandontreb.com/wp-content/uploads/2009/10/tweetiei2-large.png" alt="tweetiei2-large" width="180" height="180" /></a></p>
+
+
+<p><a href="http://wordpress.org/extend/plugins/tweetpress/">Tweetpress</a> now supports the hugely popular iPhone Twitter client <a href="http://www.atebits.com/tweetie-iphone/">T</a>witter for iPhone.  Here are the steps to set it up:</p>
+
+<h2>Configure TweetPress</h2>
+
+
+<ol>
+    <li>Set you blog permissions.  As of version 2.0.2, Tweetpress requires that your wp-content directory is 777 during install. This is because Tweetpress needs to make a folder to store your images in.  Once this folder is made, you can set the wp-content permissions back to 755.  Just make sure the Tweetpress directory remains 777 (as well as the sub directory). If you change it back, Tweetpress might yell at you but it will still work as long as wp-content/tweetpress is writable (777).  I hope to change this in the future.
+<a href="http://brandontreb.com/wp-content/uploads/2009/10/screenshot_03.png"><img class="alignnone size-full wp-image-537" title="screenshot_03" src="http://brandontreb.com/wp-content/uploads/2009/10/screenshot_03.png" alt="screenshot_03" width="427" height="83" /></a></li>
+    <li><a href="http://wordpress.org/extend/plugins/tweetpress/">Download</a> and install the TweetPress plugin on your Wordpress site.</li>
+    <li>Configure TweetPress.  In your Wordpress admin, navigate to Settings -&gt; Tweetpress.
+<ol>
+    <li>Select a page from the drop down for your gallery to appear on.  If you don&#8217;t select a page, Tweetpress will try to use your homepage. You may want to create a separate &#8220;Gallery&#8221; page for the plugin to go on. Then select authentication type.  You can select either:
+<ol>
+    <li>none: anyone can post</li>
+    <li>Wordpress Login: validates on your wordpress username and password</li>
+    <li>Twitter: Requires you to enter your twitter username and password both in the admin and in the Twitter client (note: this is no longer the recommended way for authentication, and you should use Wordpress auth)</li>
+</ol>
+</li>
+    <li><a href="http://brandontreb.com/wp-content/uploads/2009/10/Screen-shot-2010-10-28-at-7.46.22-AM.png"><img class="alignnone size-full wp-image-989" title="Screen shot 2010-10-28 at 7.46.22 AM" src="http://brandontreb.com/wp-content/uploads/2009/10/Screen-shot-2010-10-28-at-7.46.22-AM.png" alt="" width="403" height="161" /></a></li>
+    <li>If you selected Twitter Login (which you shouldn&#8217;t, but it&#8217;s here for legacy support) <span style="color: #ff0000;">Note</span>: Twittelator Pro ONLY supports Wordpress login.
+<ol>
+    <li>Add your Twitter username</li>
+    <li>Add your Twitter password</li>
+    <li>Click &#8220;Save Twitter settings&#8221;</li>
+    <li><a href="http://brandontreb.com/wp-content/uploads/2009/10/screenshot_01.png"><img class="alignnone size-full wp-image-539" title="screenshot_01" src="http://brandontreb.com/wp-content/uploads/2009/10/screenshot_01.png" alt="screenshot_01" width="464" height="254" /></a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+
+<h2>Configure Tweetie</h2>
+
+
+<ol>
+    <li>Open your Tweetie settings
+<a href="http://brandontreb.com/wp-content/uploads/2009/10/photo.jpg"><img class="alignnone size-full wp-image-540" title="photo" src="http://brandontreb.com/wp-content/uploads/2009/10/photo.jpg" alt="photo" width="320" height="480" /></a></li>
+    <li>Tap <strong>Image Service</strong></li>
+    <li>Tap <strong>Custom&#8230;</strong>
+<a href="http://brandontreb.com/wp-content/uploads/2009/10/photo-2.jpg"><img class="alignnone size-full wp-image-541" title="photo 2" src="http://brandontreb.com/wp-content/uploads/2009/10/photo-2.jpg" alt="photo 2" width="320" height="480" /></a></li>
+    <li>In the <strong>Image Service API Endpoint</strong> type in the URL to the <strong>homepage</strong> of your blog.  Note, this is NOT your gallery page.  Also, and this is REALLY IMPORTANT.  If Wordpress is installed in a sub-directory (ie http://brandontreb.com/blog), you need to include the <strong>/index.php </strong>at the end.  This is a weird Wordpress issue.
+Also, Twitter for iPhone does not send any login information, so you MUST send your Wordpress (or Twitter if you selected it) username and password in the URL by adding ?username=WPUsername&amp;password=WPPassword to the end of the URL.  I know this isn&#8217;t ideal, but Twitter made this change when they purchased Tweetie from Atebits.
+So, as an example, if wordpress is installed at http://brandontreb.com/blog, I would want to enter http://brandontreb.com/blog/index.php?username=WPUsername&amp;password=WPPassword.</li>
+    <li> <a href="http://brandontreb.com/wp-content/uploads/2009/10/photo-5.jpg"><img class="alignnone size-full wp-image-542" title="photo 5" src="http://brandontreb.com/wp-content/uploads/2009/10/photo-5.jpg" alt="photo 5" width="320" height="480" /></a></li>
+    <li>Tap <strong>Save</strong></li>
+    <li>Upload photos as usual and forget about Twitpic!</li>
+</ol>
+
+
+<h2>Troubleshooting</h2>
+
+
+<ol>
+<li><p>The most common issues are related to file permissions.  If you are having a problem, check to make sure that the tweetpress directory has been created inside your wp-content folder.  If not, try manually creating a folder named tweetpress inside of wp-content. Set its file permissions to 777.  Then, create a folder inside of the tweetpress folder. Name it thumbs. Make sure its file permissions are set to 777.</p></li>
+<li><p>Another problem could be that Wordpress is having trouble with the upload.  Try adding /index.php to your web address in the Tweetie custom image settings.  Again, this is very important if Wordpress is installed in a directory that is not the root.</p></li>
+<li><p>Uninstall and reinstall.  Sounds dumb, but this is always a good step when troubleshooting plugin issues.</p></li>
+<li><p>Make sure you are up-to-date on your Tweetpress and Wordpress installations.</p></li>
+</ol>
+
+
+<p>So, one thing I want to mention.  Wordpress is a very large application with many different configuration options.  I have tried to cover all types of installations with TweetPress. If Tweetpress is not working for you, don&#8217;t bug Loren, send me an email at brandontreb [at] gmail [dot] com.  Include the following information:</p>
+
+<ul>
+    <li>If WP is installed in the root directory or a sub-directory</li>
+    <li>The URL rewrite settings your are using (if any). this is also known as your permalink structure.</li>
+    <li>The location of your blog and gallery page (so I can check it out)</li>
+    <li>Any other info you think might be helpful</li>
+</ul>
+
+
+<p>You can also <a href="http://twitter.com/brandontreb">ping me on Twitter</a>.</p>
+
+<p>Thanks for checking out Tweetpress and please send me all of your suggestions for features.  While I won&#8217;t get to all of them, I will certainly add the one&#8217;s that are most requested.  So feel free to send me any and all suggestions.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tweetpress-now-supported-by-twittelator-pro/">TweetPress Now Supported by Twittelator Pro</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-05T23:00:38-06:00" pubdate data-updated="true">Oct 5<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For many of you this is old new.  But since it&#8217;s latest release, Twittelator Pro has supported TweetPress as one of the options for Photo Posting.  Here are the steps to configure Twittelator Pro:</p>
+
+<ol>
+       <li>First, make sure you have TweetPress installed on your Wordpress blog by following the installation instructions <a href="http://brandontreb.com/tweetpress/">here</a></li>
+    <li>Tap the <strong>Settings</strong> tab</li>
+    <li>Select <strong>Wordpress</strong> from the dropdown under <strong>Choose Photo Service</strong>
+<img class="alignnone size-full wp-image-364" src="http://brandontreb.com/wp-content/uploads/2009/10/p_480_320_74ABB206-5D4F-424E-BE39-380AC8611ED1.jpeg" alt="" width="200" height="300" /></li>
+    <li><strong> </strong>Tap <strong>Other Services </strong>(you should see the Wordpress logo) and then tap <strong>Tweetpress for iPhone </strong>
+<img class="alignnone size-full wp-image-364" src="http://brandontreb.com/wp-content/uploads/2009/10/p_480_320_F52EAD4F-B44E-497E-AB49-13C8AB565EF4.jpeg" alt="" width="200" height="300" /></li>
+    <li><strong></strong> Enter in your Wordpress credentials
+<ol>
+    <li>Site Link: The URL of the hompage of your wordpress blog</li>
+    <li>Username - your wordpress username</li>
+    <li>Password - your wordpress password</li>
+</ol>
+<img class="alignnone size-full wp-image-364" src="http://brandontreb.com/wp-content/uploads/2009/10/p_480_320_B39E129D-6327-41C5-94DE-474D13974ED7.jpeg" alt="" width="200" height="300" /></li>
+    <li>Tap Done</li>
+</ol>
+
+
+<p>You should now be good to go.  Any time you choose to post a photo to your Twitter stream, it will use your TweetPress plugin on your Wordpress blog.  Please let me know if you encounter any issues or have suggestions for Tweetpress.</p>
+
+<p>I have been in contact with developers of other popular Twitter clients and hope to get Tweetpress integrated in them soon.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2009/10/p_480_320_74ABB206-5D4F-424E-BE39-380AC8611ED1.jpeg"></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/post-photos-to-twitter-from-your-wordpress-blog-with-tweetpress/">Post Photos to Twitter From Your Wordpress Blog With TweetPress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-18T02:41:23-06:00" pubdate data-updated="true">Sep 18<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p style="text-align: center;"><img class="alignnone size-medium wp-image-507" title="twit" src="http://brandontreb.com/wp-content/uploads/2009/09/twit-500x207.png" alt="twit" width="500" height="207" /></p>
+
+
+<p style="text-align: left;">That&#8217;s right.  With the latest release of TweetPress (version 1.1.1), you can post photos directly to Twitter from your Wordpress blog&#8217;s gallery page.  Here are the steps to do it.</p>
+
+
+
+
+<ol>
+    <li>Navigate to the TweetPress admin <strong>Settings &gt; TweetPress</strong></li>
+    <li>Enter your Twitter username and password</li>
+    <li>Press the <strong>Save Twitter Settings</strong> button
+<ol>
+    <li>TweetPress will verify your username and password with Twitter</li>
+    <li>If they are incorrect, it will let you know and you must re enter them</li>
+</ol>
+</li>
+    <li>Navigate to your gallery page</li>
+    <li>You should now see a form that has a text box and an upload button</li>
+    <li>Click <strong>browse</strong> to find an image on your computer to post</li>
+    <li>Enter your Tweet in the box</li>
+    <li>Click <strong>Post</strong></li>
+</ol>
+
+
+<p>It&#8217;s very quick and easy.  If you have any suggestions for TweetPress please <a href="http://brandontreb.com/contact-me/">contact me</a>, or leave comments in this post.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tweetpress-coming-soon-to-a-twitter-client-near-you/">TweetPress Coming Soon to a Twitter Client Near You</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-10T01:29:05-06:00" pubdate data-updated="true">Sep 10<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote>TweetPress is the Wordpress plugin that gives you total control and ownership of the photos you post to Twitter, sending your traffic back to your own blog, instead of a third party site</blockquote>
+
+
+<p>I just finished development of this Wordpress plugin and Andrew Stone of Twittelator has integrated it into his latest version of <a href="http://stone.com/Twittelator/index.html">Twittelator Pro</a>.  As of this post, that version is still in review, so you will have to wait until it is approved to make use of TweetPress.</p>
+
+<p>I have some other very big plans for future releases of TweetPress and if you have any feature requests, feel free to drop me a line.  I will do a post as soon as the latest version of Twittelator is approved and demo how it integrates with TweetPress.</p>
+
+<p><img style="display:none" class="alignnone size-full wp-image-489" title="Twittelator" src="http://brandontreb.com/wp-content/uploads/2009/09/Twittelator.png" alt="Twittelator" width="128" height="128" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/iphone-in-action-book/">iPhone in Action Book</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-29T01:39:09-06:00" pubdate data-updated="true">Aug 29<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p style="text-align: center;"><a href="http://brandontreb.com/wp-content/uploads/2009/08/iphone-in-action.jpg"><img class="size-thumbnail wp-image-456  aligncenter" title="iphone-in-action" src="http://brandontreb.com/wp-content/uploads/2009/08/iphone-in-action-300x300.jpg" alt="iphone-in-action" width="300" height="300" /></a></p>
+
+
+<p style="text-align: left;">A couple months ago, I was asked by someone on Twitter if they could &#8220;introduce me to someone&#8221;.  I found this question a little odd so I responded with &#8220;like a girl or a developer?&#8221;.  I often tweet about my wife, so I was hoping he was not referring to a girl.  He replied with &#8220;no, someone at Manning Publishing, they are looking for an author for their book iPhone In Action&#8221;.  So, I was put in contact with Manning and they eventually offered me the position as one of the authors on the book iPhone In Action.</p>
+
+
+<p style="text-align: left;">iPhone In Action is a book (that is already out) and details how to program for the webkit as well as the native iPhone OS.  I will be removing the webkit chapters, updating some of the dated chapters, and writing about 6 new chapters related to OS 3.0.</p>
+
+
+<p style="text-align: left;">I will be posting about the book and my progress along the way (don&#8217;t worry I won&#8217;t stop my random tutorials about Twitter, Wordpress, etc&#8230;). Just wanted to share that and say go out and buy the book (in December when I am finished and will get the commission :) ).</p>
+
+
+<p style="text-align: left;">Happy Coding!</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/displaying-you-feedburner-subscriber-count-anywhere-php-coding-tutorial/">Displaying Your FeedBurner Subscriber Count Anywhere - PHP Coding Tutorial</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-10T01:00:27-06:00" pubdate data-updated="true">Aug 10<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><center><a href="http://feedburner.com"><img src="http://brandontreb.com/wp-content/uploads/2009/08/feedburner-logo1.png" alt="feedburner-logo1" title="feedburner-logo1" width="200" height="200" class="alignnone size-full wp-image-438" /></a></center>
+
+
+<p>If you are a serious blogger (and I&#8217;m sure you are), you probably track your RSS subscribers with <a href="http://feedburner.com">FeedBurner</a>.  If you don&#8217;t, you should be.  One thing that has always bugged me about FeedBurner is if you ever wanted to display the number of subscribers on your blog, you were stuck using their image.  The image looks like this:</p>
+
+<p><a href="http://feeds.feedburner.com/brandontreb"><img style="border:0" src="http://feeds.feedburner.com/~fc/brandontreb?bg=99ccff&amp;fg=444444&amp;anim=0" alt="" width="88" height="26" /></a></p>
+
+<p>I&#8217;m sure you have seen this logo everywhere.  Well, not too many people know it, but FeedBurner actually has a very simple API that allows you to just get the subscriber count so you can display it however you would like.</p>
+
+<p>So rather than being limited to this boring icon, you can display your live subscriber count anywhere on your blog.  If you are feeling adventurous, you could even super impose it on to your own custom image using the GD library (tutorial to come if sufficient interest, post in the comments if you would like to see it).</p>
+
+<p>Let&#8217;s get started&#8230;</p>
+
+<h2>1. Activate the Awareness API Inside Of Feedburner</h2>
+
+
+<p>Log in to FeedBurner.  Click the <strong>Publicize</strong> tab and the click <strong>Awareness API</strong>.  Finally, click <strong>Activate</strong>.  The service is now enabled.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2009/08/awareness_api.jpg"><img class="alignnone size-full wp-image-420" title="awareness_api" src="http://brandontreb.com/wp-content/uploads/2009/08/awareness_api.jpg" alt="awareness_api" width="477" height="331" /></a></p>
+
+<h2>2. Write The PHP Code To Interface With FeedBurner</h2>
+
+
+<p>There is a lot of data that you could potentially get from FeedBurner, but the code below will just show you how to get your <strong>subscriber count</strong>.</p>
+
+<p>All you need to do is make a simple GET request using CURL to the URL https://feedburner.google.com/api/awareness/1.0/GetFeedData?uri=brandontreb . Of course replacing <b>brandontreb</b> with your feed&#8217;s name.</p>
+
+<ul>
+
+<div>
+  <pre><code class='php'>&lt;?php
+
+$url    = &quot;https://feedburner.google.com/api/awareness/1.0/GetFeedData?uri=brandontreb&quot;;
+$ch     = curl_init();
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $url);
+$data = curl_exec($ch); 
+curl_close($ch);        
+if ($data) {
+    echo $data;
+    preg_match('/circulation=\&quot;([0-9]+)\&quot;/',$data, $matches);
+    if ($matches[1] != 0) {
+        $subscriberCount = $matches[1];
+    }
+}
+
+echo &quot;Join the other $subscriberCount people and subscriber to my RSS feed.&quot;
+
+?&gt;</code></pre>
+</div>
+
+
+This code is pretty straight forward with a little trickiness to parse the XML.  We first make a <a href="http://us3.php.net/curl">CURL</a> connection to the URL.  Just replace <b>brandontreb</b> with the title of your RSS feed inside of FeedBurner.
+
+Next we print the data.  Note: You won&#8217;t see the data in your browser unless you do a <b>view source</b>.  Since it is XML, your browser will treat it like HTML and not display it.  So, we do a <a href="http://us3.php.net/manual/en/function.preg-match.php">preg_match</a> for the element <b>circulation</b> and get it&#8217;s value. (Pretty sick right?).  The value of our <b>subscriber count</b> will be at index 1 of the matches array.
+
+Then, we just print the subscriber count and voila! 
+
+Now, you are no longer a slave to that generic FeedBurner subscriber count icon.  Be sure to <a href="http://code.google.com/apis/feedburner/awareness_api.html">check out their API</a> for other cool things that you can do with their web services. If you have any questions, feel free to leave them in the comments section of this post. Happy Coding!
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/easily-create-and-manage-sqlite-databases-with-a-firefox-plugin/">Easily Create and Manage SQLite Databases With a Firefox Plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-06T01:00:58-06:00" pubdate data-updated="true">Aug 6<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you are doing any Mac, iPhone, HTML5, etc&#8230; developement, you have probably had the need for an sqlite database.  So, you fire up your Terminal and start manully typing commands to do CREATEs and INSERTs.</p>
+
+<p>You soon realize that this sucks and wish you had something like (<em>shudders</em>) PHPMyAdmin to manage your database.  Well, now you do and it&#8217;s actually a lot less hiddeous than PHPMyAdmin.</p>
+
+<p>Using the <a href="https://addons.mozilla.org/en-US/firefox/addon/5817">SQLite Manager plugin</a> for Firefox, you can quickly CREATE, MODIFY, and DELETE sqlite databases visually.  It&#8217;s very simple to use and makes the task of database creation a lot less painful.</p>
+
+<p style="text-align: center;"><a href="https://addons.mozilla.org/en-US/firefox/addon/5817"><img class="size-medium wp-image-411 aligncenter" title="sqlitemanager" src="http://brandontreb.com/wp-content/uploads/2009/08/sqlitemanager-500x375.png" alt="sqlitemanager" width="500" height="375" /></a></p>
+
+
+<p style="text-align: left;">Here the description from the plugin site.</p>
+
+
+
+
+<blockquote>
+<p style="text-align: left;">Manage any SQLite database on your computer. An intuitive heirarchical tree showing database objects. Helpful dialogs to manage tables, indexes, views and triggers. You can browse and search the tables, as well as add, edit, delete and duplicate the records. Facility to execute any sql query. The views can be searched too. A dropdown menu helps with the sql syntax thus making writing sql easier. Easy access to common operations through menu, toolbars, buttons and context-menu. Export tables/views/database in csv/xml/sql format. Import from csv/xml/sql (both UTF-8 and UTF-16). Possible to execute multiple sql statements in Execute tab. You can save the queries. Support for ADS on Windows.</p>
+</blockquote>
+
+
+<p>You can <a href="https://addons.mozilla.org/en-US/firefox/addon/5817">download the SQLite Manager plugin for Firefox here.</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/xcode-shortcut-cheat-sheet/">XCode Shortcut Cheat Sheet</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-29T00:00:18-06:00" pubdate data-updated="true">Jul 29<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p style="text-align: left;"><a href="http://www.1729.us/xcode/Xcode%20Shortcuts.png"><img class="alignleft size-thumbnail wp-image-383" title="Xcode Shortcuts" src="http://brandontreb.com/wp-content/uploads/2009/07/Xcode-Shortcuts-300x300.png" alt="Xcode Shortcuts" width="216" height="216" /></a>Through my travels through the internets, I have stumbled upon this amazing reference.  It&#8217;s a complete set of XCode shortcut commands.  Learning some of these commands has drastically improved my efficiency when developing in XCode.</p>
+
+
+<p style="text-align: left;">As a big fan of not using the mouse (yes I&#8217;m and Emacs guy), this is invaluable.  <a href="http://www.1729.us/xcode/Xcode%20Shortcuts.png">Download the full size image here</a>. Enjoy!</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/creating-a-twitter-client-in-objective-c-client-part-2/">Creating a Twitter Client in Objective-C Client Part 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-28T01:00:29-06:00" pubdate data-updated="true">Jul 28<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>This tutorial has moved! I have updated it to support Twitter&#8217;s Oauth, you can find the first tutorial in there series by clicking the link below</h2>
+
+
+<h2><a href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-1/">Creating A Twitter Client For OSX – Part 1</a></h2>
+
+
+<p>This is part 2 in our series about creating a Twitter client in Objective-C.  In case you missed it, here is a <a href="http://brandontreb.com/objective-c-programming-tutorial-creating-a-twitter-client-part-1/">link to part 1</a> of this series.</p>
+
+<p>In the last tutorial I showed you how to retrieve data from Twitter and display the XML in the Console.  Today, we will be focusing on sending messages to Twitter via <a href="http://en.wikipedia.org/wiki/POST_(HTTP)">POST</a>.  We will be implementing the code to update our Twitter status.  So let&#8217;s just dig right in.</p>
+
+<h2>1. Updating The TwitterRequest Header File</h2>
+
+
+<p>Open up TwitterRequest.h and add the following code (Click the image to enlarge)</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2009/07/screenshot_16.png"><img class="size-full wp-image-362 alignnone" title="screenshot_16" src="http://brandontreb.com/wp-content/uploads/2009/07/screenshot_16.png" alt="screenshot_16" width="666" height="395" /></a></p>
+
+<p>We have added two properties.  The first <strong>isPost</strong> will be true when we are calling a method that requires a POST to Twitter.  This will be methods such as update_status, follow, etc&#8230; Next, the variable <strong>requestBody</strong> will hold the POST arguments that will be sent to Twitter.  These will be things such as status text or friend id.</p>
+
+<p>Finally, we will be adding a method called <strong>statuses_update</strong>.  The reason I named it this is because that is what the method is called in the <a href="http://apiwiki.twitter.com/Twitter-API-Documentation">Twitter API</a>. Like our <strong>friends_timeline</strong> method, it takes a delegate and selector to call when the request is complete.</p>
+
+<p><strong>Important:</strong> I didn&#8217;t highlight this in the screenshot but make sure you change <strong>theRequest</strong> from an <strong>NSURLRequest</strong> to <strong>NSMutableURLRequest</strong>.  It will give us some additional methods to set up the POST.</p>
+
+<h2>2. Updating The Twitter Request Class</h2>
+
+
+<p>Open up <strong>TwitterRequest.m </strong>and add the following code (Click the image to enlarge):</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2009/07/screenshot_17.png"><img class="size-full wp-image-363 alignnone" title="screenshot_17" src="http://brandontreb.com/wp-content/uploads/2009/07/screenshot_17.png" alt="screenshot_17" width="670" height="293" /></a></p>
+
+<p>I&#8217;ll start by explaining the <strong>status_update</strong> method.  We first set the global <strong>isPost</strong> property to true.  This will tell the request method to make a POST.  The next 2 lines set the callback stuff as we did before.  The only new line here is setting the <strong>requestBody</strong> variable.  This is just a string that looks like &#8220;status=new twitter status&#8221;.</p>
+
+<p>The addition to the <strong>request </strong>method is what will allow us to POST to Twitter.  First, we check if the <strong>isPost</strong> property is set.  This will be true if <strong>request</strong> is called from our <strong>status_update </strong>method.  Next, we call the <strong>setHTTPMethod</strong> of the request to POST. This is pretty obvious.</p>
+
+<p>The following line let&#8217;s Twitter know the type of data that we are sending to it.  Next, we call <strong>setHTTPBody</strong> to set the body of the request.  At some point we will want to URL Encode this string, but that will be for a different tutorial.  Just don&#8217;t use any special characters such as &amp; and = in your update to Twitter right now.  All that is happening on this line is we convert the string to NSData using the <strong>dataUsingEncoding </strong>method of NSString and set it to the HTTPBody.</p>
+
+<p>The last line just sets the Content-Length property to the length of our string.  This is needed to correctly do a POST.</p>
+
+<h2>3. Calling The statuses_update Method To Update Your Twitter Status</h2>
+
+
+<p>Open up <strong>ApplicationDelegate.m</strong> and add the following code (click the image to enlarge):</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2009/07/screenshot_03.jpg"><img class="size-full wp-image-367 alignnone" title="screenshot_03" src="http://brandontreb.com/wp-content/uploads/2009/07/screenshot_03.jpg" alt="screenshot_03" width="659" height="217" /></a></p>
+
+<p>One thing to notice here is I commented out the line to get the friends timeline.  This is because having both requests running at the same time with the same request object could cause conflicts.  The best way to approch this to create an entirly new TwitterRequest object.  I just wanted to keep it short.</p>
+
+<p>This is pretty straight forward.  We call the <strong>statuses_update</strong> method the same way we called the <strong>friends_timeline</strong> method except pass in the update text.  The information received back from Twitter will look something like this:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2009/07/screenshot_01.jpg"><img class="size-full wp-image-368 alignnone" title="screenshot_01" src="http://brandontreb.com/wp-content/uploads/2009/07/screenshot_01.jpg" alt="screenshot_01" width="616" height="564" /></a></p>
+
+<p>It&#8217;s basically all of your personal profile information.</p>
+
+<p>That&#8217;s it for today.  If you have any comments or questions, feel free to leave them in the comments of this post or <a href="http://twitter.com/brandontreb">write me on Twitter</a>.  You can also download the source for this version below.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2009/07/Chirpie1.zip">Twitter Mac Client Tutorial 2 – Source</a></p>
+
+<p>Happy Coding!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/objective-c-tutorial-helpful-debugging-by-overriding-the-description-method/">Objective-C Tutorial â Helpful Debugging by Overriding the Description Method</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-27T02:47:12-06:00" pubdate data-updated="true">Jul 27<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you have ever coded Java, you know how important the toString() method is.  Well, objective-c has a similar method called <strong>Description. </strong>What overriding the description will allow you to do is, customize the output when you want to print your object.<strong> </strong></p>
+
+<p>Let&#8217;s take an example where you might have a class called <strong>User </strong>that contains a few properties.</p>
+
+<div>
+  <pre><code class='objc'>@interface User : NSObject {
+    NSInteger userID;
+    NSString  *name;
+    NSString  *website;
+}
+@end</code></pre>
+</div>
+
+
+<p>Now, at this point if we did</p>
+
+<div>
+  <pre><code class='objc'>NSLog(@&quot;%@&quot;,user);</code></pre>
+</div>
+
+
+<p>we would end up with output like</p>
+
+<div>
+  <pre><code class='bash'>User: 0xd18f50</code></pre>
+</div>
+
+
+<p>which is not very helpful.  What would be better is when we want to print the user for it to display their userID, name, and website.  This can be done by overriding the <strong>description </strong>method like this.</p>
+
+<div>
+  <pre><code class='objc'>-(NSString *) description {
+    return [NSString stringWithFormat:@&quot;ID: %d\nName: %@\nWebsite: %@\n&quot;,
+            userID,name,website];
+}</code></pre>
+</div>
+
+
+<p>Now when we call</p>
+
+<div>
+  <pre><code class='objc'>NSLog(@&quot;%@&quot;,user);</code></pre>
+</div>
+
+
+<p>is will nicely display this:</p>
+
+<div>
+  <pre><code class='bash'>ID: 42
+Name: brandontreb
+Website: http://brandontreb.com</code></pre>
+</div>
+
+
+<p>Note: NSLog is your best friend when debugging any objective-c application.  Use it often.  Also, to open up the<strong> Debugger Console</strong>, click <strong>Run -&gt; Console</strong>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/14/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/12/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It&#8217;s Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

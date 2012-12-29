@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Creating A Twitter Client For OSX â Part 3: Publishing Tweets - Brandon Trebitowski</title>
+  <meta name="author" content="Brandon Trebitowski">
+
+  
+  <meta name="description" content="Welcome to part 3 of my #iDevblogaday series about creating a Twitter client for OSX Now that we have some of our UI built, we need to add a key &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brandontreb.github.com/creating-a-twitter-client-for-osx-%25e2%2580%2593-part-3-publishing-tweets/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-381854-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brandon Trebitowski</a></h1>
+  
+    <h2>Independent iOS Developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brandontreb.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/hire-me">Hire Me</a></li>
+  <li><a href="https://twitter.com/brandontreb">Twitter</a></li>
+  <li><a href="http://www.linkedin.com/in/brandontreb">Linked In</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Creating a Twitter Client for OSX â Part 3: Publishing Tweets</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-16T07:03:29-07:00" pubdate data-updated="true">Dec 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Welcome to part 3 of my #iDevblogaday series about creating a Twitter client for OSX</p>
+
+<p>Now that we have some of our UI built, we need to add a key feature to our Twitter client: The ability to write and publish a tweet.  We will be adding a textbox that the user can type their tweet into along with a live character counter to ensure the character length does not go beyond 140 characters.  Finally, we will be using  MGTwitterEngine to publish the tweet to Twitter.</p>
+
+<p>In case you didn&#8217;t read it,<a href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets/"> here is a link</a> to the previous tutorial in this series.  We will be using the interface created in it as a basis for this tutorial.</p>
+
+<h4>Updating and Preparing Our Code</h4>
+
+
+<p>Before we jump into the new stuff, I want to back up for a second and do some simple refactoring.  In our last tutorial, we just loaded the new tweets when our application fired up.  That&#8217;s great and all, but it&#8217;s not reusable.  So, we need to make a class property for our MGTwitterEngine and a method that we can call to refresh the tweets.  This will also come in handy later when we implement an auto refresh feature.</p>
+
+<p>Let&#8217;s start by updating our header file TweetsController.h</p>
+
+<div>
+  <pre><code class='objc'>#import 
+
+@class MGTwitterEngine;
+
+@interface TweetsController : NSViewController{
+    IBOutlet NSTableView *tableView;
+    NSMutableArray *tweets;
+    MGTwitterEngine *twitterEngine;
+}
+
+@property (retain) IBOutlet NSTableView *tableView;
+@property (retain) NSMutableArray *tweets;
+@property (retain) MGTwitterEngine *twitterEngine;
+
+- (void) refreshTweets;
+
+@end</code></pre>
+</div>
+
+
+<p>As you can see we have added a few things.  First, at the top we see a forward class declaration for our MGTwitterEngine.  If you recall, forward class declarations are to combat circular imports. Here is a snippet from the objective-c documentation about forward class declarations.</p>
+
+<blockquote>The @class directive minimizes the amount of code seen by the compiler and linker, and is therefore the simplest way to give a forward declaration of a class name. Being simple, it avoids potential problems that may come with importing files that import still other files. For example, if one class declares a statically typed instance variable of another class, and their two interface files import each other, neither class may compile correctly.</blockquote>
+
+
+<p>Next, we create a property called twitterEngine.  It goes without saying by now that you should synthesize this property and release it in your .m file.  I&#8217;m not going to show that code.  Finally, we declare a method called refreshTweets.  This will be the method we will call to when we want to refresh the list of tweets.  At some point we will alter this method to take an additional argument that will allow us to differentiate between timeline, replies, and messages.  For now, we will stick with timeline.</p>
+
+<p>Now let&#8217;s take a look at the updates in the .m file.</p>
+
+<div>
+  <pre><code class='objc'>.
+.
+.
+- (void)awakeFromNib {
+    self.tweets = [[NSMutableArray alloc] init];
+
+    OAToken *token = [[OAToken alloc] initWithKey:@&quot;&quot;
+                                      secret:@&quot;&quot;];;
+
+    // Put your Twitter username and password here:
+    NSString *username = @&quot;brandontreb&quot;;
+    NSString *consumerKey = @&quot;&quot;;
+    NSString *consumerSecret = @&quot;&quot;;
+
+    // Create a TwitterEngine and set our login details.
+    self.twitterEngine = [[[MGTwitterEngine alloc] initWithDelegate:self] autorelease];
+    [twitterEngine setUsesSecureConnection:NO];
+    [twitterEngine setConsumerKey:consumerKey secret:consumerSecret];
+    [twitterEngine setUsername:username];
+    [twitterEngine setAccessToken:token];
+    [self refreshTweets];
+}
+
+- (void) refreshTweets {
+    [twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
+}
+.
+.
+.</code></pre>
+</div>
+
+
+<p>So, nothing really new here, we are just moving the scope of our twitter engine out of the awakeFromNib method and creating a reusable way to grab the user&#8217;s timeline.  We are now ready to declare our IBOutlets and IBActions for our interface.</p>
+
+<h4>Setting Up IBOutlets and IBActions</h4>
+
+
+<p>Two additional IBOutlets will need to be set up for our Twitter client.  The first is an NSTextView in which the user will by composing their Tweet in to.  And the other is an NSTextField that is not editable.  This will essentially be a label that displays the number of remaining characters to the user.</p>
+
+<p>In addition to the IBOutlets, we need an IBAction that responds when the user clicks the Tweet button.</p>
+
+<p>Our TweetsController.h header file should now look like this.</p>
+
+<div>
+  <pre><code class='objc'>#import 
+
+@class MGTwitterEngine;
+
+@interface TweetsController : NSViewController{
+    IBOutlet NSTableView *tableView;
+    IBOutlet NSTextView *tweetTextView;
+    IBOutlet NSTextField *tweetCountLabel;
+    NSMutableArray *tweets;
+    MGTwitterEngine *twitterEngine;
+}
+
+@property (retain) IBOutlet NSTableView *tableView;
+@property (retain) IBOutlet NSTextView *tweetTextView;
+@property (retain) IBOutlet NSTextField *tweetCountLabel;
+@property (retain) NSMutableArray *tweets;
+@property (retain) MGTwitterEngine *twitterEngine;
+
+- (void) refreshTweets;
+- (IBAction) tweetButtonClicked:(id) sender;
+
+@end</code></pre>
+</div>
+
+
+<p>One other thing  that I failed to mention above is we tell our class to implement the NSTextViewDelegate protocol.  This will allow us to have a live counter of the characters being entered in our text view.</p>
+
+<p>Now, let&#8217;s work on the interface&#8230;</p>
+
+<h4>Updating The Interface</h4>
+
+
+<p>Open up MainMenu.xib and drag an NSTextView, Label, and Button on to your view resizing as necessary. Your interface should now look something like this:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.26.02-PM.png"><img class="alignnone size-full wp-image-1172" title="Screen shot 2010-12-16 at 1.26.02 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.26.02-PM.png" alt="" width="423" height="517" /></a></p>
+
+<p>Make sure that you click on the NSTextView that you added and uncheck the box that says &#8220;show vertical scroller&#8221;.  Also, drag from the text view to TweetsController to set the delegate.  I found that I had to expand the view tree to get at the TextView as in the screenshot below:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.42.02-PM.png"><img class="alignnone size-full wp-image-1177" title="Screen shot 2010-12-16 at 1.42.02 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.42.02-PM.png" alt="" width="439" height="372" /></a></p>
+
+<p>Next, click on  TweetsController in the explorer window and hook up each of the 2 IBOutlets.  Here is a screenshot of the explorer window and the Connections window with the connections made.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.27.44-PM.png"><img class="alignnone size-full wp-image-1173" title="Screen shot 2010-12-16 at 1.27.44 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.27.44-PM.png" alt="" width="472" height="209" /></a></p>
+
+<p>Also, you will want to control-click and drag from your button to the TweetsController to hook it up to your tweetButtonClicked IBAction.</p>
+
+<p>You can now close Interface Builder and jump back to the code&#8230;</p>
+
+<h4>Implementing Live Character Counting</h4>
+
+
+<p>This process is actually pretty simple.  We just need to implement one delegate method of our NSTextView.  Open TweetsController.m and add the following method:</p>
+
+<div>
+  <pre><code class='objc'>- (BOOL)textView:(NSTextView *)aTextView
+   shouldChangeTextInRange:(NSRange)affectedCharRange
+   replacementString:(NSString *)replacementString {
+    NSString *text = [tweetTextView string];
+    int length = [text length] + 1;
+    [tweetCountLabel setStringValue:[NSString stringWithFormat:@&quot;%d&quot;,(140 - length)]];
+    // Allows user to delete characters
+    if([replacementString length] == 0) return YES;
+    return length &amp;lt; 140;
+}</code></pre>
+</div>
+
+
+<p>The shouldChangeTextInRange delegate method gets called every time the user types a character.  We first check the length of the string currently in the box.   1 is added to it since we are looking at adding a potential character.  Next, we update our character label to 140-(length of current string).  Following that is a line to check if the replacement string is 0.  This is needed for when the user presses backspace and they have already entered 140 characters.  The final line will only return true if the character count in the text box is less than 140, otherwise it will prevent the user from typing anything else.</p>
+
+<h4>Publishing The Tweet To Twitter</h4>
+
+
+<p>Our final step is to actually publish the tweet to Twitter and update the timeline.  We need to implement the tweetButtonClicked method and update the statusesReceived delegate method.  So in, TweetsController.m, update to the following code:</p>
+
+<div>
+  <pre><code class='objc'>- (IBAction) tweetButtonClicked:(id) sender {
+    [twitterEngine sendUpdate:[tweetTextView string]];
+    [tweetTextView setString:@&quot;&quot;];
+}
+
+#pragma mark -
+#pragma mark MGTwitterEngineDelegate
+- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier {
+
+    if([statuses count] == 1) { // when user updates their status
+        NSDictionary *tweetDict = [statuses objectAtIndex:0];
+        NSString *screenName = [[tweetDict objectForKey:@&quot;user&quot;] objectForKey:@&quot;screen_name&quot;];
+        NSString *text = [tweetDict objectForKey:@&quot;text&quot;];
+        Tweet *tweet = [[Tweet alloc] init];
+        tweet.screenName = screenName;
+        tweet.text = text;
+        [self.tweets insertObject:tweet atIndex:0];
+        [tweet release];
+    } else {
+        for(NSDictionary *tweetDict in statuses) {
+            NSString *screenName = [[tweetDict objectForKey:@&quot;user&quot;] objectForKey:@&quot;screen_name&quot;];
+            NSString *text = [tweetDict objectForKey:@&quot;text&quot;];
+            Tweet *tweet = [[Tweet alloc] init];
+            tweet.screenName = screenName;
+            tweet.text = text;
+            [self.tweets addObject:tweet];
+            [tweet release];
+        }
+    }
+
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}</code></pre>
+</div>
+
+
+<p>First, we see the implementation of our IBAction.  It simply calls one of our super handy methods in MGTwitterEngine.  The sendUpdate method, will asynchronously update your Twitter status and post back to the statusesReceived method with YOUR status info.  After that, we clear the text box that the user typed into.</p>
+
+<p>The statusReceived method gets updated because we need to handle things differently when the user updates their status verses when we are pulling down the timeline.  If there is only one status (ie the user just posted), we want to push it on to the head of the tweets array.  We do this so that it displays at the top of our client as the timeline that comes down from Twitter is ordered from newest to oldest.  Other than that, there are no major changes to this method.</p>
+
+<p>After building and running, your client should now look something like this:</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.54.56-PM.png"><img class="alignnone size-full wp-image-1178" title="Screen shot 2010-12-16 at 1.54.56 PM" src="http://brandontreb.com/wp-content/uploads/2010/12/Screen-shot-2010-12-16-at-1.54.56-PM.png" alt="" width="423" height="517" /></a></p>
+
+<p>Well, that about does it for today.  I hope you have enjoyed this one.  If you have any comments or questions, feel free to leave them here. You can even write them to me using your new &#8220;fancy&#8221; Twitter client to <a href="http://twitter.com/brandontreb">@brandontreb</a>.</p>
+
+<p><a href="http://brandontreb.com/wp-content/uploads/2010/12/iChirpie2.zip">Download The Source Here</a></p>
+
+<p>Until next time, happy coding!</p>
+
+<p style="font-family: 'Lucida Grande';">&#8212;-</p>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></div>
+
+
+<p></p>
+
+<div style="font-family: 'Lucida Grande';"><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em><br /> 
+</em></span></span></strong></span></div>
+
+
+<p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brandon Trebitowski</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-16T07:03:29-07:00" pubdate data-updated="true">Dec 16<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/idevblogaday/'>iDevBlogADay</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brandontreb.github.com/creating-a-twitter-client-for-osx-%25e2%2580%2593-part-3-publishing-tweets/" data-via="brandontreb" data-counturl="http://brandontreb.github.com/creating-a-twitter-client-for-osx-%25e2%2580%2593-part-3-publishing-tweets/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/link-minecraft-like-rendering-experiments-in-opengl-4-codeflow-2/" title="Previous Post: Link: Minecraft Like Rendering Experiments in OpenGL 4 - Codeflow">&laquo; Link: Minecraft Like Rendering Experiments in OpenGL 4 - Codeflow</a>
+      
+      
+        <a class="basic-alignment right" href="/thats-it-i-quit-programming/" title="Next Post: That's It! I Quit Programming.">That's It! I Quit Programming. &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<h1>Friends And Sponsors</h1>
+  <!-- BuySellAds.com Ad Code --> 
+	<script type="text/javascript"> 
+		(function(){
+		  var bsa = document.createElement('script');
+		     bsa.type = 'text/javascript';
+		     bsa.async = true;
+		     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+		  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		})();
+	</script> 
+	<!-- End BuySellAds.com Ad Code --> 
+
+	<center> 
+		<!-- BuySellAds.com Zone Code --> 
+		<div id="bsap_1242083" class="bsarocks bsap_ecc27b69ffe30504412d8da9c39c3116"></div> 
+		<!-- End BuySellAds.com Zone Code -->
+	</center>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-become-an-indie-game-developer/">How To Become An Indie Game Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
+      </li>
+    
+      <li class="post">
+        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It's Right Now</a>
+      </li>
+    
+      <li class="post">
+        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brandontreb">@brandontreb</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brandontreb',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("brandontreb", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/brandontreb" class="twitter-follow-button" data-show-count="true">Follow @brandontreb</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brandon Trebitowski -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'brandontreb';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

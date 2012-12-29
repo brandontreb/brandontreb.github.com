@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Blogging | Brandon Trebitowski]]></title>
+  <link href="http://brandontreb.github.com/blog/categories/blogging/atom.xml" rel="self"/>
+  <link href="http://brandontreb.github.com/"/>
+  <updated>2012-12-29T12:29:54-07:00</updated>
+  <id>http://brandontreb.github.com/</id>
+  <author>
+    <name><![CDATA[Brandon Trebitowski]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Officially Running On Jekyll]]></title>
+    <link href="http://brandontreb.github.com/officially-running-on-jekyll/"/>
+    <updated>2011-04-05T20:00:41-06:00</updated>
+    <id>http://brandontreb.github.com/officially-running-on-jekyll</id>
+    <content type="html"><![CDATA[<p>Well, I have finally made the switch from <a href="http://wordpress.org">Wordpress</a> to <a href="http://jekyllrb.com/">Jekyll</a> and couldn't be happier.  Here are some of the bonuses I have seen thus far.</p>
+
+<ol>
+<li>SPEED: Just click around on my site.  It is screaming fast now.</li>
+<li>Resources: Checking top on my server reveals that I have a TON of extra resources (which makes sense since Jekyll sites are way more lightweight).</li>
+<li>Ease of blogging: Ok, Wordpress was  pretty easy too, however, I was really starting to get sick of the post interface.  I switch to Tumblr at some point simply for it's minimalist interface.  Wordpress' is gross and TinyMCE (the WYSIWG editor) is terrible.  I love writing in TextMate!</li>
+<li>Offline publishing.  I can write my posts anywhere since they are just .md (markdown) files.  Check out <a href="http://daringfireball.net/projects/markdown/syntax">Daring Fireball's</a> great writeup on this.</li>
+<li>Portability: Have you have tried to move your Wordpress site?  Yeah, it's about as fun as chewing on tin foil with metal fillings.</li>
+<li>Focus on content: Wordpress has quite a bit of focus on using rich media in your posts which tends to take away from the content if you are not careful.  There is something about writing in a text editor that makes you forget about images/video/etc... unless it's totally needed. So don't be surprised if my posts aren't as "rich". (Hopefully they will be more clever :) )</li>
+</ol>
+
+
+<p>I really urge you to see for yourself what it's like blogging with Jekyll.  I will do a writeup on my conversion process in the near future to help aid others in the switch.  Until then, you can google around and find tons of great resources.</p>
+]]></content>
+  </entry>
+  
+</feed>
