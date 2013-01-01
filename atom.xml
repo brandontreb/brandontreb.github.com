@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[What I Learned In My First Month Being A Contract iOS Developer]]></title>
-    <link href="http://brandontreb.github.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer/"/>
+    <link href="http://brandontreb.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer/"/>
     <updated>2012-12-29T14:54:00-07:00</updated>
-    <id>http://brandontreb.github.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer</id>
+    <id>http://brandontreb.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer</id>
     <content type="html"><![CDATA[<p><strong>tl;dr Present yourself to potential clients as if you have already made it. Don&#8217;t be scared, the work it out there. Freelancing FTW!1!</strong></p>
 
 <p>In the first week of December, I got a rather unfortunate (and unexpected) call from the CEO of the company I was working for.  The gist of it was &#8220;we are reorganizing, and have decided to cut your position. Effective Immediately&#8221;.  At this point, I was the Director Of Mobile Engineering and was making a very decent salary.  While I was planning on leaving to go freelance at some point, I hadn&#8217;t dreamed it would be this sudden.</p>
@@ -73,9 +73,9 @@ I am not sure if this feeling ever goes away (if you are a veteran freelance, I&
   
   <entry>
     <title type="html"><![CDATA[5 Third Party iOS Libraries I Have Found Useful Lately]]></title>
-    <link href="http://brandontreb.github.com/five-third-party-libraries/"/>
+    <link href="http://brandontreb.com/five-third-party-libraries/"/>
     <updated>2012-08-24T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/five-third-party-libraries</id>
+    <id>http://brandontreb.com/five-third-party-libraries</id>
     <content type="html"><![CDATA[<p>As I mature as a developer, I try to rely on other people&#8217;s code more an more.  Why build something from scratch when a solution already exists that you can fit in your project.  In <a href="http://itunes.apple.com/us/app/pocket-mud-pro/id511678455?mt=8">Pocket MUD Pro</a>, I used <strong>13</strong> 3rd party libraries and am using quite a bit more in the project that I&#8217;m currently working on.  I figured that I would share some of the libraries that I have been using so that it might save you some time in the future.</p>
 
 <h2>1. CocoaAsyncSocket</h2>
@@ -122,9 +122,9 @@ I am not sure if this feeling ever goes away (if you are a veteran freelance, I&
   
   <entry>
     <title type="html"><![CDATA[How To Become An Indie Game Developer]]></title>
-    <link href="http://brandontreb.github.com/how-to-become-an-indie-game-developer/"/>
+    <link href="http://brandontreb.com/how-to-become-an-indie-game-developer/"/>
     <updated>2012-06-13T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/how-to-become-an-indie-game-developer</id>
+    <id>http://brandontreb.com/how-to-become-an-indie-game-developer</id>
     <content type="html"><![CDATA[<div>What programmer doesn&#8217;t want to be an indie game developer?  A great article with tons of tips to help you on your way.</div>
 
 
@@ -137,9 +137,9 @@ I am not sure if this feeling ever goes away (if you are a veteran freelance, I&
   
   <entry>
     <title type="html"><![CDATA[My Number One Feature Request For iOS 6]]></title>
-    <link href="http://brandontreb.github.com/my-number-one-feature-request-for-ios-6/"/>
+    <link href="http://brandontreb.com/my-number-one-feature-request-for-ios-6/"/>
     <updated>2012-06-08T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/my-number-one-feature-request-for-ios-6</id>
+    <id>http://brandontreb.com/my-number-one-feature-request-for-ios-6</id>
     <content type="html"><![CDATA[<p><strong>Fix the Snooze button</strong>! I have no idea how this UI component got to Apple&#8217;s review team and they were like &#8221;<em>Yep, that looks beautiful! Ship it!</em>&#8221;. If Apple changes the snooze button and slaps a 6 on iOS, I will be happy.  If not, more rants to follow. Stay tuned&#8230;.</p>
 
 <p><a href="http://brandontreb.com/wp-content/uploads/2012/06/photo.png"><img class="wp-image-208 alignleft" title="photo" src="http://brandontreb.com/wp-content/uploads/2012/06/photo.png" alt="" width="269" height="403" /></a></p>
@@ -148,18 +148,18 @@ I am not sure if this feeling ever goes away (if you are a veteran freelance, I&
   
   <entry>
     <title type="html"><![CDATA[If There Was Ever A Time To Submit A Show HN Article, It's Right Now]]></title>
-    <link href="http://brandontreb.github.com/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/"/>
+    <link href="http://brandontreb.com/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/"/>
     <updated>2012-06-01T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now</id>
+    <id>http://brandontreb.com/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now</id>
     <content type="html"><![CDATA[<p>Earlier today a post titled &#8221;<a href="http://tortillasinbed.tumblr.com/post/24175048206/i-up-vote-everything" title="" target="">I Try to Up Vote Every ‘Show HN’ Post and You Should Too</a>&#8221; made it to the top of HN. &nbsp;It basically talked about people posting &#8220;Show HN&#8221; posts are putting themselves out there and the least we can do is give them an up vote. &nbsp;Well, people are listening and as of this posting, there are currently 15 Show HN posts in the top 30. &nbsp;That&#8217;s incredible.<div><br></div><div>So, if you have recently created something cool. &nbsp;Head over to HN&#8217;s <a href="http://news.ycombinator.com/submit" title="" target="">submission page</a> and add your link making sure to add &#8220;Show HN&#8221; in the title. &nbsp;You might get some great traffic/feedback out of it.</div></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Lua Scripting The UI For Pocket MUD Pro]]></title>
-    <link href="http://brandontreb.github.com/lua-scripting-the-ui-for-pocket-mud-pro/"/>
+    <link href="http://brandontreb.com/lua-scripting-the-ui-for-pocket-mud-pro/"/>
     <updated>2012-05-29T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/lua-scripting-the-ui-for-pocket-mud-pro</id>
+    <id>http://brandontreb.com/lua-scripting-the-ui-for-pocket-mud-pro</id>
     <content type="html"><![CDATA[<p>I have just updated my MUD client [<a href="http://itunes.apple.com/us/app/pocket-mud-pro/id511678455?mt=8">Pocket MUD Pro</a>] to be a universal library.  It was surprisingly easy to add the iPad support as most of the application was comprised of UITableViews.</p>
 
 <p>The main &#8220;MUD&#8221; view was the most challenging part as it contains a couple UIWebViews, UIButons, and a UITextField. However, I chose to do something I feel is pretty cool.</p>
@@ -219,18 +219,18 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Jailbreak iOS 5.1.1 With Absinthe 2.0 + More Watch Dev Coming]]></title>
-    <link href="http://brandontreb.github.com/jailbreak-ios-5-1-1-with-absinthe-2-0-more-watch-dev-coming/"/>
+    <link href="http://brandontreb.com/jailbreak-ios-5-1-1-with-absinthe-2-0-more-watch-dev-coming/"/>
     <updated>2012-05-25T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/jailbreak-ios-5-1-1-with-absinthe-2-0-more-watch-dev-coming</id>
+    <id>http://brandontreb.com/jailbreak-ios-5-1-1-with-absinthe-2-0-more-watch-dev-coming</id>
     <content type="html"><![CDATA[<p>The GreenPois0n team has just announced Absinthe 2.0 allowing users of all iDevices (except Apple TV 3) to jailbreak iOS 5.1.1. This is especially good news for me as I can now continue development on my jailbroken app for the <a href="http://getinpulse.com" title="" target="">inPulse</a> watch,&nbsp;<a href="http://www.myrepospace.com/profile/brandontreb/140058/inPulse" title="" target="">iOS notifier</a>.&nbsp;<div><br></div><div>[<a href="http://greenpois0n.com/?p=324" title="" target="">Link URL</a>]</div></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Join Me At 360iDev 2012]]></title>
-    <link href="http://brandontreb.github.com/join-me-at-360idev-2012/"/>
+    <link href="http://brandontreb.com/join-me-at-360idev-2012/"/>
     <updated>2012-05-24T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/join-me-at-360idev-2012</id>
+    <id>http://brandontreb.com/join-me-at-360idev-2012</id>
     <content type="html"><![CDATA[<p>I mentioned this on Twitter last week, so I might as well post it here to make it <em>more</em> official. My talk <strong>Making Your Games More Dynamic With Lua Scripting</strong> was accepted for <a href="http://360idev.com/">360iDev 2012</a>! This will be my first official speaking engagement and I could not be more excited/nervous.</p>
 
 <h4>The Talk</h4>
@@ -250,9 +250,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Incredible List Of Popular Indie iOS/Android/Steam Titles On Sale]]></title>
-    <link href="http://brandontreb.github.com/incredible-list-of-popular-indie-iosandroidsteam-titles-on-sale/"/>
+    <link href="http://brandontreb.com/incredible-list-of-popular-indie-iosandroidsteam-titles-on-sale/"/>
     <updated>2012-05-24T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/incredible-list-of-popular-indie-iosandroidsteam-titles-on-sale</id>
+    <id>http://brandontreb.com/incredible-list-of-popular-indie-iosandroidsteam-titles-on-sale</id>
     <content type="html"><![CDATA[<blockquote>We believe that developers should have the freedom to price their games how they like, without interference from the online stores that sell the games. Why? Because it allows us to promote our games more freely, as we are doing here! We rely on the ability to promote our games for our livelihood and control over pricing is an important tool for this purpose.</blockquote>
 
 
@@ -271,27 +271,27 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Why Facebook IS People]]></title>
-    <link href="http://brandontreb.github.com/why-facebook-is-people/"/>
+    <link href="http://brandontreb.com/why-facebook-is-people/"/>
     <updated>2012-05-23T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/why-facebook-is-people</id>
+    <id>http://brandontreb.com/why-facebook-is-people</id>
     <content type="html"><![CDATA[<p>This is a very well written article detailing some of the inner workings of Facebook and why its business is YOU. &nbsp;<div><br></div><div>I wonder when a distributed, self-hosted solution (like <a href="https://joindiaspora.com/" title="" target="">Diaspora<em></a>) will become popular. &nbsp;Have you tried Diaspora</em> or others?<br><div><br></div><div>[<a href="http://observer.com/2012/05/23/facebook-is-people-why-i-quit-mark-zuckerbergs-online-collective-data-farm/?show=all" title="" target="">Article Link</a>]</div></div></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[The guide to implementing 2D platformers]]></title>
-    <link href="http://brandontreb.github.com/the-guide-to-implementing-2d-platformers/"/>
+    <link href="http://brandontreb.com/the-guide-to-implementing-2d-platformers/"/>
     <updated>2012-05-23T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/the-guide-to-implementing-2d-platformers</id>
+    <id>http://brandontreb.com/the-guide-to-implementing-2d-platformers</id>
     <content type="html"><![CDATA[<p><a href="http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/" title="" target="">http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/</a><div><br></div><div>An incredible guide detailing many of the tricks/design patterns used in 2D platformers. &nbsp;Although there isn&#8217;t much code to look at, the higher level ideas detailed in the article are invaluable.</div></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Pocket MUD Pro Is Now Universal + Promo Codes]]></title>
-    <link href="http://brandontreb.github.com/pocket-mud-pro-is-now-universal-promo-codes/"/>
+    <link href="http://brandontreb.com/pocket-mud-pro-is-now-universal-promo-codes/"/>
     <updated>2012-05-23T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/pocket-mud-pro-is-now-universal-promo-codes</id>
+    <id>http://brandontreb.com/pocket-mud-pro-is-now-universal-promo-codes</id>
     <content type="html"><![CDATA[<div><img class="alignright" title="Pocket MUD" src="http://a4.mzstatic.com/us/r1000/115/Purple/v4/20/1a/9d/201a9de0-3acb-0d0b-7b67-d14a2ade5ed8/mza_5672073799134205458.480x480-75.jpg" alt="" width="252" height="336" /></div>
 
 
@@ -334,9 +334,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[MetaWatch Announces iOS Support - Still Can't Compete With Pebble]]></title>
-    <link href="http://brandontreb.github.com/metawatch-announces-ios-support-still-cant-compete-with-pebble/"/>
+    <link href="http://brandontreb.com/metawatch-announces-ios-support-still-cant-compete-with-pebble/"/>
     <updated>2012-05-22T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/metawatch-announces-ios-support-still-cant-compete-with-pebble</id>
+    <id>http://brandontreb.com/metawatch-announces-ios-support-still-cant-compete-with-pebble</id>
     <content type="html"><![CDATA[<p><img class="alignleft" title="Metawatch" src="http://www.metawatch.org/assets/components/phpthumbof/cache/b1ef2f2c734bdb5c3dd128645e931609.5b076a068df3c2e957af266fa3005e90.jpg" alt="" width="217" height="325" />For those of you who have followed my blog for a while, you know that I am a huge geek for smart watches. I had the first version of what is now the <a title="" href="http://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android" target="_blank">Pebble</a> (<a title="" href="http://getinpulse.com" target="_blank">inPulse</a>) and even hacked a jailbroken iOS app to interface with it.</p>
 
 <p><a title="" href="http://metawatch.com" target="_blank">MetaWatch</a> has been around for quite some time now and looks <em>ok </em>, however their latest update appears to be completely in response to Allerta&#8217;s announcement/success of Pebble.</p>
@@ -362,9 +362,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Great Introduction To Lua]]></title>
-    <link href="http://brandontreb.github.com/great-introduction-to-lua/"/>
+    <link href="http://brandontreb.com/great-introduction-to-lua/"/>
     <updated>2012-05-22T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/great-introduction-to-lua</id>
+    <id>http://brandontreb.com/great-introduction-to-lua</id>
     <content type="html"><![CDATA[<p>(click the post title)</p>
 
 <p>I have been using lua in my iOS applications for some time now. This tutorial provides a great introduction to a scripting language that most developers are very curious about. I really suggest spending a few minutes checking it out.</p>
@@ -373,9 +373,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Why you Should Check Out Unity]]></title>
-    <link href="http://brandontreb.github.com/why-you-should-check-out-unity/"/>
+    <link href="http://brandontreb.com/why-you-should-check-out-unity/"/>
     <updated>2012-05-01T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/why-you-should-check-out-unity</id>
+    <id>http://brandontreb.com/why-you-should-check-out-unity</id>
     <content type="html"><![CDATA[<p>A while back, my buddy <a href="http://twitter.com/seantron">seantron</a> showed me some of his 3D games he&#8217;d been working on <a href="http://itunes.apple.com/us/app/hamsteria!/id470730689?mt=8">including this one</a>.  My initial reaction was &#8220;how the heck did he get the chopps to do that?&#8221;.  While, Sean is an incredible developer with a ton of creativity, doing things like loading models, texture mapping, or even basic 3D projects are flippin hard.</p>
 
 <p>A while back I <a href="http://brandontreb.com/ludum-dare-competition-week-2-update/">tried my hand at 3D</a> and made sort of a <em>basic</em> Minecraft style game from scratch using OpenGL ES. Let me tell you, it was brutal (and I have been coding for almost 10 years). This project took me a week or so to ramp up, get basic cubes and textures going and a simple first person view.</p>
@@ -414,9 +414,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[I Suck At Blogging (Lately)]]></title>
-    <link href="http://brandontreb.github.com/i-suck-at-blogging/"/>
+    <link href="http://brandontreb.com/i-suck-at-blogging/"/>
     <updated>2012-04-27T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/i-suck-at-blogging</id>
+    <id>http://brandontreb.com/i-suck-at-blogging</id>
     <content type="html"><![CDATA[<p>OK, so the title isn&#8217;t entirely true (I have maintained quite a few blogs in my day). But, one thing is for sure, I have sucked at blogging <strong>lately</strong>. So much so, I just had to think hard about having to bold lately using markdown in the previous sentence <em>#meta</em>.</p>
 
 <h4>Burnout</h4>
@@ -439,9 +439,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Pocket MUD Pro Released + Promo Codes ]]></title>
-    <link href="http://brandontreb.github.com/pocket-mud-pro-released-%2B-promo-codes/"/>
+    <link href="http://brandontreb.com/pocket-mud-pro-released-%2B-promo-codes/"/>
     <updated>2012-03-29T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/pocket-mud-pro-released-+-promo-codes</id>
+    <id>http://brandontreb.com/pocket-mud-pro-released-+-promo-codes</id>
     <content type="html"><![CDATA[<p>I am very proud to announce a brand new version of my <a href="http://itunes.apple.com/us/app/pocket-mud-pro/id511678455?ls=1&amp;mt=8">Pocket MUD Pro</a> application for iPhone.  I have been working very hard to make a perfect MUD client that is suitable for hardcore mud players, visually impaired mud players, and casual mud players.</p>
 
 <p>Here are some of the features:</p>
@@ -500,9 +500,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Vim For iOS Is Incredible]]></title>
-    <link href="http://brandontreb.github.com/vim-for-ios-is-incredible/"/>
+    <link href="http://brandontreb.com/vim-for-ios-is-incredible/"/>
     <updated>2012-01-25T00:00:00-07:00</updated>
-    <id>http://brandontreb.github.com/vim-for-ios-is-incredible</id>
+    <id>http://brandontreb.com/vim-for-ios-is-incredible</id>
     <content type="html"><![CDATA[<p>I used to be an Emacs guy and would battle to the death on the war between Vim and Emacs.  It wasn&#8217;t until a coworker of mine sat down and really showed me just how cool/simple/powerful Vim can be.  Just using Vim is a new adventure every day and has really improved my productivity.  I now use it to code, blog, and even jot down quick notes.</p>
 
 <p>Last week, I saw on Hacker News a link announcing <a href="http://applidium.com/en/applications/vim/">Vim has been ported to iOS</a>.  I have spent a week or so with it and can honestly say the port is almost perfect!</p>
@@ -542,9 +542,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Fluid For Mac]]></title>
-    <link href="http://brandontreb.github.com/fluid-for-mac/"/>
+    <link href="http://brandontreb.com/fluid-for-mac/"/>
     <updated>2012-01-19T00:00:00-07:00</updated>
-    <id>http://brandontreb.github.com/fluid-for-mac</id>
+    <id>http://brandontreb.com/fluid-for-mac</id>
     <content type="html"><![CDATA[<p>As of OSX Lion, I have started to seriously loathe some of the build-it Mac apps (such as Mail, and iCal).  While I previously had no issues with them, they now seem to be very clunky and crash quite often.  Being a developer, I thought &#8220;why don&#8217;t I write an app that wraps web apps for you so you basically get &#8220;native web apps&#8221; that have icons and are launchable?&#8221;.</p>
 
 <p>After a quick Google search, I realized <strong><a href="http://fluidapp.com/">this already exists!</a></strong>.  The app is called Fluid and it does an incredible job of what I described above and more.</p>
@@ -589,9 +589,9 @@ createFrame(mudFrame)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Amazon - A Terrible Solution To A Huge Problem]]></title>
-    <link href="http://brandontreb.github.com/amazon--a-terrible-solution-to-a-huge-problem/"/>
+    <link href="http://brandontreb.com/amazon--a-terrible-solution-to-a-huge-problem/"/>
     <updated>2012-01-16T00:00:00-07:00</updated>
-    <id>http://brandontreb.github.com/amazon&#8211;a-terrible-solution-to-a-huge-problem</id>
+    <id>http://brandontreb.com/amazon&#8211;a-terrible-solution-to-a-huge-problem</id>
     <content type="html"><![CDATA[<p>tl;dr; Don&#8217;t buy a Kindle Fire for your kid until they resolve the parental control issues. Wifi password protection is their current solution, and it sucks.</p>
 
 <p>Like many parents, I thought it would be a good idea to get a tablet device for my son so that he could play some <em>educational</em> games and watch some Netflix (in moderation of course). After doing quite a bit of research, I settled on the Kindle Fire. Before the Apple fanboys give me crap, know that I am one, I have an iPad, it&#8217;s too expensive for my son.</p>

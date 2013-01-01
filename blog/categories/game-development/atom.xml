@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Game Development | Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/blog/categories/game-development/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/blog/categories/game-development/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[10 Great Pixel Art Tutorial And Free Resource Sites For Your Games]]></title>
-    <link href="http://brandontreb.github.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games/"/>
+    <link href="http://brandontreb.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games/"/>
     <updated>2011-08-13T21:30:00-06:00</updated>
-    <id>http://brandontreb.github.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games</id>
+    <id>http://brandontreb.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games</id>
     <content type="html"><![CDATA[<p>I don't usually create "list" posts, however I wanted to share a grouping of resources I have been collecting over the past few months.  As you may have noticed, I'm a bit of a Pixel Art fanatic and wanted to share with you the tutorials that helped to get me started as well as some sites offering some high quality <strong>free</strong> pixel art.</p>
 
 <p>Keep in mind that some of these sites have similar content, however they all take a slightly different approach in teaching.  I found it very helpful to read each of the tutorials and learn from different points of view.</p>
@@ -114,9 +114,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cocos2D Tutorial - Dynamically Coloring Sprites]]></title>
-    <link href="http://brandontreb.github.com/Cocos2D-Tutorial-Dynamically-Coloring-Sprites/"/>
+    <link href="http://brandontreb.com/Cocos2D-Tutorial-Dynamically-Coloring-Sprites/"/>
     <updated>2011-07-30T17:05:00-06:00</updated>
-    <id>http://brandontreb.github.com/Cocos2D-Tutorial-Dynamically-Coloring-Sprites</id>
+    <id>http://brandontreb.com/Cocos2D-Tutorial-Dynamically-Coloring-Sprites</id>
     <content type="html"><![CDATA[<p><img src="http://f.cl.ly/items/42231G3d1P3d1b3H2Q2g/Screen%20shot%202011-07-30%20at%204.39.28%20PM.png" alt="Custom Bitizens" /></p>
 
 <p>Have you ever seen a game (such as Tiny Tower) that contains similar sprites that only vary by certain attributes (coloring, shading, accessories, etc...)?  I would often wonder how long it would take the artists to create each permutation of these sprites.  After discovering that you can call a method on a CCSprite called setColor, I realized how most of this customization is done in code.</p>
@@ -279,9 +279,9 @@ ccColor3B skinColor = skinColors[arc4random() % 5];
   
   <entry>
     <title type="html"><![CDATA[Pixel Art Character Tutorial - Creating And Customizing A Bitizen]]></title>
-    <link href="http://brandontreb.github.com/Pixel-Art-Character-Tutorial-Create-A-Bitizen/"/>
+    <link href="http://brandontreb.com/Pixel-Art-Character-Tutorial-Create-A-Bitizen/"/>
     <updated>2011-07-16T14:05:00-06:00</updated>
-    <id>http://brandontreb.github.com/Pixel-Art-Character-Tutorial-Create-A-Bitizen</id>
+    <id>http://brandontreb.com/Pixel-Art-Character-Tutorial-Create-A-Bitizen</id>
     <content type="html"><![CDATA[<center><img src="http://f.cl.ly/items/1R171P3K050O2m1H210C/Toy-Story-brandontreb.com.png"></center>
 
 
@@ -384,9 +384,9 @@ ccColor3B skinColor = skinColors[arc4random() % 5];
   
   <entry>
     <title type="html"><![CDATA[Configuring Photoshop For Pixel Art]]></title>
-    <link href="http://brandontreb.github.com/Configuring-Photoshop-For-Pixel-Art/"/>
+    <link href="http://brandontreb.com/Configuring-Photoshop-For-Pixel-Art/"/>
     <updated>2011-07-02T08:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/Configuring-Photoshop-For-Pixel-Art</id>
+    <id>http://brandontreb.com/Configuring-Photoshop-For-Pixel-Art</id>
     <content type="html"><![CDATA[<p>First things first.  My wife and I had welcomed a new baby boy into the world on Monday so you guys are going to have to see the obligatory "dad" pics.</p>
 
 <p>Here they are</p>
@@ -405,7 +405,7 @@ ccColor3B skinColor = skinColors[arc4random() % 5];
 
 <h4>Change The Way Photoshop Scales Images</h4>
 
-<p><img src="http://brandontreb.github.com/img/post_images/2011/07/bitizens-compare.png"></p>
+<p><img src="http://brandontreb.com/img/post_images/2011/07/bitizens-compare.png"></p>
 
 <p>First, we need to change the way PS scales images.  This is useful for when you are ready to export your sprites for production.  By default, PS uses a Bicubic algorithm when you want to enlarge an image.  This generally produces a very blurry effect.  It's quite useful in many cases, but terrible for pixel art.  Here, we need to tell PS to use a "Nearest Neighbor" scaling algorithm.  This will preserver all of our edges without PS mucking with the blending.</p>
 
@@ -465,9 +465,9 @@ ccColor3B skinColor = skinColors[arc4random() % 5];
   
   <entry>
     <title type="html"><![CDATA[Autonomous Steering Behaviors In Corona SDK Games]]></title>
-    <link href="http://brandontreb.github.com/autonomous-steering-behaviors-corona-sdk/"/>
+    <link href="http://brandontreb.com/autonomous-steering-behaviors-corona-sdk/"/>
     <updated>2011-06-04T08:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/autonomous-steering-behaviors-corona-sdk</id>
+    <id>http://brandontreb.com/autonomous-steering-behaviors-corona-sdk</id>
     <content type="html"><![CDATA[<p>Wow, it's already been 5 months since I was last blogging for #iDevBlogADay.  The time has flown by!</p>
 
 <p>Recently, I have been dabbling with <a href="http://www.anscamobile.com/corona/">Corona SDK</a> and have been getting really excited about the possibilities.  For those of you who don't know, Corona SDK is a multi platform game engine that allows you to write your code in Lua and deploy on iOS and Android devices.</p>

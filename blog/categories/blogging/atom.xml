@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Blogging | Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/blog/categories/blogging/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/blog/categories/blogging/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Officially Running On Jekyll]]></title>
-    <link href="http://brandontreb.github.com/officially-running-on-jekyll/"/>
+    <link href="http://brandontreb.com/officially-running-on-jekyll/"/>
     <updated>2011-04-05T20:00:41-06:00</updated>
-    <id>http://brandontreb.github.com/officially-running-on-jekyll</id>
+    <id>http://brandontreb.com/officially-running-on-jekyll</id>
     <content type="html"><![CDATA[<p>Well, I have finally made the switch from <a href="http://wordpress.org">Wordpress</a> to <a href="http://jekyllrb.com/">Jekyll</a> and couldn't be happier.  Here are some of the bonuses I have seen thus far.</p>
 
 <ol>

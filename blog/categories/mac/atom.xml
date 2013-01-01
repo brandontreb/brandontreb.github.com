@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Mac | Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/blog/categories/mac/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Case Of The Mondays]]></title>
-    <link href="http://brandontreb.github.com/case-of-the-mondays/"/>
+    <link href="http://brandontreb.com/case-of-the-mondays/"/>
     <updated>2011-02-14T05:00:28-07:00</updated>
-    <id>http://brandontreb.github.com/case-of-the-mondays</id>
+    <id>http://brandontreb.com/case-of-the-mondays</id>
     <content type="html"><![CDATA[<div id="attachment_1421" class="wp-caption alignright" style="width: 330px"><a href="http://brandontreb.com/wp-content/uploads/2011/02/office-spacejpg.jpeg"><img class="size-full wp-image-1421 " title="office-spacejpg" src="http://brandontreb.com/wp-content/uploads/2011/02/office-spacejpg.jpeg" alt="" width="320" height="240" /></a><p class="wp-caption-text">Mondays...</p></div>
 
 
@@ -84,9 +84,9 @@ if(mondayThisWeek &amp;lt;= 0) {&lt;/p&gt;
   
   <entry>
     <title type="html"><![CDATA[Creating A Twitter Client For OSX â Part 3: Publishing Tweets]]></title>
-    <link href="http://brandontreb.github.com/creating-a-twitter-client-for-osx-%25e2%2580%2593-part-3-publishing-tweets/"/>
+    <link href="http://brandontreb.com/creating-a-twitter-client-for-osx-%25e2%2580%2593-part-3-publishing-tweets/"/>
     <updated>2010-12-16T07:03:29-07:00</updated>
-    <id>http://brandontreb.github.com/creating-a-twitter-client-for-osx-%e2%80%93-part-3-publishing-tweets</id>
+    <id>http://brandontreb.com/creating-a-twitter-client-for-osx-%e2%80%93-part-3-publishing-tweets</id>
     <content type="html"><![CDATA[<p>Welcome to part 3 of my #iDevblogaday series about creating a Twitter client for OSX</p>
 
 <p>Now that we have some of our UI built, we need to add a key feature to our Twitter client: The ability to write and publish a tweet.  We will be adding a textbox that the user can type their tweet into along with a live character counter to ensure the character length does not go beyond 140 characters.  Finally, we will be using  MGTwitterEngine to publish the tweet to Twitter.</p>
@@ -344,9 +344,9 @@ First, we see the implementation of our IBAction.  It simply calls one of our s
   
   <entry>
     <title type="html"><![CDATA[Creating A Twitter Client For OSX â Part 2: Displaying Tweets]]></title>
-    <link href="http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets/"/>
+    <link href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets/"/>
     <updated>2010-12-09T00:53:36-07:00</updated>
-    <id>http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets</id>
+    <id>http://brandontreb.com/creating-a-twitter-client-for-osx-part-2-displaying-tweets</id>
     <content type="html"><![CDATA[<p>Welcome to the second installment of my <a href="http://idevblogaday.com">#iDevBlogADay</a> tutorial series entitled "Creating A Twitter Client For OSX".  In case you missed it,<a href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-1/"> here is a link to the previous tutorial in the series</a>.  From the last tutorial, you should have a basic understanding of the folllowing:</p>
 
 <ul>
@@ -622,9 +622,9 @@ These methods should look vaguely familiar to the iOS developer.  The method ob
   
   <entry>
     <title type="html"><![CDATA[Creating A Twitter Client For OSX - Part 1]]></title>
-    <link href="http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-1/"/>
+    <link href="http://brandontreb.com/creating-a-twitter-client-for-osx-part-1/"/>
     <updated>2010-12-02T15:23:53-07:00</updated>
-    <id>http://brandontreb.github.com/creating-a-twitter-client-for-osx-part-1</id>
+    <id>http://brandontreb.com/creating-a-twitter-client-for-osx-part-1</id>
     <content type="html"><![CDATA[<p>With the upcoming release of the Mac App Store, I can only imagine another gold rush is upon us.  Clever Indie developers making money hand over fist while the store as well as developers find their identities.  With that being said, I feel that there is a serious lack of interesting (maintained) Twitter clients for OSX.  I say "maintained" because Tweetie for OSX is just fantastic, however Twitter said they don't have any plans for it at this time.  So, I want to provide devs with the tools to create an amazing Twitter client for the Mac that I will want to use :)</p>
 
 <p>Quite some time ago, I began (and never completed) a series on <a href="http://brandontreb.com/objective-c-programming-tutorial-creating-a-twitter-client-part-1/">writing a Twitter client for OSX</a>.  It was very well received by the development community, however once Twitter switched over to OAUTH, I became too lazy to update it :( . So, I figured a tutorial series for <a href="http://idevblogaday">#iDevBlogADay</a> would be the perfect opportunity to complete it.</p>
@@ -781,9 +781,9 @@ Well, that does it for today.  Join me next week when I will show you how to mo
   
   <entry>
     <title type="html"><![CDATA[XCode Tips And Shortcuts To Improve Your Workflow]]></title>
-    <link href="http://brandontreb.github.com/xcode-tips-and-shortcuts-to-improve-your-workflow/"/>
+    <link href="http://brandontreb.com/xcode-tips-and-shortcuts-to-improve-your-workflow/"/>
     <updated>2010-11-18T02:01:59-07:00</updated>
-    <id>http://brandontreb.github.com/xcode-tips-and-shortcuts-to-improve-your-workflow</id>
+    <id>http://brandontreb.com/xcode-tips-and-shortcuts-to-improve-your-workflow</id>
     <content type="html"><![CDATA[<h4>Intro</h4>
 
 

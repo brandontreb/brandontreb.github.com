@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Wordpress | Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/blog/categories/wordpress/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Considering Leaving Wordpress For Jekyll]]></title>
-    <link href="http://brandontreb.github.com/considering-leaving-wordpress-for-jekyll/"/>
+    <link href="http://brandontreb.com/considering-leaving-wordpress-for-jekyll/"/>
     <updated>2011-03-28T02:21:41-06:00</updated>
-    <id>http://brandontreb.github.com/considering-leaving-wordpress-for-jekyll</id>
+    <id>http://brandontreb.com/considering-leaving-wordpress-for-jekyll</id>
     <content type="html"><![CDATA[<p>So, after my 6 year relationship with Wordpress, I have been having some strong feelings for another (blog engine).  <a href="http://jekyllrb.com/">Jekyll</a> does everything that I want my wordpress to do.</p>
 
 <ol>
@@ -38,9 +38,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tweet Press 3.2 Update - Sidebar Widget]]></title>
-    <link href="http://brandontreb.github.com/tweet-press-3-2-update-sidebar-widget/"/>
+    <link href="http://brandontreb.com/tweet-press-3-2-update-sidebar-widget/"/>
     <updated>2011-02-16T10:54:51-07:00</updated>
-    <id>http://brandontreb.github.com/tweet-press-3-2-update-sidebar-widget</id>
+    <id>http://brandontreb.com/tweet-press-3-2-update-sidebar-widget</id>
     <content type="html"><![CDATA[<p>I have recently had an overwhelming number of requests for a sidebar widget that displays your recent Tweetpress photos.  Well, it's finally here!  The update was actually quite trivial to make.  If I had known how simple it would be, I would have made it months ago.</p>
 
 <p>Make sure you update to the latest version: <a href="http://wordpress.org/extend/plugins/tweetpress/">tweetpress 3.2</a></p>
@@ -59,9 +59,9 @@ In the Wordpress admin, click on Appearance and the Widgets from the sidebar men
   
   <entry>
     <title type="html"><![CDATA[Tweetpress Plugin Updated]]></title>
-    <link href="http://brandontreb.github.com/tweetpress-plugin-updated/"/>
+    <link href="http://brandontreb.com/tweetpress-plugin-updated/"/>
     <updated>2010-10-28T01:10:02-06:00</updated>
-    <id>http://brandontreb.github.com/tweetpress-plugin-updated</id>
+    <id>http://brandontreb.com/tweetpress-plugin-updated</id>
     <content type="html"><![CDATA[<p>I have just posted an update to my plugin Tweetpress!  In case you don't know, Tweetpress is a plugin I created that allows you to post images to your Wordpress blog from mobile Twitter clients instead of a 3rd party service like Twitpic.  Here is what's new in this version.</p>
 
 <div id="_mcePaste">
@@ -94,9 +94,9 @@ In the Wordpress admin, click on Appearance and the Widgets from the sidebar men
   
   <entry>
     <title type="html"><![CDATA[Great WordPress Plugin To Connect Your WordPress Blog To Your Tumblr]]></title>
-    <link href="http://brandontreb.github.com/great-wordpress-plugin-to-connect-your-wordpress-blog-to-your-tumblr/"/>
+    <link href="http://brandontreb.com/great-wordpress-plugin-to-connect-your-wordpress-blog-to-your-tumblr/"/>
     <updated>2010-09-17T01:00:14-06:00</updated>
-    <id>http://brandontreb.github.com/great-wordpress-plugin-to-connect-your-wordpress-blog-to-your-tumblr</id>
+    <id>http://brandontreb.com/great-wordpress-plugin-to-connect-your-wordpress-blog-to-your-tumblr</id>
     <content type="html"><![CDATA[<p>Ok, so maybe this is stupid, reposting your own content in multiple areas.  As far as SEO goes, it may not be the best idea.  However, I really love Tumblr and I really love Wordpress.  I can't seem to part with either yet I don't quite have the time for both.</p>
 
 <p>I put out a quick tweet earlier today (and this is why I flippin love Twitter), asking if anyone knew of a good way to connect Wordpress to Twitter.  Here are the popular options.</p>
@@ -119,9 +119,9 @@ In the Wordpress admin, click on Appearance and the Widgets from the sidebar men
   
   <entry>
     <title type="html"><![CDATA[Wordpress For iPhone/iPad NSXMLParserErrorDomain Error 64 Resolved]]></title>
-    <link href="http://brandontreb.github.com/wordpress-for-iphoneipad-nsxmlparsererrordomain-error-64-resolved/"/>
+    <link href="http://brandontreb.com/wordpress-for-iphoneipad-nsxmlparsererrordomain-error-64-resolved/"/>
     <updated>2010-08-30T05:00:53-06:00</updated>
-    <id>http://brandontreb.github.com/wordpress-for-iphoneipad-nsxmlparsererrordomain-error-64-resolved</id>
+    <id>http://brandontreb.com/wordpress-for-iphoneipad-nsxmlparsererrordomain-error-64-resolved</id>
     <content type="html"><![CDATA[<p>If you have a Wordpress blog and an iPhone/iPad, then you most likely have the <a href="http://itunes.apple.com/us/app/wordpress/id335703880?mt=8">Wordpress for iOS</a> app.  If you don't, you <a href="http://itunes.apple.com/us/app/wordpress/id335703880?mt=8">should</a>.</p>
 
 <p>Over the past couple of days, I have been receiving the following error when trying to add my blog to the iPhone app.</p>

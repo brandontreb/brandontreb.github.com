@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: link | Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/blog/categories/link/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/blog/categories/link/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vim For iOS Is Incredible]]></title>
-    <link href="http://brandontreb.github.com/vim-for-ios-is-incredible/"/>
+    <link href="http://brandontreb.com/vim-for-ios-is-incredible/"/>
     <updated>2012-01-25T00:00:00-07:00</updated>
-    <id>http://brandontreb.github.com/vim-for-ios-is-incredible</id>
+    <id>http://brandontreb.com/vim-for-ios-is-incredible</id>
     <content type="html"><![CDATA[<p>I used to be an Emacs guy and would battle to the death on the war between Vim and Emacs.  It wasn't until a coworker of mine sat down and really showed me just how cool/simple/powerful Vim can be.  Just using Vim is a new adventure every day and has really improved my productivity.  I now use it to code, blog, and even jot down quick notes.</p>
 
 <p>Last week, I saw on Hacker News a link announcing <a href="http://applidium.com/en/applications/vim/">Vim has been ported to iOS</a>.  I have spent a week or so with it and can honestly say the port is almost perfect!</p>

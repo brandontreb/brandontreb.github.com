@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Articles | Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/blog/categories/articles/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/blog/categories/articles/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[What's Your Cruising Speed?]]></title>
-    <link href="http://brandontreb.github.com/whats-your-cruising-speed/"/>
+    <link href="http://brandontreb.com/whats-your-cruising-speed/"/>
     <updated>2011-10-04T20:20:00-06:00</updated>
-    <id>http://brandontreb.github.com/whats-your-cruising-speed</id>
+    <id>http://brandontreb.com/whats-your-cruising-speed</id>
     <content type="html"><![CDATA[<center><img src="http://f.cl.ly/items/3i3A3o3o0M3O1I3G3K3M/2009-porsche-911-carrera-19_460x0w.jpg"></center>
 
 
@@ -41,9 +41,9 @@
   
   <entry>
     <title type="html"><![CDATA[Join Me At The Voices That Matter iOS Conference]]></title>
-    <link href="http://brandontreb.github.com/join-me-at-the-voices-that-matter-conference/"/>
+    <link href="http://brandontreb.com/join-me-at-the-voices-that-matter-conference/"/>
     <updated>2011-09-06T22:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/join-me-at-the-voices-that-matter-conference</id>
+    <id>http://brandontreb.com/join-me-at-the-voices-that-matter-conference</id>
     <content type="html"><![CDATA[<p><img width="540" src="http://ios2011.voicesthatmatter.com/attachments/0002/0659/topright.gif"></p>
 
 <p>In November, I will be attending the <a href="http://ios2011.voicesthatmatter.com/">Voices That Matter iOS Developers conference</a>.  It will be my third time attending, and I can't recommend it enough. One major change from this year however is, I will be attending as a sponsor.  A new company/project (currently in private alpha) will be participating as a sponsor at the conference.</p>
@@ -68,9 +68,9 @@
   
   <entry>
     <title type="html"><![CDATA[10 Great Pixel Art Tutorial And Free Resource Sites For Your Games]]></title>
-    <link href="http://brandontreb.github.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games/"/>
+    <link href="http://brandontreb.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games/"/>
     <updated>2011-08-13T21:30:00-06:00</updated>
-    <id>http://brandontreb.github.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games</id>
+    <id>http://brandontreb.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games</id>
     <content type="html"><![CDATA[<p>I don't usually create "list" posts, however I wanted to share a grouping of resources I have been collecting over the past few months.  As you may have noticed, I'm a bit of a Pixel Art fanatic and wanted to share with you the tutorials that helped to get me started as well as some sites offering some high quality <strong>free</strong> pixel art.</p>
 
 <p>Keep in mind that some of these sites have similar content, however they all take a slightly different approach in teaching.  I found it very helpful to read each of the tutorials and learn from different points of view.</p>
@@ -167,9 +167,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cocos2D Tutorial - Dynamically Coloring Sprites]]></title>
-    <link href="http://brandontreb.github.com/Cocos2D-Tutorial-Dynamically-Coloring-Sprites/"/>
+    <link href="http://brandontreb.com/Cocos2D-Tutorial-Dynamically-Coloring-Sprites/"/>
     <updated>2011-07-30T17:05:00-06:00</updated>
-    <id>http://brandontreb.github.com/Cocos2D-Tutorial-Dynamically-Coloring-Sprites</id>
+    <id>http://brandontreb.com/Cocos2D-Tutorial-Dynamically-Coloring-Sprites</id>
     <content type="html"><![CDATA[<p><img src="http://f.cl.ly/items/42231G3d1P3d1b3H2Q2g/Screen%20shot%202011-07-30%20at%204.39.28%20PM.png" alt="Custom Bitizens" /></p>
 
 <p>Have you ever seen a game (such as Tiny Tower) that contains similar sprites that only vary by certain attributes (coloring, shading, accessories, etc...)?  I would often wonder how long it would take the artists to create each permutation of these sprites.  After discovering that you can call a method on a CCSprite called setColor, I realized how most of this customization is done in code.</p>
@@ -332,9 +332,9 @@ ccColor3B skinColor = skinColors[arc4random() % 5];
   
   <entry>
     <title type="html"><![CDATA[Pixel Art Character Tutorial - Creating And Customizing A Bitizen]]></title>
-    <link href="http://brandontreb.github.com/Pixel-Art-Character-Tutorial-Create-A-Bitizen/"/>
+    <link href="http://brandontreb.com/Pixel-Art-Character-Tutorial-Create-A-Bitizen/"/>
     <updated>2011-07-16T14:05:00-06:00</updated>
-    <id>http://brandontreb.github.com/Pixel-Art-Character-Tutorial-Create-A-Bitizen</id>
+    <id>http://brandontreb.com/Pixel-Art-Character-Tutorial-Create-A-Bitizen</id>
     <content type="html"><![CDATA[<center><img src="http://f.cl.ly/items/1R171P3K050O2m1H210C/Toy-Story-brandontreb.com.png"></center>
 
 

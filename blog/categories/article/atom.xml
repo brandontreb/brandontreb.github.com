@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: article | Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/blog/categories/article/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/blog/categories/article/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Why you Should Check Out Unity]]></title>
-    <link href="http://brandontreb.github.com/why-you-should-check-out-unity/"/>
+    <link href="http://brandontreb.com/why-you-should-check-out-unity/"/>
     <updated>2012-05-01T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/why-you-should-check-out-unity</id>
+    <id>http://brandontreb.com/why-you-should-check-out-unity</id>
     <content type="html"><![CDATA[<p>A while back, my buddy <a href="http://twitter.com/seantron">seantron</a> showed me some of his 3D games he'd been working on <a href="http://itunes.apple.com/us/app/hamsteria!/id470730689?mt=8">including this one</a>.  My initial reaction was "how the heck did he get the chopps to do that?".  While, Sean is an incredible developer with a ton of creativity, doing things like loading models, texture mapping, or even basic 3D projects are flippin hard.</p>
 
 <p>A while back I <a href="http://brandontreb.com/ludum-dare-competition-week-2-update/">tried my hand at 3D</a> and made sort of a <em>basic</em> Minecraft style game from scratch using OpenGL ES. Let me tell you, it was brutal (and I have been coding for almost 10 years). This project took me a week or so to ramp up, get basic cubes and textures going and a simple first person view.</p>
@@ -56,9 +56,9 @@
   
   <entry>
     <title type="html"><![CDATA[I Suck At Blogging (Lately)]]></title>
-    <link href="http://brandontreb.github.com/i-suck-at-blogging/"/>
+    <link href="http://brandontreb.com/i-suck-at-blogging/"/>
     <updated>2012-04-27T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/i-suck-at-blogging</id>
+    <id>http://brandontreb.com/i-suck-at-blogging</id>
     <content type="html"><![CDATA[<p>OK, so the title isn't entirely true (I have maintained quite a few blogs in my day). But, one thing is for sure, I have sucked at blogging <strong>lately</strong>. So much so, I just had to think hard about having to bold lately using markdown in the previous sentence <em>#meta</em>.</p>
 
 <h4>Burnout</h4>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iDevBlogADay | Brandon Trebitowski]]></title>
-  <link href="http://brandontreb.github.com/blog/categories/idevblogaday/atom.xml" rel="self"/>
-  <link href="http://brandontreb.github.com/"/>
-  <updated>2013-01-01T08:46:09-07:00</updated>
-  <id>http://brandontreb.github.com/</id>
+  <link href="http://brandontreb.com/blog/categories/idevblogaday/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-01T08:49:14-07:00</updated>
+  <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Why you Should Check Out Unity]]></title>
-    <link href="http://brandontreb.github.com/why-you-should-check-out-unity/"/>
+    <link href="http://brandontreb.com/why-you-should-check-out-unity/"/>
     <updated>2012-05-01T00:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/why-you-should-check-out-unity</id>
+    <id>http://brandontreb.com/why-you-should-check-out-unity</id>
     <content type="html"><![CDATA[<p>A while back, my buddy <a href="http://twitter.com/seantron">seantron</a> showed me some of his 3D games he'd been working on <a href="http://itunes.apple.com/us/app/hamsteria!/id470730689?mt=8">including this one</a>.  My initial reaction was "how the heck did he get the chopps to do that?".  While, Sean is an incredible developer with a ton of creativity, doing things like loading models, texture mapping, or even basic 3D projects are flippin hard.</p>
 
 <p>A while back I <a href="http://brandontreb.com/ludum-dare-competition-week-2-update/">tried my hand at 3D</a> and made sort of a <em>basic</em> Minecraft style game from scratch using OpenGL ES. Let me tell you, it was brutal (and I have been coding for almost 10 years). This project took me a week or so to ramp up, get basic cubes and textures going and a simple first person view.</p>
@@ -56,9 +56,9 @@
   
   <entry>
     <title type="html"><![CDATA[What's Your Cruising Speed?]]></title>
-    <link href="http://brandontreb.github.com/whats-your-cruising-speed/"/>
+    <link href="http://brandontreb.com/whats-your-cruising-speed/"/>
     <updated>2011-10-04T20:20:00-06:00</updated>
-    <id>http://brandontreb.github.com/whats-your-cruising-speed</id>
+    <id>http://brandontreb.com/whats-your-cruising-speed</id>
     <content type="html"><![CDATA[<center><img src="http://f.cl.ly/items/3i3A3o3o0M3O1I3G3K3M/2009-porsche-911-carrera-19_460x0w.jpg"></center>
 
 
@@ -82,9 +82,9 @@
   
   <entry>
     <title type="html"><![CDATA[Join Me At The Voices That Matter iOS Conference]]></title>
-    <link href="http://brandontreb.github.com/join-me-at-the-voices-that-matter-conference/"/>
+    <link href="http://brandontreb.com/join-me-at-the-voices-that-matter-conference/"/>
     <updated>2011-09-06T22:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/join-me-at-the-voices-that-matter-conference</id>
+    <id>http://brandontreb.com/join-me-at-the-voices-that-matter-conference</id>
     <content type="html"><![CDATA[<p><img width="540" src="http://ios2011.voicesthatmatter.com/attachments/0002/0659/topright.gif"></p>
 
 <p>In November, I will be attending the <a href="http://ios2011.voicesthatmatter.com/">Voices That Matter iOS Developers conference</a>.  It will be my third time attending, and I can't recommend it enough. One major change from this year however is, I will be attending as a sponsor.  A new company/project (currently in private alpha) will be participating as a sponsor at the conference.</p>
@@ -109,9 +109,9 @@
   
   <entry>
     <title type="html"><![CDATA[Beginning Jailbroken iOS Development - Your First Tweak]]></title>
-    <link href="http://brandontreb.github.com/beginning-jailbroken-ios-development-your-first-tweak/"/>
+    <link href="http://brandontreb.com/beginning-jailbroken-ios-development-your-first-tweak/"/>
     <updated>2011-08-23T23:00:00-06:00</updated>
-    <id>http://brandontreb.github.com/beginning-jailbroken-ios-development-your-first-tweak</id>
+    <id>http://brandontreb.com/beginning-jailbroken-ios-development-your-first-tweak</id>
     <content type="html"><![CDATA[<p>This is the 3rd installment of my jailbroken iOS development series.  If you haven't already, make sure you read the following tutorials to get up to speed.</p>
 
 <ul>
@@ -276,9 +276,9 @@ Tweak.xm:6: error: declaration of ‘objc_object&lt;/em&gt; self’ shadows a pa
   
   <entry>
     <title type="html"><![CDATA[10 Great Pixel Art Tutorial And Free Resource Sites For Your Games]]></title>
-    <link href="http://brandontreb.github.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games/"/>
+    <link href="http://brandontreb.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games/"/>
     <updated>2011-08-13T21:30:00-06:00</updated>
-    <id>http://brandontreb.github.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games</id>
+    <id>http://brandontreb.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games</id>
     <content type="html"><![CDATA[<p>I don't usually create "list" posts, however I wanted to share a grouping of resources I have been collecting over the past few months.  As you may have noticed, I'm a bit of a Pixel Art fanatic and wanted to share with you the tutorials that helped to get me started as well as some sites offering some high quality <strong>free</strong> pixel art.</p>
 
 <p>Keep in mind that some of these sites have similar content, however they all take a slightly different approach in teaching.  I found it very helpful to read each of the tutorials and learn from different points of view.</p>
