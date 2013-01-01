@@ -9,7 +9,7 @@
   <meta name="author" content="Brandon Trebitowski">
 
   
-  <meta name="description" content="I have long been a fan of Ruby on Rails and even jumper on board very early on.  The one thing that has held me back from using it in the majority of &hellip;">
+  <meta name="description" content="If you have ever coded Java, you know how important the toString() method is.  Well, objective-c has a similar method called Description. What &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/brandontreb" rel="alternate" title="Brandon Trebitowski" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -55,7 +55,7 @@
 
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li><a href="http://feeds.feedburner.com/brandontreb" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
 </ul>
   
@@ -79,6 +79,96 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/objective-c-tutorial-helpful-debugging-by-overriding-the-description-method/">Objective-C Tutorial â Helpful Debugging by Overriding the Description Method</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-27T02:47:12-06:00" pubdate data-updated="true">Jul 27<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you have ever coded Java, you know how important the toString() method is.  Well, objective-c has a similar method called <strong>Description. </strong>What overriding the description will allow you to do is, customize the output when you want to print your object.<strong> </strong></p>
+
+<p>Let&#8217;s take an example where you might have a class called <strong>User </strong>that contains a few properties.</p>
+
+<div>
+  <pre><code class='objc'>@interface User : NSObject {
+    NSInteger userID;
+    NSString  *name;
+    NSString  *website;
+}
+@end</code></pre>
+</div>
+
+
+<p>Now, at this point if we did</p>
+
+<div>
+  <pre><code class='objc'>NSLog(@&quot;%@&quot;,user);</code></pre>
+</div>
+
+
+<p>we would end up with output like</p>
+
+<div>
+  <pre><code class='bash'>User: 0xd18f50</code></pre>
+</div>
+
+
+<p>which is not very helpful.  What would be better is when we want to print the user for it to display their userID, name, and website.  This can be done by overriding the <strong>description </strong>method like this.</p>
+
+<div>
+  <pre><code class='objc'>-(NSString *) description {
+    return [NSString stringWithFormat:@&quot;ID: %d\nName: %@\nWebsite: %@\n&quot;,
+            userID,name,website];
+}</code></pre>
+</div>
+
+
+<p>Now when we call</p>
+
+<div>
+  <pre><code class='objc'>NSLog(@&quot;%@&quot;,user);</code></pre>
+</div>
+
+
+<p>is will nicely display this:</p>
+
+<div>
+  <pre><code class='bash'>ID: 42
+Name: brandontreb
+Website: http://brandontreb.com</code></pre>
+</div>
+
+
+<p>Note: NSLog is your best friend when debugging any objective-c application.  Use it often.  Also, to open up the<strong> Debugger Console</strong>, click <strong>Run -&gt; Console</strong>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -754,55 +844,6 @@ PassengerRuby /usr/bin/ruby</code></pre>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/wordpress-plugin-to-increase-twitter-popularity/">WordPress Plugin to Increase Twitter Popularity</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-03-31T07:10:09-06:00" pubdate data-updated="true">Mar 31<span>st</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p style="text-align: center;"><a href="http://brandontreb.com/wp-content/uploads/2009/03/twitterpluswordpress.png"><img class="size-full wp-image-174 aligncenter" title="twitterpluswordpress" src="http://brandontreb.com/wp-content/uploads/2009/03/twitterpluswordpress.png" alt="twitterpluswordpress" width="409" height="145" /></a></p>
-
-
-<p style="text-align: left;"></p>
-
-
-<p style="text-align: left;">If there are two things I love on the intenets, they are <a href="http://wordpress.org">Wordpress</a> and <a href="http://twitter.com/brandontreb">Twitter</a>.  Recently there have been many plugins developed to integrate the two.  Mainly, updating your Twitter from your blog or vice-versa.  But the question is, do these benefit one another?</p>
-
-
-<p style="text-align: left;">Does your Twitter send traffic to your Wordpress blog or your Wordpress blog get you more followers? Maybe if you are <a href="http://twitter.com/kevinrose">@kevinrose</a> but in my opinion, not really&#8230;</p>
-
-
-<p style="text-align: left;">I&#8217;m currently developing a plugin that will incredibly benenfit your Twitter following using your Wordpress blog.  It&#8217;s called TwitPop and should be available shortly for download.  So be sure to <a href="http://feeds2.feedburner.com/brandontreb">subscribe to the RSS feed</a> and check back soon.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -839,6 +880,10 @@ PassengerRuby /usr/bin/ruby</code></pre>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/what-i-learned-in-my-first-month-being-a-contract-ios-developer/">What I Learned In My First Month Being A Contract iOS Developer</a>
+      </li>
+    
+      <li class="post">
         <a href="/five-third-party-libraries/">5 Third Party iOS Libraries I Have Found Useful Lately</a>
       </li>
     
@@ -852,10 +897,6 @@ PassengerRuby /usr/bin/ruby</code></pre>
     
       <li class="post">
         <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It&#8217;s Right Now</a>
-      </li>
-    
-      <li class="post">
-        <a href="/lua-scripting-the-ui-for-pocket-mud-pro/">Lua Scripting The UI For Pocket MUD Pro</a>
       </li>
     
   </ul>
@@ -917,7 +958,7 @@ PassengerRuby /usr/bin/ruby</code></pre>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Brandon Trebitowski -
+  Copyright &copy; 2013 - Brandon Trebitowski -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
