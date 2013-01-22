@@ -4,7 +4,7 @@
   <title><![CDATA[Brandon Trebitowski]]></title>
   <link href="http://brandontreb.com/atom.xml" rel="self"/>
   <link href="http://brandontreb.com/"/>
-  <updated>2013-01-10T16:20:23-07:00</updated>
+  <updated>2013-01-22T07:02:32-07:00</updated>
   <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tools of The Trade: What Tools I Use For iOS Consulting]]></title>
+    <link href="http://brandontreb.com/tools-of-the-trade-what-tools-i-use-for-ios-consulting/"/>
+    <updated>2013-01-22T06:21:00-07:00</updated>
+    <id>http://brandontreb.com/tools-of-the-trade-what-tools-i-use-for-ios-consulting</id>
+    <content type="html"><![CDATA[<p>Since going Indie, I am constantly asked about what software tools I use to facilitate the process.  People are always curious about invoicing, time tracking, ticket management, etc&#8230;</p>
+
+<p>The purpose of this post is two fold.  First, I want to educate others on some of the cool tools I have found that have helped me out tremndously.  The other is, I would hope that veterans in the space could give their two cents as to some better tools (or better use of the current one&#8217;s). Either way, I&#8217;d love to hear from you.</p>
+
+<h2>1. Tools For Finding Contracts</h2>
+
+<p>This is perhaps the area where I am most asked about.  Well, the secret is, looking for contracts isn&#8217;t that much different than looking for a job.  You just need to know what to look for. Here are the few major sources where I have found sucess in finding good contracts.</p>
+
+<ul>
+<li><a href="http://www.linkedin.com/jobs?displayHome=">Linked In Jobs</a> I love Linked In.  I have found it to be <strong>the most</strong> valuable tool for job searches and connecting to date.  I love that it will suggest jobs/contracts to you based on your profile and experience.  Another great thing about Linked In is contract search can become passive if you are actively connecting and posting.  Once your name starts flowing out there (assuming you have the exp), people will just start offering you contracts.</li>
+<li><a href="http://www.authenticjobs.com">Authentic Jobs</a> I like this site a lot.  Their interface is much cleaner than some of the other job search sites and while they had fewer contracts available, they were generally of a higher quality.  In fact, I found the current contract that I&#8217;m working on here.</li>
+<li><a href="http://www.simplyhired.com/">Simply Hired</a> Although this site generally offlinks to other sites, I found it to be a good aggrigator of what&#8217;s out there.</li>
+<li><a href="http://google.com">Good Ol Google</a> This seems like a job, but as I mentioned in my <a href="http://brandontreb.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer/">last post</a>, it&#8217;s pretty easy to type &#8220;[:field_name] contract work&#8221; and come up with a pretty good list.</li>
+</ul>
+
+
+<h2>2. Tools For Managing Clients/Billing</h2>
+
+<p>As a new contractor, the concept of billing can seem a bit scary.  You don&#8217;t want to look like a n00b, but you also don&#8217;t want to spend a lot of money.  That&#8217;s where <a href="https://brandontrebitowski.freshbooks.com/refer/www">FreshBooks</a> comes in.</p>
+
+<p>I started using FreshBooks from day one and could not be happier with their service.  Here are some of the pros:</p>
+
+<ul>
+<li>Free for up to 3 clients.  It says 30 day trial, but that&#8217;s just if you want more than 3 clients.  So it&#8217;s perfect for when you are starting out.</li>
+<li>Manage multiple projects for mulitiple clients with multiple tasks (&#8216;nuff said)</li>
+<li>Mobile app.  You haven&#8217;t lived until you have sent an invoice from your smartphone.  You feel super businessy. For an added bonus, send it from the gym, or your sailboat.</li>
+<li>It handles sending invoices via mail or email automatically and reports back to you when the client has seen the invoice.</li>
+</ul>
+
+
+<p>Again, <a href="https://brandontrebitowski.freshbooks.com/refer/www">FreshBooks</a> is awesome! I can&#8217;t recommend it enough.</p>
+
+<h2>3. Tools For Ticket Management</h2>
+
+<p>This one is tricky, because every client is going to want to work differently.  Here are the few I have expereinced thus far.</p>
+
+<ul>
+<li><a href="https://www.pivotaltracker.com">Pivotal Tracker</a> This one is my favorite.  It&#8217;s a very easy to use tool to help facilitate development in an agile environment.  Even if you are not running the full scrum process, it&#8217;s still a valuable tool to simply track your progress.  Your clients will appreciate it.</li>
+<li><a href="http://basecamp.com">Basecamp</a> You knew I was going to say this one.  It&#8217;s an obvious choice because it&#8217;s obvioulsy a solid tool.  I think it&#8217;s very valuable when you have a distributed team and need a central way to communicate.</li>
+</ul>
+
+
+<p>Even if your client doesn&#8217;t use a tracker, I&#8217;d suggest you use one.  It helps you to keep organized and get a better feel for how long certain tasks take (which you will need to know in future scoping).</p>
+
+<p>I dont&#8217; have a very long list here because I hate most tracking software.  If you have some to add here, I would love to hear about them in the comments.</p>
+
+<h2>4. Tools For Software Development</h2>
+
+<p>I am an iOS and rails developer, so this section may or may not be applicable to you.  Again, I put this out there to let you know what <strong>I</strong> am using and would love to hear what <strong>you</strong> are using.</p>
+
+<p><strong>iOS</strong></p>
+
+<ul>
+<li>XCode (duh)</li>
+<li><a href="http://basecamp.com">CocoaPods</a> - If you don&#8217;t use CocoaPods, you are doing it wrong.  They are what gems are to rails and really help you manage 3rd party libraries.</li>
+<li><a href="http://github.com">GitHub</a> - For verison control and code distribution amoung the team. (again, you know this already).</li>
+</ul>
+
+
+<p><strong>Rails</strong></p>
+
+<ul>
+<li><a href="http://www.sublimetext.com">Sublime Text</a> I was big on TextMate for a while, but now I use Sublime Text full time.  It has some solid plugins and can do a smart autocomplete for any file type.</li>
+<li><a href="http://www.heroku.com">Heroku</a> Deploying rails to production sucks.  Heroku makes this process easy.</li>
+</ul>
+
+
+<h2>5. Tools For Communication</h2>
+
+<p>Working in a distributed team can be hard at first.  Especially staying connected.  Here are the major forms of communication that I use.</p>
+
+<ul>
+<li><a href="http://beta.skype.com/en/">Skype</a> Although Skype has totally gone down hill since the MS takeover, it&#8217;s still a free service that <em>most</em> clients will use.  I&#8217;d suggest if you don&#8217;t have a Skype account, you get one before job searching.</li>
+<li><a href="https://www.google.com/voice/b/0?pli=1">Google Voice</a> This service allows you to forward a number directly on your cell phone.  It also has some nicities like screening your calls, voicemail, free calls, etc&#8230;  It&#8217;s good to give out your Google voice number instead of your cell to clients as well as possible girl/boyfriends in case things go sour.</li>
+<li><a href="http://www.google.com/+/learnmore/hangouts/">Google Hangout</a> Skype falls short in one area (which happens to be their business model).  If you have more than 2 people on a call, they must all have a premium account to do video chat or screenshare.  Google Hangout gives you all of these features for free with up to 10 people as of this writing.</li>
+<li>Standard social networks (Twitter, Linked In, G+) (duh)</li>
+</ul>
+
+
+<h2>Conclusion</h2>
+
+<p>Well, this post is already getting a bit out of control.  I could go on and on.  If I have obviously omitted a large section, please feel free to troll me in the comments and I will certainly add it.</p>
+
+<p>I hope this has been able to provide you with some value, and I would love to hear your thoughts.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What I Learned In My First Month Being A Contract iOS Developer]]></title>
@@ -584,52 +676,6 @@ createFrame(mudFrame)</code></pre>
 <p>Fluid is free with some minimal features, but I urge you to drop the $4.99 to gain full screen mode and user scripts. It&#8217;s well worth it. I am not affiliated with them in any way, just a happy customer.</p>
 
 <p><a href="http://fluidapp.com/">Download Fluid</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Amazon - A Terrible Solution To A Huge Problem]]></title>
-    <link href="http://brandontreb.com/amazon--a-terrible-solution-to-a-huge-problem/"/>
-    <updated>2012-01-16T00:00:00-07:00</updated>
-    <id>http://brandontreb.com/amazon&#8211;a-terrible-solution-to-a-huge-problem</id>
-    <content type="html"><![CDATA[<p>tl;dr; Don&#8217;t buy a Kindle Fire for your kid until they resolve the parental control issues. Wifi password protection is their current solution, and it sucks.</p>
-
-<p>Like many parents, I thought it would be a good idea to get a tablet device for my son so that he could play some <em>educational</em> games and watch some Netflix (in moderation of course). After doing quite a bit of research, I settled on the Kindle Fire. Before the Apple fanboys give me crap, know that I am one, I have an iPad, it&#8217;s too expensive for my son.</p>
-
-<p>Honestly, I really love the fire.  I think it has the <em>least terrible</em> Android interface of any of the devices.  It&#8217;s intuitive and my 3 year old was able to grasp navigation right away.  In addition to navigation, he quickly figured out how to acquire new content (apps, video, children&#8217;s books) thanks to Amazon&#8217;s &#8220;One-Click Ordering&#8221;. Obviously, Amazon thought the process they use on the web transfered well to a tablet device and was not willing to compromise on that.  That&#8217;s neither here nor there. You can find plenty of posts about user&#8217;s complaining about the <strong>initial</strong> lack of parental controls.</p>
-
-<h4>The Update</h4>
-
-<p>Shortly after receiving some pretty rough reviews for their interface, Amazon rolled out their first update which brought us to 6.2.1.  In addition to fixing some of there terribly choppy UI, they rolled out their &#8220;fix&#8221; for the lack of parental controls.</p>
-
-<p>I noticed a new security setting that I had hoped would allow the device to require a password for content purchase, but it turns out the setting is to password protect enabling wifi.</p>
-
-<p><strong>Password protect enabling wifi? Really?</strong></p>
-
-<p>This is laughable at best.  What a worthless feature. I could not figure out why anyone would ever want that. And then I had a conversation with &#8220;tech support&#8221;.</p>
-
-<h4>Their &#8220;Solution&#8221; Confirmed</h4>
-
-<p>After seeing an email from Amazon the other day showing my purchase for $17.99 for Team Umizoomi Season 1 (whatever the crap that is), which obviously my son purchased, I set out to chat with customer support.  The conversation went something like this:</p>
-
-<blockquote><p>&#8230;<br/>
-<strong>Me:</strong> Refund!? No parental controls!</p>
-
-<p><strong>Outsourced Guy:</strong> Enable Wifi Password = protection!</p>
-
-<p><strong>Me:</strong> No, watch Netflix! Browse Web! Stupid Solution</p>
-
-<p><strong>Outsourced Guy:</strong> Yes Netflix Need Wifi. Did I solve your problem?</p>
-
-<p><strong>Me:</strong> ?</p>
-
-<p><strong>Outsourced Guy:</strong> Phone Number. Call Video Support</p></blockquote>
-
-<p>So there you have it.  Amazon actually pushes this as their solution to the lack of parental controls. My suspicions were confirmed by Outsourced Guy.</p>
-
-<h4>Conclusion</h4>
-
-<p>It&#8217;s sad that a huge company such as Amazon feels that <em>their process</em> is more important than listening to their customers.  Although their devices have been selling like <em>fire</em> (badum ch!), they need to address such gaping issues if they are to maintain their edge in the &#8220;affordable&#8221; tablet space.  Especially as the younger generations start embracing the technology.</p>
 ]]></content>
   </entry>
   

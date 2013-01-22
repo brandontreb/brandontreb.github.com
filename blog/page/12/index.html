@@ -9,7 +9,7 @@
   <meta name="author" content="Brandon Trebitowski">
 
   
-  <meta name="description" content="While mashing the keyboard (as I often do when debuggin poorly written outsourced code), I stumbled upon a very useful OSX hotkey. ⌘-option-d This &hellip;">
+  <meta name="description" content="So, I though I&#8217;d start this series called Programming Tip Of The Day to write about useful things I come across in programming.  Both to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,86 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/programming-tip-of-the-day-1-ternary-operator/">Programming Tip of the Day #1 - Ternary Operator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-03T10:30:48-07:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So, I though I&#8217;d start this series called Programming Tip Of The Day to write about useful things I come across in programming.  Both to educate my readers and as a personal archive of ideas and tips.</p>
+
+<p>I will kick it off today with a quick rant about the <strong>ternary operator</strong>.  I &lt;3 the ternary operator.  It&#8217;s quick, efficient and saves a lot of ugly code.</p>
+
+<p>For those of you who don&#8217;t know, the ternary operator is made up of 3 elements: The condition and two results.  It is of the form:</p>
+
+<h2>(condition) ? (result if true) : (result if false);</h2>
+
+
+<p>This is much nicer than an if statement.  So here is a brief example about how a ternary operator can replace an if-statement.</p>
+
+<h3>if-statement</h3>
+
+
+<div>
+  <pre><code class='c'>if(isSnowing) {
+    iMustBe = &quot;cold&quot;;
+} else {
+    iMustBe = &quot;warm&quot;;
+}</code></pre>
+</div>
+
+
+
+
+<h3>Same thing using ternary</h3>
+
+
+<div>
+  <pre><code class='c'>iMustBe = isSnowing ? &quot;cold&quot; : &quot;warm&quot;;</code></pre>
+</div>
+
+
+<p>That is so much easier to read (IMHO).  You can even do clever things in printing.  Here is a small example in PHP for using the ternary operator when doing an echo.</p>
+
+<div>
+  <pre><code class='php'>&lt;?php
+  echo &quot;I am a &quot;.((height &gt; 72) ? &quot;tall&quot; : &quot;short&quot;).&quot; person!&quot;;
+?&gt;</code></pre>
+</div>
+
+
+<p>Most languages support the ternary operator.  Check out <a href="http://en.wikipedia.org/wiki/Ternary_operation">this wiki page</a> if you want more info.</p>
+
+<p>Happy programming!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -554,46 +634,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/was-jesus-a-real-person-great-article-on-digg-today/">Was Jesus a Real Person? Great Article on Digg Today</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-10T09:33:08-07:00" pubdate data-updated="true">Nov 10<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The culture of Digg is generally very liberal (to say the least).  That is why I was very surprised to find one of the top stories of the day entitled &#8221;<a href="http://digg.com/people/Was_Jesus_a_real_person">Was Jesus A Real Person?</a>&#8221;.  Obviously, the comments section of the article was full of people arguing about the matter.</p>
-
-<p>I found the article to be quite well written and made a stellar case for the existence of Jesus.  So whether you are a believer or not, you should check it out.  <a href="http://www.y-jesus.com/bornid_1.php?gclid=CMfD2puS_Z0CFRUwpAodl1mgrw">Take a look for yourself </a>and let me know what you think.</p>
-
-<p><a href="http://www.y-jesus.com/bornid_1.php?gclid=CMfD2puS_Z0CFRUwpAodl1mgrw">Article Link</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -630,6 +670,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/tools-of-the-trade-what-tools-i-use-for-ios-consulting/">Tools of The Trade: What Tools I Use For iOS Consulting</a>
+      </li>
+    
+      <li class="post">
         <a href="/what-i-learned-in-my-first-month-being-a-contract-ios-developer/">What I Learned In My First Month Being A Contract iOS Developer</a>
       </li>
     
@@ -643,10 +687,6 @@
     
       <li class="post">
         <a href="/my-number-one-feature-request-for-ios-6/">My Number One Feature Request For iOS 6</a>
-      </li>
-    
-      <li class="post">
-        <a href="/if-there-was-ever-a-time-to-submit-a-show-hn-article-its-right-now/">If There Was Ever A Time To Submit A Show HN Article, It&#8217;s Right Now</a>
       </li>
     
   </ul>
