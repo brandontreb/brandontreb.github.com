@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Consulting | Brandon Trebitowski]]></title>
+  <link href="http://brandontreb.com/blog/categories/consulting/atom.xml" rel="self"/>
+  <link href="http://brandontreb.com/"/>
+  <updated>2013-01-22T07:08:12-07:00</updated>
+  <id>http://brandontreb.com/</id>
+  <author>
+    <name><![CDATA[Brandon Trebitowski]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tools of The Trade: What Tools I Use For iOS Consulting]]></title>
+    <link href="http://brandontreb.com/tools-of-the-trade-what-tools-i-use-for-ios-consulting/"/>
+    <updated>2013-01-22T06:21:00-07:00</updated>
+    <id>http://brandontreb.com/tools-of-the-trade-what-tools-i-use-for-ios-consulting</id>
+    <content type="html"><![CDATA[<p>Since going Indie, I am constantly asked about what software tools I use to facilitate the process.  People are always curious about invoicing, time tracking, ticket management, etc...</p>
+
+<p>The purpose of this post is two fold.  First, I want to educate others on some of the cool tools I have found that have helped me out tremndously.  The other is, I would hope that veterans in the space could give their two cents as to some better tools (or better use of the current one's). Either way, I'd love to hear from you.</p>
+
+<h2>1. Tools For Finding Contracts</h2>
+
+<p>This is perhaps the area where I am most asked about.  Well, the secret is, looking for contracts isn't that much different than looking for a job.  You just need to know what to look for. Here are the few major sources where I have found sucess in finding good contracts.</p>
+
+<ul>
+<li><a href="http://www.linkedin.com/jobs?displayHome=">Linked In Jobs</a> I love Linked In.  I have found it to be <strong>the most</strong> valuable tool for job searches and connecting to date.  I love that it will suggest jobs/contracts to you based on your profile and experience.  Another great thing about Linked In is contract search can become passive if you are actively connecting and posting.  Once your name starts flowing out there (assuming you have the exp), people will just start offering you contracts.</li>
+<li><a href="http://www.authenticjobs.com">Authentic Jobs</a> I like this site a lot.  Their interface is much cleaner than some of the other job search sites and while they had fewer contracts available, they were generally of a higher quality.  In fact, I found the current contract that I'm working on here.</li>
+<li><a href="http://www.simplyhired.com/">Simply Hired</a> Although this site generally offlinks to other sites, I found it to be a good aggrigator of what's out there.</li>
+<li><a href="http://google.com">Good Ol Google</a> This seems like a job, but as I mentioned in my <a href="http://brandontreb.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer/">last post</a>, it's pretty easy to type "[:field_name] contract work" and come up with a pretty good list.</li>
+</ul>
+
+
+<h2>2. Tools For Managing Clients/Billing</h2>
+
+<p>As a new contractor, the concept of billing can seem a bit scary.  You don't want to look like a n00b, but you also don't want to spend a lot of money.  That's where <a href="https://brandontrebitowski.freshbooks.com/refer/www">FreshBooks</a> comes in.</p>
+
+<p>I started using FreshBooks from day one and could not be happier with their service.  Here are some of the pros:</p>
+
+<ul>
+<li>Free for up to 3 clients.  It says 30 day trial, but that's just if you want more than 3 clients.  So it's perfect for when you are starting out.</li>
+<li>Manage multiple projects for mulitiple clients with multiple tasks ('nuff said)</li>
+<li>Mobile app.  You haven't lived until you have sent an invoice from your smartphone.  You feel super businessy. For an added bonus, send it from the gym, or your sailboat.</li>
+<li>It handles sending invoices via mail or email automatically and reports back to you when the client has seen the invoice.</li>
+</ul>
+
+
+<p>Again, <a href="https://brandontrebitowski.freshbooks.com/refer/www">FreshBooks</a> is awesome! I can't recommend it enough.</p>
+
+<h2>3. Tools For Ticket Management</h2>
+
+<p>This one is tricky, because every client is going to want to work differently.  Here are the few I have expereinced thus far.</p>
+
+<ul>
+<li><a href="https://www.pivotaltracker.com">Pivotal Tracker</a> This one is my favorite.  It's a very easy to use tool to help facilitate development in an agile environment.  Even if you are not running the full scrum process, it's still a valuable tool to simply track your progress.  Your clients will appreciate it.</li>
+<li><a href="http://basecamp.com">Basecamp</a> You knew I was going to say this one.  It's an obvious choice because it's obvioulsy a solid tool.  I think it's very valuable when you have a distributed team and need a central way to communicate.</li>
+</ul>
+
+
+<p>Even if your client doesn't use a tracker, I'd suggest you use one.  It helps you to keep organized and get a better feel for how long certain tasks take (which you will need to know in future scoping).</p>
+
+<p>I dont' have a very long list here because I hate most tracking software.  If you have some to add here, I would love to hear about them in the comments.</p>
+
+<h2>4. Tools For Software Development</h2>
+
+<p>I am an iOS and rails developer, so this section may or may not be applicable to you.  Again, I put this out there to let you know what <strong>I</strong> am using and would love to hear what <strong>you</strong> are using.</p>
+
+<p><strong>iOS</strong></p>
+
+<ul>
+<li>XCode (duh)</li>
+<li><a href="http://basecamp.com">CocoaPods</a> - If you don't use CocoaPods, you are doing it wrong.  They are what gems are to rails and really help you manage 3rd party libraries.</li>
+<li><a href="http://github.com">GitHub</a> - For verison control and code distribution amoung the team. (again, you know this already).</li>
+</ul>
+
+
+<p><strong>Rails</strong></p>
+
+<ul>
+<li><a href="http://www.sublimetext.com">Sublime Text</a> I was big on TextMate for a while, but now I use Sublime Text full time.  It has some solid plugins and can do a smart autocomplete for any file type.</li>
+<li><a href="http://www.heroku.com">Heroku</a> Deploying rails to production sucks.  Heroku makes this process easy.</li>
+</ul>
+
+
+<h2>5. Tools For Communication</h2>
+
+<p>Working in a distributed team can be hard at first.  Especially staying connected.  Here are the major forms of communication that I use.</p>
+
+<ul>
+<li><a href="http://beta.skype.com/en/">Skype</a> Although Skype has totally gone down hill since the MS takeover, it's still a free service that <em>most</em> clients will use.  I'd suggest if you don't have a Skype account, you get one before job searching.</li>
+<li><a href="https://www.google.com/voice/b/0?pli=1">Google Voice</a> This service allows you to forward a number directly on your cell phone.  It also has some nicities like screening your calls, voicemail, free calls, etc...  It's good to give out your Google voice number instead of your cell to clients as well as possible girl/boyfriends in case things go sour.</li>
+<li><a href="http://www.google.com/+/learnmore/hangouts/">Google Hangout</a> Skype falls short in one area (which happens to be their business model).  If you have more than 2 people on a call, they must all have a premium account to do video chat or screenshare.  Google Hangout gives you all of these features for free with up to 10 people as of this writing.</li>
+<li>Standard social networks (Twitter, Linked In, G+) (duh)</li>
+</ul>
+
+
+<h2>Conclusion</h2>
+
+<p>Well, this post is already getting a bit out of control.  I could go on and on.  If I have obviously omitted a large section, please feel free to troll me in the comments and I will certainly add it.</p>
+
+<p>I hope this has been able to provide you with some value, and I would love to hear your thoughts.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What I Learned In My First Month Being A Contract iOS Developer]]></title>
+    <link href="http://brandontreb.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer/"/>
+    <updated>2012-12-29T14:54:00-07:00</updated>
+    <id>http://brandontreb.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer</id>
+    <content type="html"><![CDATA[<p><strong>tl;dr Present yourself to potential clients as if you have already made it. Don't be scared, the work it out there. Freelancing FTW!1!</strong></p>
+
+<p>In the first week of December, I got a rather unfortunate (and unexpected) call from the CEO of the company I was working for.  The gist of it was "we are reorganizing, and have decided to cut your position. Effective Immediately".  At this point, I was the Director Of Mobile Engineering and was making a very decent salary.  While I was planning on leaving to go freelance at some point, I hadn't dreamed it would be this sudden.</p>
+
+<p>Well, it turns out that CEO did me one of the biggest favors of my life.  He forced me to go indie.  I probably would have flailed there for at least another year before even considering moving on.</p>
+
+<p>I want to share a few things (good and bad) about what I have learned in the past month and how I will never (willingly) work for a company again.</p>
+
+<h2>Panic Sets In</h2>
+
+<p>I had been working at the aforementioned company for the past 4 years.  In fact, it was my first job out of college.  So, you can imagine how scary and stressful it was going from a steady paycheck to nothing in the blink of an eye.  What's ironic about this is, many people I have talked to since going indie have told me that they wish they could do it too, but really like the "security" of their corporate job.</p>
+
+<p>At first, I freaked out a little and took the day off (I was "let go" in the morning).  But, the very next day I hit the ground running in search of a contract.</p>
+
+<h2>Contracts, Contracts Everywhere</h2>
+
+<p>Much to my surprise, there are contracting opportunities <strong>everywhere</strong>.  Again, I had to leave the company so soon, I hadn't had time to research this myself beforehand.  A simple Google search of "[your field] contract work" should reveal plenty (assuming your field is some sort of software. I can't speak for other industries).  I even started applying for salaried jobs as a contractor. You would be surprised how many companies are open to it.</p>
+
+<p>This was immediately comforting.</p>
+
+<h2>Talk The Talk</h2>
+
+<p>My first few days of looking for a contract were pretty interesting.  Being that I had just been let go, I felt this intense pressure to land a contract right away.  This definitely came through in how I related to the recruiters and people I spoke with.  My good friend <a href="http://twitter.com/slcaruso">Scott Caruso</a> sat down with me and gave me some of the most important advice I would hear for dealing with potential clients.</p>
+
+<ol>
+<li><p>You are looking for the "right opportunity".  If you are considering freelance, you obviously feel you are an expert (or close to) in your field and that definitely has value.  Don't settle for crappy contracts at crappy rates just because you need the money.  You will hate life.</p></li>
+<li><p>Spam! During my first week, I would contact one or two people and they said they would get back to me.  Well, I didn't want to possibly have to tell them no later, so I would politely not communicate with anyone else until I heard back.  That was dumb.
+Finding contracts is like shopping at Goodwill.  It's mostly crap, but if you go through enough of the crap, you will find a gem.</p></li>
+<li><p>Leverage your existing contacts. This should be obvious.  I was holding off on this early on as I didn't want to sound lame.  However, these are the people you can show a little desperation to as they are (or should be) your friends.  That being said, someone always knows someone else that needs some work done. If I hadn't done this, I for sure would have violated #1.</p></li>
+<li><p>You are a scarce resource (at least present yourself that way):  Once I started telling recruiters that I was talking to tons of others and am planning on making a deal this week, I started getting a flood of them calling me back.</p></li>
+</ol>
+
+
+<h2>The Bad</h2>
+
+<ol>
+<li><p>Everything you do starts to get a price tag.  The other day, I asked my wife to <a href="http://xkcd.com/149/">make me a sandwichh</a>.  She told me to make it myself, and I politely informed her that the 15 minutes spent doing that would cost us $25 so it had better be the best sandwhich I have ever made.<br/>
+I am not sure if this feeling ever goes away (if you are a veteran freelance, I'd love to hear your thoughts).</p></li>
+<li><p>It's a little scary knowing you don't have a paycheck in X months (X being your current contract length).  This was the most frightening thing at first.  Now, it seems like an exciting challenge.</p></li>
+<li><p>Tendency to overwork: Since you now have money++ and can make more just by adding hours, you will be drawn to work more.  I have talked to many others who end up leaving freelance because of burnout from working too much.  Sure you made $30K in 2 weeks, but you are hating life.</p></li>
+</ol>
+
+
+<h2>Summary</h2>
+
+<p>So far my journey as an independent iOS developer has been incredible.  I am loving every minute of it and I encourage anyone interested in it to do the same.  I don't think it's for the n00b or the non-self starter.  <a href="http://www.jamiebegin.com/how-to-become-a-successful-freelance-web-developer-and-not-kill-your-career/">This post</a> I found on Hacker News has a brilliant step by step tutorial on moving in this direction.</p>
+
+<p>I hope you have enjoyed yet another post on freelancing.</p>
+
+<p>Thanks for reading!</p>
+]]></content>
+  </entry>
+  
+</feed>

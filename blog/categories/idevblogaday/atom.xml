@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iDevBlogADay | Brandon Trebitowski]]></title>
   <link href="http://brandontreb.com/blog/categories/idevblogaday/atom.xml" rel="self"/>
   <link href="http://brandontreb.com/"/>
-  <updated>2013-01-22T07:04:37-07:00</updated>
+  <updated>2013-01-22T07:08:12-07:00</updated>
   <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tools of The Trade: What Tools I Use For iOS Consulting]]></title>
+    <link href="http://brandontreb.com/tools-of-the-trade-what-tools-i-use-for-ios-consulting/"/>
+    <updated>2013-01-22T06:21:00-07:00</updated>
+    <id>http://brandontreb.com/tools-of-the-trade-what-tools-i-use-for-ios-consulting</id>
+    <content type="html"><![CDATA[<p>Since going Indie, I am constantly asked about what software tools I use to facilitate the process.  People are always curious about invoicing, time tracking, ticket management, etc...</p>
+
+<p>The purpose of this post is two fold.  First, I want to educate others on some of the cool tools I have found that have helped me out tremndously.  The other is, I would hope that veterans in the space could give their two cents as to some better tools (or better use of the current one's). Either way, I'd love to hear from you.</p>
+
+<h2>1. Tools For Finding Contracts</h2>
+
+<p>This is perhaps the area where I am most asked about.  Well, the secret is, looking for contracts isn't that much different than looking for a job.  You just need to know what to look for. Here are the few major sources where I have found sucess in finding good contracts.</p>
+
+<ul>
+<li><a href="http://www.linkedin.com/jobs?displayHome=">Linked In Jobs</a> I love Linked In.  I have found it to be <strong>the most</strong> valuable tool for job searches and connecting to date.  I love that it will suggest jobs/contracts to you based on your profile and experience.  Another great thing about Linked In is contract search can become passive if you are actively connecting and posting.  Once your name starts flowing out there (assuming you have the exp), people will just start offering you contracts.</li>
+<li><a href="http://www.authenticjobs.com">Authentic Jobs</a> I like this site a lot.  Their interface is much cleaner than some of the other job search sites and while they had fewer contracts available, they were generally of a higher quality.  In fact, I found the current contract that I'm working on here.</li>
+<li><a href="http://www.simplyhired.com/">Simply Hired</a> Although this site generally offlinks to other sites, I found it to be a good aggrigator of what's out there.</li>
+<li><a href="http://google.com">Good Ol Google</a> This seems like a job, but as I mentioned in my <a href="http://brandontreb.com/what-i-learned-in-my-first-month-being-a-contract-ios-developer/">last post</a>, it's pretty easy to type "[:field_name] contract work" and come up with a pretty good list.</li>
+</ul>
+
+
+<h2>2. Tools For Managing Clients/Billing</h2>
+
+<p>As a new contractor, the concept of billing can seem a bit scary.  You don't want to look like a n00b, but you also don't want to spend a lot of money.  That's where <a href="https://brandontrebitowski.freshbooks.com/refer/www">FreshBooks</a> comes in.</p>
+
+<p>I started using FreshBooks from day one and could not be happier with their service.  Here are some of the pros:</p>
+
+<ul>
+<li>Free for up to 3 clients.  It says 30 day trial, but that's just if you want more than 3 clients.  So it's perfect for when you are starting out.</li>
+<li>Manage multiple projects for mulitiple clients with multiple tasks ('nuff said)</li>
+<li>Mobile app.  You haven't lived until you have sent an invoice from your smartphone.  You feel super businessy. For an added bonus, send it from the gym, or your sailboat.</li>
+<li>It handles sending invoices via mail or email automatically and reports back to you when the client has seen the invoice.</li>
+</ul>
+
+
+<p>Again, <a href="https://brandontrebitowski.freshbooks.com/refer/www">FreshBooks</a> is awesome! I can't recommend it enough.</p>
+
+<h2>3. Tools For Ticket Management</h2>
+
+<p>This one is tricky, because every client is going to want to work differently.  Here are the few I have expereinced thus far.</p>
+
+<ul>
+<li><a href="https://www.pivotaltracker.com">Pivotal Tracker</a> This one is my favorite.  It's a very easy to use tool to help facilitate development in an agile environment.  Even if you are not running the full scrum process, it's still a valuable tool to simply track your progress.  Your clients will appreciate it.</li>
+<li><a href="http://basecamp.com">Basecamp</a> You knew I was going to say this one.  It's an obvious choice because it's obvioulsy a solid tool.  I think it's very valuable when you have a distributed team and need a central way to communicate.</li>
+</ul>
+
+
+<p>Even if your client doesn't use a tracker, I'd suggest you use one.  It helps you to keep organized and get a better feel for how long certain tasks take (which you will need to know in future scoping).</p>
+
+<p>I dont' have a very long list here because I hate most tracking software.  If you have some to add here, I would love to hear about them in the comments.</p>
+
+<h2>4. Tools For Software Development</h2>
+
+<p>I am an iOS and rails developer, so this section may or may not be applicable to you.  Again, I put this out there to let you know what <strong>I</strong> am using and would love to hear what <strong>you</strong> are using.</p>
+
+<p><strong>iOS</strong></p>
+
+<ul>
+<li>XCode (duh)</li>
+<li><a href="http://basecamp.com">CocoaPods</a> - If you don't use CocoaPods, you are doing it wrong.  They are what gems are to rails and really help you manage 3rd party libraries.</li>
+<li><a href="http://github.com">GitHub</a> - For verison control and code distribution amoung the team. (again, you know this already).</li>
+</ul>
+
+
+<p><strong>Rails</strong></p>
+
+<ul>
+<li><a href="http://www.sublimetext.com">Sublime Text</a> I was big on TextMate for a while, but now I use Sublime Text full time.  It has some solid plugins and can do a smart autocomplete for any file type.</li>
+<li><a href="http://www.heroku.com">Heroku</a> Deploying rails to production sucks.  Heroku makes this process easy.</li>
+</ul>
+
+
+<h2>5. Tools For Communication</h2>
+
+<p>Working in a distributed team can be hard at first.  Especially staying connected.  Here are the major forms of communication that I use.</p>
+
+<ul>
+<li><a href="http://beta.skype.com/en/">Skype</a> Although Skype has totally gone down hill since the MS takeover, it's still a free service that <em>most</em> clients will use.  I'd suggest if you don't have a Skype account, you get one before job searching.</li>
+<li><a href="https://www.google.com/voice/b/0?pli=1">Google Voice</a> This service allows you to forward a number directly on your cell phone.  It also has some nicities like screening your calls, voicemail, free calls, etc...  It's good to give out your Google voice number instead of your cell to clients as well as possible girl/boyfriends in case things go sour.</li>
+<li><a href="http://www.google.com/+/learnmore/hangouts/">Google Hangout</a> Skype falls short in one area (which happens to be their business model).  If you have more than 2 people on a call, they must all have a premium account to do video chat or screenshare.  Google Hangout gives you all of these features for free with up to 10 people as of this writing.</li>
+<li>Standard social networks (Twitter, Linked In, G+) (duh)</li>
+</ul>
+
+
+<h2>Conclusion</h2>
+
+<p>Well, this post is already getting a bit out of control.  I could go on and on.  If I have obviously omitted a large section, please feel free to troll me in the comments and I will certainly add it.</p>
+
+<p>I hope this has been able to provide you with some value, and I would love to hear your thoughts.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why you Should Check Out Unity]]></title>
@@ -269,105 +361,6 @@ Tweak.xm:6: error: declaration of ‘objc_object&lt;/em&gt; self’ shadows a pa
 <p>You can download the source code for this tutorial <a href="http://cl.ly/1u0l0U0y2I0T1g2s3D0O">here</a>.</p>
 
 <p>Happy Jailbreaking!</p>
-
-<p><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[10 Great Pixel Art Tutorial And Free Resource Sites For Your Games]]></title>
-    <link href="http://brandontreb.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games/"/>
-    <updated>2011-08-13T21:30:00-06:00</updated>
-    <id>http://brandontreb.com/10-Great-Pixel-Art-Tutorial-And-Free-Resource-Sites-For-Your-Games</id>
-    <content type="html"><![CDATA[<p>I don't usually create "list" posts, however I wanted to share a grouping of resources I have been collecting over the past few months.  As you may have noticed, I'm a bit of a Pixel Art fanatic and wanted to share with you the tutorials that helped to get me started as well as some sites offering some high quality <strong>free</strong> pixel art.</p>
-
-<p>Keep in mind that some of these sites have similar content, however they all take a slightly different approach in teaching.  I found it very helpful to read each of the tutorials and learn from different points of view.</p>
-
-<h4>1. Gas 13 - Isometric Pixel Art Tutorial</h4>
-
-<p><img src="http://www.gas13.ru/v3/tutorials/f9.gif" alt="Pixel House" /></p>
-
-<p><a href="http://www.gas13.ru/v3/tutorials/isometric_pixelart_tutorial_mathematics_of_isometrics.php">link</a></p>
-
-<p>This was my very first pixel art tutorial.  I was amazed at how quickly I was able to make a really professional looking pixel art building.  I highly recommend all of the tutorials on this guy's site.  Some of them however can be quite complex.</p>
-
-<h4>2. Derek Yu - The Pixel Tutorial</h4>
-
-<p><img src="http://www.derekyu.com/images/extras/lucha-finished.gif" alt="Wrestler" /></p>
-
-<p><a href="http://www.derekyu.com/?page_id=221">link</a></p>
-
-<p>This was another site that I stumbled upon early on in my pixel art quest.  Derek provides a nice story telling approach to teaching the in's and out's of pixel art.  I really appreciated his tutorial on lines.</p>
-
-<h4>3. Mini Wizard Studios - What is 'Isometric' pixel art</h4>
-
-<p><img src="http://www.miniwizardstudios.com/images/pixel/iso/office.gif" alt="Sample pixel art" /></p>
-
-<p><a href="http://www.miniwizardstudios.com/iso.asp">link</a></p>
-
-<p>This guy offers another dead simple intro to pixel art.  Most of it is just explanation, however his examples are quite good.  He shows examples of Backgrounds, Characters, objects, tiles, as well as a ton of different UI elements and icons. It's a great place to go for some inspiration.</p>
-
-<h4>4. Hub Pages - How To Start With Pixel Art</h4>
-
-<p><img src="http://s3.hubimg.com/u/1629662_f520.jpg" alt="Victorian House" /></p>
-
-<p><a href="http://vanmall.hubpages.com/hub/How-To-Start-With-Pixel-Art">link</a></p>
-
-<p>Again, another great site for the pixel art n00b.  This tutorial goes over all of the basics of line, cubes, and texturing.  It also links out to other great pixel art tutorials for creating various objects such as a bed, table, and lamp.</p>
-
-<h4>5. Bio Rust - Isometric Pixel Art</h4>
-
-<p><img src="http://www.biorust.com/tutorials/ps-isometricpixelart/Image-15a.jpg" alt="Pixel Sphere" /></p>
-
-<p><a href="http://www.biorust.com/tutorials/detail/247/us/">link</a></p>
-
-<p>This tutorial is a bit rushed <em>however</em> it provides a great overview for creating other basic shapes besides a cube.  In addition to lines and cubes, it demonstrates pyramids, cylinders, and spheres.</p>
-
-<h4>6. Oceans Dream - Pixel Art Tutorials</h4>
-
-<p><img src="http://pixel.oceansdream.net/wp-content/uploads/pixel.oceansdream.net/2010/02/celsiusHair.png" alt="Pixel Character" /></p>
-
-<p><a href="http://pixel.oceansdream.net/">link</a></p>
-
-<p>This is the most comprehensive site for pixel art tutorials.  While many of them aren't for the faint of heart, there is some fantastic content here.  This site has everything from tips and tricks, to character creation, to breakdowns of existing games.  I could spend hours on this site.</p>
-
-<h4>7. Pixel Character Tutorial - NekoSoraYagami on Deviant Art</h4>
-
-<p><img src="http://f.cl.ly/items/28162n1b1i1H0f03421d/Screen%20shot%202011-08-13%20at%209.38.11%20PM.png" alt="Pixel Character" /></p>
-
-<p><a href="http://nekosorayagami.deviantart.com/art/Pixel-Character-Tutorial-76829227">link</a></p>
-
-<p>This is a nice in depth tutorial for creating a custom character from start to finish.  They start out with a base character (plain, nude, genderless) and turn it into their own creation.  Very well written and very fun to follow.</p>
-
-<h4>8. City Creator</h4>
-
-<p><img src="http://www.citycreator.com/images/pages/home_card_1.gif" alt="City Creator" /></p>
-
-<p><a href="http://www.citycreator.com/">link</a></p>
-
-<p>The City creator is not so much a tutorial as it is a resource for creating gorgeous pixel cities.  It has a nice interface and a <strong>huge</strong> selection of buildings, objects, roads, signs, and trees to go into your city.  I am not sure what their license is on the generated cities, however I didn't see any clause about not reusing the graphics in your own projects.</p>
-
-<h4>9. Has Graphics</h4>
-
-<p><img src="http://hasgraphics.com/thumbs/genetica-texture-pack-10-mystery-forest.png" alt="Pixel level" /></p>
-
-<p><a href="http://hasgraphics.com/">link</a></p>
-
-<p>Has graphics provides tons of free game graphics mostly geared towards tiled games.  So, if you are hacking an old school RPG or platformer, I would definitely check out this site.</p>
-
-<h4>10. VX Resource Planet</h4>
-
-<p><img src="http://vxresource.files.wordpress.com/2010/07/remakertp01.png?w=384&amp;h=384" alt="Pixel characters" /></p>
-
-<p><a href="http://vxresource.wordpress.com/">link</a></p>
-
-<p>This is the <strong>Motherload</strong>.  I have saved the best for last.  This a wordpress blog that contains TONS of free pixel art and tilesets for use in your games.  They have endless spritesheets and beautiful tiles that would enable anyone to have a very professional looking game.  If you visit one site from this list, visit this one.</p>
-
-<h4>Conclusion</h4>
-
-<p>If you have any resources of your own, please paste them in the comments. My readers and myself would be very interested in them.</p>
-
-<p>Happy Coding!</p>
 
 <p><span style="font-family: 'Lucida Grande';"><strong><span style="font-weight: normal;"><span style="font-family: arial, verdana, tahoma, sans-serif; font-size: 13px; line-height: 20px;"><em>﻿﻿This post is part of <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">iDevBlogADay</a>, a group of indie iOS development blogs featuring two posts per day. You can keep up with iDevBlogADay through the <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://idevblogaday.com/">web site</a>, <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://feeds.feedburner.com/idevblogaday">RSS feed</a>, or <a style="text-decoration: none; color: #004199; padding: 0px; margin: 0px;" href="http://twitter.com/#search?q=%23idevblogaday">Twitter</a>.</em></span></span></strong></span></p>
 ]]></content>
