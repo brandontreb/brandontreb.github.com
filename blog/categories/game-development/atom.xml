@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Game Development | Brandon Trebitowski]]></title>
   <link href="http://brandontreb.com/blog/categories/game-development/atom.xml" rel="self"/>
   <link href="http://brandontreb.com/"/>
-  <updated>2013-02-07T08:04:45-07:00</updated>
+  <updated>2013-05-08T13:56:11-06:00</updated>
   <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
@@ -166,54 +166,52 @@
 
 <p>Here is the code to display the skin/head+hands in our layer.  As a note, I simply created a new Cocos2D project and am using the retina only mode for my display using [director enableRetinaDisplay:YES].  The offsets will change quite a bit if you are choosing to support non-retina.</p>
 
-<p><div>
-  <pre><code class='objc'>int spriteX = 240;
-int spriteY = 160;&lt;/p&gt;
+<p>{% highlight objc %}
+int spriteX = 240;
+int spriteY = 160;</p>
 
-&lt;p&gt;CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
+<p>CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
 [skin setPosition:ccp(spriteX, spriteY)];
-[self addChild:skin];</code></pre>
-</div>
-</p>
+[self addChild:skin];
+{% endhighlight %}</p>
 
 <p>This will draw our white(shaded) head on the screen.  That's pretty boring so let's draw the rest of the body.  Update your code to look like the following:</p>
 
-<p><div>
-  <pre><code class='objc'>int spriteX = 240;
-int spriteY = 160;&lt;/p&gt;
+<p>{% highlight objc %}
+int spriteX = 240;
+int spriteY = 160;</p>
 
-&lt;p&gt;CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
+<p>CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
 [skin setPosition:ccp(spriteX, spriteY)];
-[self addChild:skin];&lt;/p&gt;
+[self addChild:skin];</p>
 
-&lt;p&gt;int hairOffset = 11;&lt;/p&gt;
+<p>int hairOffset = 11;</p>
 
-&lt;p&gt;CCSprite *hair = [CCSprite spriteWithFile:@&quot;hair.png&quot;];
+<p>CCSprite *hair = [CCSprite spriteWithFile:@"hair.png"];
 [hair setPosition:ccp(spriteX, spriteY+hairOffset)];
-[self addChild:hair];&lt;/p&gt;
+[self addChild:hair];</p>
 
-&lt;p&gt;int shirtYOffset = -9;
-int shirtXOffset = 1;&lt;/p&gt;
+<p>int shirtYOffset = -9;
+int shirtXOffset = 1;</p>
 
-&lt;p&gt;CCSprite *shirt = [CCSprite spriteWithFile:@&quot;shirt.png&quot;];
+<p>CCSprite *shirt = [CCSprite spriteWithFile:@"shirt.png"];
 [shirt setPosition:ccp(spriteX + shirtXOffset, spriteY+shirtYOffset)];
-[self addChild:shirt];&lt;/p&gt;
+[self addChild:shirt];</p>
 
-&lt;p&gt;int pantsYOffset = -15;
-int pantsXOffset = 1;&lt;/p&gt;
+<p>int pantsYOffset = -15;
+int pantsXOffset = 1;</p>
 
-&lt;p&gt;CCSprite *pants = [CCSprite spriteWithFile:@&quot;pants.png&quot;];
+<p>CCSprite *pants = [CCSprite spriteWithFile:@"pants.png"];
 [pants setPosition:ccp(spriteX + pantsXOffset, spriteY+pantsYOffset)];
-[self addChild:pants];&lt;/p&gt;
+[self addChild:pants];</p>
 
-&lt;p&gt;int shoesYOffset = -17;
-int shoesXOffset = 1;&lt;/p&gt;
+<p>int shoesYOffset = -17;
+int shoesXOffset = 1;</p>
 
-&lt;p&gt;CCSprite *shoes = [CCSprite spriteWithFile:@&quot;shoes.png&quot;];
+<p>CCSprite *shoes = [CCSprite spriteWithFile:@"shoes.png"];
 [shoes setPosition:ccp(spriteX + shoesXOffset, spriteY+shoesYOffset)];
-[self addChild:shoes];</code></pre>
-</div>
-</p>
+[self addChild:shoes];
+{% endhighlight %}</p>
 
 <p>Now, you should see the lonely ghost of a Bitizen standing in the center of your screen.</p>
 
@@ -229,37 +227,35 @@ int shoesXOffset = 1;&lt;/p&gt;
 
 <p>Let's start by tinting our Bitizen's shirt a random color.  Change the code that displays the shirt to look like this:</p>
 
-<p><div>
-  <pre><code class='objc'>CCSprite *shirt = [CCSprite spriteWithFile:@&quot;shirt.png&quot;];
+<p>{% highlight objc %}
+CCSprite *shirt = [CCSprite spriteWithFile:@"shirt.png"];
 [shirt setPosition:ccp(spriteX + shirtXOffset, spriteY+shirtYOffset)];
 ccColor3B shirtColor = {arc4random() % 255,arc4random() % 255,arc4random() % 255};
 [shirt setColor:shirtColor];
-[self addChild:shirt];</code></pre>
-</div>
-</p>
+[self addChild:shirt];
+{% endhighlight %}</p>
 
 <p>Now, every time you run the application, the Bitizen should have a different shirt color.  You can apply this principle to each of your sprites to completely customize your Bitizen.</p>
 
 <p>What if you only want to limit certain colors? (you ask).  Well, that's a great question. I solved this by creating an array of ccColor3Bs.  Basically an array of arrays.  And then I index into this array and set the color accordingly.  Here is an example of setting a random skin color to avoid having blue people (unless maybe you are making Smurfs).</p>
 
-<p><div>
-  <pre><code class='objc'>ccColor3B skinColors[] = {&lt;/p&gt;
+<p>{% highlight objc %}
+ccColor3B skinColors[] = {</p>
 
-&lt;pre&gt;&lt;code&gt;{247,224,194},
+<pre><code>{247,224,194},
 {255,232,214},
 {136,119,82},
 {245,232,205},
 {144,110,38}
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;};
-CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
+<p>};
+CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
 [skin setPosition:ccp(spriteX, spriteY)];
 ccColor3B skinColor = skinColors[arc4random() % 5];
 [skin setColor:skinColor];
-[self addChild:skin];</code></pre>
-</div>
-</p>
+[self addChild:skin];
+{% endhighlight %}</p>
 
 <p>I have an array of 5 different arrays and randomly index into it using skinColors[arc4random() % 5].  This will give me a random color within my skin color group.</p>
 
@@ -501,33 +497,32 @@ ccColor3B skinColor = skinColors[arc4random() % 5];
 
 <p>Here is a short snippet of that class just to add to the aesthetics of this post:</p>
 
-<p><div>
-  <pre><code class='lua'>function Vector2D:new(x, y)  -- The constructor
+<p>{% highlight lua %}
+function Vector2D:new(x, y)  -- The constructor
   local object = { x = x, y = y }
   setmetatable(object, { __index = Vector2D })  -- Inheritance
   return object
-end&lt;/p&gt;
+end</p>
 
-&lt;p&gt;function Vector2D:normalize()&lt;/p&gt;
+<p>function Vector2D:normalize()</p>
 
-&lt;pre&gt;&lt;code&gt;local temp
+<pre><code>local temp
 temp = self:magnitude()
-if temp &amp;gt; 0 then
+if temp &gt; 0 then
     self.x = self.x / temp
     self.y = self.y / temp
 end
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;end&lt;/p&gt;
+<p>end</p>
 
-&lt;p&gt;function Vector2D:dot(vec)&lt;/p&gt;
+<p>function Vector2D:dot(vec)</p>
 
-&lt;pre&gt;&lt;code&gt;return self.x * vec.x + self.y * vec.y
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>return self.x * vec.x + self.y * vec.y
+</code></pre>
 
-&lt;p&gt;end</code></pre>
-</div>
-</p>
+<p>end
+{% endhighlight %}</p>
 
 <p>Basically it's a lua "object" that has an x and y with some helper methods for doing vector math.  The lower case methods act on the current self object and the upper case methods act as static class level methods meant to return a new vector.  The file is a little sloppy but it gets the job done.</p>
 
@@ -539,10 +534,10 @@ end
 
 <p>A snippet of the wander function</p>
 
-<p><div>
-  <pre><code class='lua'>function Boid:wander()&lt;/p&gt;
+<p>{% highlight lua %}
+function Boid:wander()</p>
 
-&lt;pre&gt;&lt;code&gt;local wanderR = 16.0
+<pre><code>local wanderR = 16.0
 local wanderD = 60.0
 local change  = 0.5
 
@@ -566,11 +561,10 @@ local target = circleLoc:copy()
 target:add(circleOffset)
 
 self.acc:add(self:steer(target))
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;end</code></pre>
-</div>
-</p>
+<p>end
+{% endhighlight %}</p>
 
 <p>What I have done is taken the code from <a href="http://www.shiffman.net/itp/classes/nature/week06_s09/wander/">Daniel Shiffman's processing project</a> and ported it directly to lua. As of right now, I have only implemented wander, however you can see how easy it is to implement other behaviors using the same techniques.  Since Daniel has processing code for each of them, it's a simple matter of making them work in your lua class.</p>
 
@@ -582,29 +576,29 @@ self.acc:add(self:steer(target))
 
 <p><a href="https://github.com/brandontreb/Boids/blob/master/main.lua">Here is a link to main.lua on github</a>, but I have also pasted it here so we can talk about it.</p>
 
-<p><div>
-  <pre><code class='lua'>local Boid = require('Boid')&lt;/p&gt;
+<p>{% highlight lua %}
+local Boid = require('Boid')</p>
 
-&lt;p&gt;-- Define some limiting constants
+<p>-- Define some limiting constants
 MAX_FORCE = 1.75
-MAX_SPEED = 2.0&lt;/p&gt;
+MAX_SPEED = 2.0</p>
 
-&lt;p&gt;local wanderers = {}&lt;/p&gt;
+<p>local wanderers = {}</p>
 
-&lt;p&gt;function animate(event)&lt;/p&gt;
+<p>function animate(event)</p>
 
-&lt;pre&gt;&lt;code&gt;for i=1,#wanderers do
+<pre><code>for i=1,#wanderers do
     local wanderer = wanderers[i]
     wanderer:wander()
     wanderer:run()
 end
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;end&lt;/p&gt;
+<p>end</p>
 
-&lt;p&gt;function Main()&lt;/p&gt;
+<p>function Main()</p>
 
-&lt;pre&gt;&lt;code&gt;math.randomseed( os.time() )
+<pre><code>math.randomseed( os.time() )
 
 for i=1,10 do
     local loc = Vector2D:new(display.contentWidth / 2,display.contentWidth / 2)
@@ -612,14 +606,13 @@ for i=1,10 do
     table.insert(wanderers,wanderer)
 end
 
-Runtime:addEventListener( &quot;enterFrame&quot;, animate );
-&lt;/code&gt;&lt;/pre&gt;
+Runtime:addEventListener( "enterFrame", animate );
+</code></pre>
 
-&lt;p&gt;end&lt;/p&gt;
+<p>end</p>
 
-&lt;p&gt;Main()</code></pre>
-</div>
-</p>
+<p>Main()
+{% endhighlight %}</p>
 
 <p>Here we declare an array of wanderers.  In the Main() method we initialize each one, insert them into the array, and add a hook to call our animate method for each frame.  Inside of the animate method, we simply tell each wanderer to wander and then run itself.  The boid class will take care of the rest.</p>
 

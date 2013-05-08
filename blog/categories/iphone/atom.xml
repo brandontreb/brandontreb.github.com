@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iPhone | Brandon Trebitowski]]></title>
   <link href="http://brandontreb.com/blog/categories/iphone/atom.xml" rel="self"/>
   <link href="http://brandontreb.com/"/>
-  <updated>2013-02-07T08:04:45-07:00</updated>
+  <updated>2013-05-08T13:56:11-06:00</updated>
   <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
@@ -146,32 +146,29 @@
 
 <p>Open the console, cd into the directory where you want to create your application and type the following command to create a new Tweak application.</p>
 
-<p><div>
-  <pre><code class='bash'>$THEOS/bin/nic.pl</code></pre>
-</div>
-</p>
+<p>{% highlight bash %}
+$THEOS/bin/nic.pl
+{% endhighlight %}</p>
 
 <p>Now, when prompted select the number [5] for a tweak.  Next, you will enter all of the information about your project.  The resulting output should look like this:</p>
 
-<p><div>
-  <pre><code class='bash'>&lt;/p&gt;
+<p>{% highlight bash %}</p>
 
-&lt;h2&gt;NIC 1.0 - New Instance Creator&lt;/h2&gt;
+<h2>NIC 1.0 - New Instance Creator</h2>
 
-&lt;p&gt;  [1.] iphone/application
+<p>  [1.] iphone/application
   [2.] iphone/library
   [3.] iphone/preference_bundle
   [4.] iphone/tool
   [5.] iphone/tweak
 Choose a Template (required): 5
 Project Name (required): WelcomeWagon
-Package Name [com.yourcompany.welcomewagon]:               &lt;br/&gt;
+Package Name [com.yourcompany.welcomewagon]:               <br/>
 Author/Maintainer Name [Brandon Trebitowski]:
 MobileSubstrate Bundle filter [com.apple.springboard]:
 Instantiating iphone/tweak in welcomewagon/...
-Done.</code></pre>
-</div>
-</p>
+Done.
+{% endhighlight %}</p>
 
 <h4>The Tweaks File</h4>
 
@@ -185,12 +182,11 @@ Done.</code></pre>
 
 <p><strong>%hook and %end</strong></p>
 
-<p><div>
-  <pre><code class='objc'>%hook Springboard
+<p>{% highlight objc %}
+%hook Springboard
 // overwrite methods here
-%end</code></pre>
-</div>
-</p>
+%end
+{% endhighlight %}</p>
 
 <p>The first command is called %hook followed by the name of the class you are hooking in to.  You choose the methods to overwrite within the context of %hook className and %end. In the above code, we are saying that we want to hook into some methods in the SpringBoard class.</p>
 
@@ -202,31 +198,29 @@ Done.</code></pre>
 
 <p>Open up Tweak.xm and add the following code.  Don't worry, I will explain it afterwards.</p>
 
-<p><div>
-  <pre><code class='objc'>&lt;/p&gt;
+<p>{% highlight objc %}</p>
 
-&lt;h1&gt;import &amp;lt;SpringBoard/SpringBoard.h&gt;&lt;/h1&gt;
+<h1>import &lt;SpringBoard/SpringBoard.h></h1>
 
-&lt;p&gt;%hook SpringBoard&lt;/p&gt;
+<p>%hook SpringBoard</p>
 
-&lt;p&gt;-(void)applicationDidFinishLaunching:(id)application {&lt;/p&gt;
+<p>-(void)applicationDidFinishLaunching:(id)application {</p>
 
-&lt;pre&gt;&lt;code&gt;%orig;
+<pre><code>%orig;
 
-UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Welcome&quot; 
-    message:@&quot;Welcome to your iPhone Brandon!&quot; 
+UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome" 
+    message:@"Welcome to your iPhone Brandon!" 
     delegate:nil 
-    cancelButtonTitle:@&quot;Thanks&quot; 
+    cancelButtonTitle:@"Thanks" 
     otherButtonTitles:nil];
 [alert show];
 [alert release];
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;}&lt;/p&gt;
+<p>}</p>
 
-&lt;p&gt;%end</code></pre>
-</div>
-</p>
+<p>%end
+{% endhighlight %}</p>
 
 <p>OK, so what's going on here.  First, we import the Springboard.h header.  This will allow us access to springboard.  Next, we tell the preprocessor to hook into the Springboard class.</p>
 
@@ -238,18 +232,16 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Welcome&quot;
 
 <p>If you were to type build to build this project at this point you would see an error like this:</p>
 
-<p><div>
-  <pre><code class='bash'>Tweak.xm: In function ‘objc_object&lt;em&gt; $_ungrouped$SpringBoard$init(SpringBoard&lt;/em&gt;, objc_selector&lt;em&gt;)’:
-Tweak.xm:6: error: declaration of ‘objc_object&lt;/em&gt; self’ shadows a parameter</code></pre>
-</div>
-</p>
+<p>{% highlight bash %}
+Tweak.xm: In function ‘objc_object<em> $_ungrouped$SpringBoard$init(SpringBoard</em>, objc_selector<em>)’:
+Tweak.xm:6: error: declaration of ‘objc_object</em> self’ shadows a parameter
+{% endhighlight %}</p>
 
 <p>This is because we depend on the UIKit framework to show alerts.  In order to tell theos that we want to link in UIKit, we must create an addition to the Makefile.  Add the following line to your Makefile.</p>
 
-<p><div>
-  <pre><code class='bash'>WelcomeWagon_FRAMEWORKS = UIKit</code></pre>
-</div>
-</p>
+<p>{% highlight bash %}
+WelcomeWagon_FRAMEWORKS = UIKit
+{% endhighlight %}</p>
 
 <p>This will ensure that UIKit gets linked in.</p>
 
@@ -259,10 +251,9 @@ Tweak.xm:6: error: declaration of ‘objc_object&lt;/em&gt; self’ shadows a pa
 
 <p>In the terminal type:</p>
 
-<p><div>
-  <pre><code class='bash'>make install</code></pre>
-</div>
-</p>
+<p>{% highlight bash %}
+make install
+{% endhighlight %}</p>
 
 <p>This will build your tweak and install it on your device. When prompted to enter your password, the default is "alpine".  Also, make sure that SSH is installed on your device.</p>
 
@@ -336,54 +327,52 @@ Tweak.xm:6: error: declaration of ‘objc_object&lt;/em&gt; self’ shadows a pa
 
 <p>Here is the code to display the skin/head+hands in our layer.  As a note, I simply created a new Cocos2D project and am using the retina only mode for my display using [director enableRetinaDisplay:YES].  The offsets will change quite a bit if you are choosing to support non-retina.</p>
 
-<p><div>
-  <pre><code class='objc'>int spriteX = 240;
-int spriteY = 160;&lt;/p&gt;
+<p>{% highlight objc %}
+int spriteX = 240;
+int spriteY = 160;</p>
 
-&lt;p&gt;CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
+<p>CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
 [skin setPosition:ccp(spriteX, spriteY)];
-[self addChild:skin];</code></pre>
-</div>
-</p>
+[self addChild:skin];
+{% endhighlight %}</p>
 
 <p>This will draw our white(shaded) head on the screen.  That's pretty boring so let's draw the rest of the body.  Update your code to look like the following:</p>
 
-<p><div>
-  <pre><code class='objc'>int spriteX = 240;
-int spriteY = 160;&lt;/p&gt;
+<p>{% highlight objc %}
+int spriteX = 240;
+int spriteY = 160;</p>
 
-&lt;p&gt;CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
+<p>CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
 [skin setPosition:ccp(spriteX, spriteY)];
-[self addChild:skin];&lt;/p&gt;
+[self addChild:skin];</p>
 
-&lt;p&gt;int hairOffset = 11;&lt;/p&gt;
+<p>int hairOffset = 11;</p>
 
-&lt;p&gt;CCSprite *hair = [CCSprite spriteWithFile:@&quot;hair.png&quot;];
+<p>CCSprite *hair = [CCSprite spriteWithFile:@"hair.png"];
 [hair setPosition:ccp(spriteX, spriteY+hairOffset)];
-[self addChild:hair];&lt;/p&gt;
+[self addChild:hair];</p>
 
-&lt;p&gt;int shirtYOffset = -9;
-int shirtXOffset = 1;&lt;/p&gt;
+<p>int shirtYOffset = -9;
+int shirtXOffset = 1;</p>
 
-&lt;p&gt;CCSprite *shirt = [CCSprite spriteWithFile:@&quot;shirt.png&quot;];
+<p>CCSprite *shirt = [CCSprite spriteWithFile:@"shirt.png"];
 [shirt setPosition:ccp(spriteX + shirtXOffset, spriteY+shirtYOffset)];
-[self addChild:shirt];&lt;/p&gt;
+[self addChild:shirt];</p>
 
-&lt;p&gt;int pantsYOffset = -15;
-int pantsXOffset = 1;&lt;/p&gt;
+<p>int pantsYOffset = -15;
+int pantsXOffset = 1;</p>
 
-&lt;p&gt;CCSprite *pants = [CCSprite spriteWithFile:@&quot;pants.png&quot;];
+<p>CCSprite *pants = [CCSprite spriteWithFile:@"pants.png"];
 [pants setPosition:ccp(spriteX + pantsXOffset, spriteY+pantsYOffset)];
-[self addChild:pants];&lt;/p&gt;
+[self addChild:pants];</p>
 
-&lt;p&gt;int shoesYOffset = -17;
-int shoesXOffset = 1;&lt;/p&gt;
+<p>int shoesYOffset = -17;
+int shoesXOffset = 1;</p>
 
-&lt;p&gt;CCSprite *shoes = [CCSprite spriteWithFile:@&quot;shoes.png&quot;];
+<p>CCSprite *shoes = [CCSprite spriteWithFile:@"shoes.png"];
 [shoes setPosition:ccp(spriteX + shoesXOffset, spriteY+shoesYOffset)];
-[self addChild:shoes];</code></pre>
-</div>
-</p>
+[self addChild:shoes];
+{% endhighlight %}</p>
 
 <p>Now, you should see the lonely ghost of a Bitizen standing in the center of your screen.</p>
 
@@ -399,37 +388,35 @@ int shoesXOffset = 1;&lt;/p&gt;
 
 <p>Let's start by tinting our Bitizen's shirt a random color.  Change the code that displays the shirt to look like this:</p>
 
-<p><div>
-  <pre><code class='objc'>CCSprite *shirt = [CCSprite spriteWithFile:@&quot;shirt.png&quot;];
+<p>{% highlight objc %}
+CCSprite *shirt = [CCSprite spriteWithFile:@"shirt.png"];
 [shirt setPosition:ccp(spriteX + shirtXOffset, spriteY+shirtYOffset)];
 ccColor3B shirtColor = {arc4random() % 255,arc4random() % 255,arc4random() % 255};
 [shirt setColor:shirtColor];
-[self addChild:shirt];</code></pre>
-</div>
-</p>
+[self addChild:shirt];
+{% endhighlight %}</p>
 
 <p>Now, every time you run the application, the Bitizen should have a different shirt color.  You can apply this principle to each of your sprites to completely customize your Bitizen.</p>
 
 <p>What if you only want to limit certain colors? (you ask).  Well, that's a great question. I solved this by creating an array of ccColor3Bs.  Basically an array of arrays.  And then I index into this array and set the color accordingly.  Here is an example of setting a random skin color to avoid having blue people (unless maybe you are making Smurfs).</p>
 
-<p><div>
-  <pre><code class='objc'>ccColor3B skinColors[] = {&lt;/p&gt;
+<p>{% highlight objc %}
+ccColor3B skinColors[] = {</p>
 
-&lt;pre&gt;&lt;code&gt;{247,224,194},
+<pre><code>{247,224,194},
 {255,232,214},
 {136,119,82},
 {245,232,205},
 {144,110,38}
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;};
-CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
+<p>};
+CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
 [skin setPosition:ccp(spriteX, spriteY)];
 ccColor3B skinColor = skinColors[arc4random() % 5];
 [skin setColor:skinColor];
-[self addChild:skin];</code></pre>
-</div>
-</p>
+[self addChild:skin];
+{% endhighlight %}</p>
 
 <p>I have an array of 5 different arrays and randomly index into it using skinColors[arc4random() % 5].  This will give me a random color within my skin color group.</p>
 

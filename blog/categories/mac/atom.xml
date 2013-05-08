@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | Brandon Trebitowski]]></title>
   <link href="http://brandontreb.com/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://brandontreb.com/"/>
-  <updated>2013-02-07T08:04:45-07:00</updated>
+  <updated>2013-05-08T13:56:11-06:00</updated>
   <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
@@ -42,39 +42,37 @@
 
 <p>Having the current day and day of the week allowed me to find the date of the Monday on the current week.  This was the first challenge as demonstrated below.  Assume weekdayComponents is the NSDateComponents generated from the current date.</p>
 
-<p><div>
-  <pre><code class='objc'>NSInteger weekday = [weekdayComponents weekday];
-NSInteger day         = [weekdayComponents day];&lt;/p&gt;
+<p>{% highlight objc %}
+NSInteger weekday = [weekdayComponents weekday];
+NSInteger day         = [weekdayComponents day];</p>
 
-&lt;p&gt;// First, find how many days we are from Monday
-int daysAwayFromMonday = weekday - 2;&lt;/p&gt;
+<p>// First, find how many days we are from Monday
+int daysAwayFromMonday = weekday - 2;</p>
 
-&lt;p&gt;// Now resolve the monday of this week
-int mondayThisWeek = day - daysAwayFromMonday;&lt;/p&gt;
+<p>// Now resolve the monday of this week
+int mondayThisWeek = day - daysAwayFromMonday;</p>
 
-&lt;p&gt;// Check if monday this week falls in last month
-if(mondayThisWeek &amp;lt;= 0) {&lt;/p&gt;
+<p>// Check if monday this week falls in last month
+if(mondayThisWeek &lt;= 0) {</p>
 
-&lt;pre&gt;&lt;code&gt;mondayThisWeek = day + (7 - daysAwayFromMonday);
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>mondayThisWeek = day + (7 - daysAwayFromMonday);
+</code></pre>
 
-&lt;p&gt;}</code></pre>
-</div>
-</p>
+<p>}
+{% endhighlight %}</p>
 
 <p>mondayThisWeek will now contain the day number of the Monday of the current week.  If that Monday falls on the previous month, mondayThisWeek will be negative. Line 12 resolves that by carrying it into next week.</p>
 
 <p>Finally, we just loop subtracting 7 from that Monday until mondayThisWeek is less than 7 to get the first Monday of the month.</p>
 
-<p><div>
-  <pre><code class='objc'>while(mondayThisWeek &amp;gt; 7) {&lt;/p&gt;
+<p>{% highlight objc %}
+while(mondayThisWeek &gt; 7) {</p>
 
-&lt;pre&gt;&lt;code&gt;mondayThisWeek -= 7;
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>mondayThisWeek -= 7;
+</code></pre>
 
-&lt;p&gt;}</code></pre>
-</div>
-</p>
+<p>}
+{% endhighlight %}</p>
 
 <p>And there you have it.  mondayThisWeek (improperly named at this point) will contain the day number of the first Monday for the current month.</p>
 
@@ -99,32 +97,29 @@ if(mondayThisWeek &amp;lt;= 0) {&lt;/p&gt;
 <p>Before we jump into the new stuff, I want to back up for a second and do some simple refactoring.  In our last tutorial, we just loaded the new tweets when our application fired up.  That's great and all, but it's not reusable.  So, we need to make a class property for our MGTwitterEngine and a method that we can call to refresh the tweets.  This will also come in handy later when we implement an auto refresh feature.</p>
 
 <p>Let's start by updating our header file TweetsController.h
-<div>
-  <pre><code class='objc'>#import&lt;/p&gt;
+{% highlight objc %}#import</p>
 
-&lt;p&gt;@class MGTwitterEngine;&lt;/p&gt;
+<p>@class MGTwitterEngine;</p>
 
-&lt;p&gt;@interface TweetsController : NSViewController{&lt;/p&gt;
+<p>@interface TweetsController : NSViewController{</p>
 
-&lt;pre&gt;&lt;code&gt;IBOutlet NSTableView *tableView;
+<pre><code>IBOutlet NSTableView *tableView;
 NSMutableArray *tweets;
 MGTwitterEngine *twitterEngine;
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;}&lt;/p&gt;
+<p>}</p>
 
-&lt;p&gt;@property (retain) IBOutlet NSTableView &lt;em&gt;tableView;
-@property (retain) NSMutableArray &lt;/em&gt;tweets;
-@property (retain) MGTwitterEngine *twitterEngine;&lt;/p&gt;
+<p>@property (retain) IBOutlet NSTableView <em>tableView;
+@property (retain) NSMutableArray </em>tweets;
+@property (retain) MGTwitterEngine *twitterEngine;</p>
 
-&lt;ul&gt;
-&lt;li&gt;(void) refreshTweets;&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>(void) refreshTweets;</li>
+</ul>
 
 
-&lt;p&gt;@end</code></pre>
-</div>
-
+<p>@end{% endhighlight %}
 As you can see we have added a few things.  First, at the top we see a forward class declaration for our MGTwitterEngine.  If you recall, forward class declarations are to combat circular imports. Here is a snippet from the objective-c documentation about forward class declarations.</p>
 
 <blockquote>The @class directive minimizes the amount of code seen by the compiler and linker, and is therefore the simplest way to give a forward declaration of a class name. Being simple, it avoids potential problems that may come with importing files that import still other files. For example, if one class declares a statically typed instance variable of another class, and their two interface files import each other, neither class may compile correctly.</blockquote>
@@ -133,21 +128,20 @@ As you can see we have added a few things.  First, at the top we see a forward 
 <p>Next, we create a property called twitterEngine.  It goes without saying by now that you should synthesize this property and release it in your .m file.  I'm not going to show that code.  Finally, we declare a method called refreshTweets.  This will be the method we will call to when we want to refresh the list of tweets.  At some point we will alter this method to take an additional argument that will allow us to differentiate between timeline, replies, and messages.  For now, we will stick with timeline.</p>
 
 <p>Now let's take a look at the updates in the .m file.
-<div>
-  <pre><code class='objc'>.
+{% highlight objc %}.
 .
 .
-- (void)awakeFromNib {&lt;/p&gt;
+- (void)awakeFromNib {</p>
 
-&lt;pre&gt;&lt;code&gt;self.tweets = [[NSMutableArray alloc] init];
+<pre><code>self.tweets = [[NSMutableArray alloc] init];
 
-OAToken *token = [[OAToken alloc] initWithKey:@&quot;&quot;
-                                  secret:@&quot;&quot;];;
+OAToken *token = [[OAToken alloc] initWithKey:@""
+                                  secret:@""];;
 
 // Put your Twitter username and password here:
-NSString *username = @&quot;brandontreb&quot;;
-NSString *consumerKey = @&quot;&quot;;
-NSString *consumerSecret = @&quot;&quot;;
+NSString *username = @"brandontreb";
+NSString *consumerKey = @"";
+NSString *consumerSecret = @"";
 
 // Create a TwitterEngine and set our login details.
 self.twitterEngine = [[[MGTwitterEngine alloc] initWithDelegate:self] autorelease];
@@ -156,19 +150,17 @@ self.twitterEngine = [[[MGTwitterEngine alloc] initWithDelegate:self] autoreleas
 [twitterEngine setUsername:username];
 [twitterEngine setAccessToken:token];
 [self refreshTweets];
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;}&lt;/p&gt;
+<p>}</p>
 
-&lt;ul&gt;
-&lt;li&gt;(void) refreshTweets {
+<ul>
+<li>(void) refreshTweets {
   [twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
 }
 .
 .
-.</code></pre>
-</div>
-
+.{% endhighlight %}
 So, nothing really new here, we are just moving the scope of our twitter engine out of the awakeFromNib method and creating a reusable way to grab the user's timeline.  We are now ready to declare our IBOutlets and IBActions for our interface.</li>
 </ul>
 
@@ -181,37 +173,34 @@ So, nothing really new here, we are just moving the scope of our twitter engine 
 <p>In addition to the IBOutlets, we need an IBAction that responds when the user clicks the Tweet button.</p>
 
 <p>Our TweetsController.h header file should now look like this.
-<div>
-  <pre><code class='objc'>#import&lt;/p&gt;
+{% highlight objc %}#import</p>
 
-&lt;p&gt;@class MGTwitterEngine;&lt;/p&gt;
+<p>@class MGTwitterEngine;</p>
 
-&lt;p&gt;@interface TweetsController : NSViewController{&lt;/p&gt;
+<p>@interface TweetsController : NSViewController{</p>
 
-&lt;pre&gt;&lt;code&gt;IBOutlet NSTableView *tableView;
+<pre><code>IBOutlet NSTableView *tableView;
 IBOutlet NSTextView *tweetTextView;
 IBOutlet NSTextField *tweetCountLabel;
 NSMutableArray *tweets;
 MGTwitterEngine *twitterEngine;
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;}&lt;/p&gt;
+<p>}</p>
 
-&lt;p&gt;@property (retain) IBOutlet NSTableView &lt;em&gt;tableView;
-@property (retain) IBOutlet NSTextView &lt;/em&gt;tweetTextView;
-@property (retain) IBOutlet NSTextField &lt;em&gt;tweetCountLabel;
-@property (retain) NSMutableArray &lt;/em&gt;tweets;
-@property (retain) MGTwitterEngine *twitterEngine;&lt;/p&gt;
+<p>@property (retain) IBOutlet NSTableView <em>tableView;
+@property (retain) IBOutlet NSTextView </em>tweetTextView;
+@property (retain) IBOutlet NSTextField <em>tweetCountLabel;
+@property (retain) NSMutableArray </em>tweets;
+@property (retain) MGTwitterEngine *twitterEngine;</p>
 
-&lt;ul&gt;
-&lt;li&gt;(void) refreshTweets;&lt;/li&gt;
-&lt;li&gt;(IBAction) tweetButtonClicked:(id) sender;&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+<li>(void) refreshTweets;</li>
+<li>(IBAction) tweetButtonClicked:(id) sender;</li>
+</ul>
 
 
-&lt;p&gt;@end</code></pre>
-</div>
-
+<p>@end{% endhighlight %}
 One other thing  that I failed to mention above is we tell our class to implement the NSTextViewDelegate protocol.  This will allow us to have a live counter of the characters being entered in our text view.</p>
 
 <p>Now, let's work on the interface...</p>
@@ -239,75 +228,69 @@ One other thing  that I failed to mention above is we tell our class to implemen
 
 
 <p>This process is actually pretty simple.  We just need to implement one delegate method of our NSTextView.  Open TweetsController.m and add the following method:
-<div>
-  <pre><code class='objc'>- (BOOL)textView:(NSTextView &lt;em&gt;)aTextView
+{% highlight objc %}- (BOOL)textView:(NSTextView <em>)aTextView
    shouldChangeTextInRange:(NSRange)affectedCharRange
-   replacementString:(NSString &lt;/em&gt;)replacementString {&lt;/p&gt;
+   replacementString:(NSString </em>)replacementString {</p>
 
-&lt;pre&gt;&lt;code&gt;NSString *text = [tweetTextView string];
+<pre><code>NSString *text = [tweetTextView string];
 int length = [text length] + 1;
-[tweetCountLabel setStringValue:[NSString stringWithFormat:@&quot;%d&quot;,(140 - length)]];
+[tweetCountLabel setStringValue:[NSString stringWithFormat:@"%d",(140 - length)]];
 // Allows user to delete characters
 if([replacementString length] == 0) return YES;
-return length &amp;amp;lt; 140;
-&lt;/code&gt;&lt;/pre&gt;
+return length &amp;lt; 140;
+</code></pre>
 
-&lt;p&gt;}</code></pre>
-</div>
-
+<p>}{% endhighlight %}
 The shouldChangeTextInRange delegate method gets called every time the user types a character.  We first check the length of the string currently in the box.   1 is added to it since we are looking at adding a potential character.  Next, we update our character label to 140-(length of current string).  Following that is a line to check if the replacement string is 0.  This is needed for when the user presses backspace and they have already entered 140 characters.  The final line will only return true if the character count in the text box is less than 140, otherwise it will prevent the user from typing anything else.</p>
 
 <h4>Publishing The Tweet To Twitter</h4>
 
 
 <p>Our final step is to actually publish the tweet to Twitter and update the timeline.  We need to implement the tweetButtonClicked method and update the statusesReceived delegate method.  So in, TweetsController.m, update to the following code:
-<div>
-  <pre><code class='objc'>- (IBAction) tweetButtonClicked:(id) sender {&lt;/p&gt;
+{% highlight objc %}- (IBAction) tweetButtonClicked:(id) sender {</p>
 
-&lt;pre&gt;&lt;code&gt;[twitterEngine sendUpdate:[tweetTextView string]];
-[tweetTextView setString:@&quot;&quot;];
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>[twitterEngine sendUpdate:[tweetTextView string]];
+[tweetTextView setString:@""];
+</code></pre>
 
-&lt;p&gt;}&lt;/p&gt;
+<p>}</p>
 
-&lt;h1&gt;pragma mark -&lt;/h1&gt;
+<h1>pragma mark -</h1>
 
-&lt;h1&gt;pragma mark MGTwitterEngineDelegate&lt;/h1&gt;
+<h1>pragma mark MGTwitterEngineDelegate</h1>
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;(void)statusesReceived:(NSArray &lt;em&gt;)statuses forRequest:(NSString &lt;/em&gt;)connectionIdentifier {&lt;/p&gt;
+<ul>
+<li><p>(void)statusesReceived:(NSArray <em>)statuses forRequest:(NSString </em>)connectionIdentifier {</p>
 
-&lt;p&gt;  if([statuses count] == 1) { // when user updates their status&lt;/p&gt;
+<p>  if([statuses count] == 1) { // when user updates their status</p>
 
-&lt;pre&gt;&lt;code&gt;  NSDictionary *tweetDict = [statuses objectAtIndex:0];
-  NSString *screenName = [[tweetDict objectForKey:@&quot;user&quot;] objectForKey:@&quot;screen_name&quot;];
-  NSString *text = [tweetDict objectForKey:@&quot;text&quot;];
+<pre><code>  NSDictionary *tweetDict = [statuses objectAtIndex:0];
+  NSString *screenName = [[tweetDict objectForKey:@"user"] objectForKey:@"screen_name"];
+  NSString *text = [tweetDict objectForKey:@"text"];
   Tweet *tweet = [[Tweet alloc] init];
   tweet.screenName = screenName;
   tweet.text = text;
   [self.tweets insertObject:tweet atIndex:0];
   [tweet release];
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
   } else {
 
-&lt;pre&gt;&lt;code&gt;  for(NSDictionary *tweetDict in statuses) {
-      NSString *screenName = [[tweetDict objectForKey:@&quot;user&quot;] objectForKey:@&quot;screen_name&quot;];
-      NSString *text = [tweetDict objectForKey:@&quot;text&quot;];
+<pre><code>  for(NSDictionary *tweetDict in statuses) {
+      NSString *screenName = [[tweetDict objectForKey:@"user"] objectForKey:@"screen_name"];
+      NSString *text = [tweetDict objectForKey:@"text"];
       Tweet *tweet = [[Tweet alloc] init];
       tweet.screenName = screenName;
       tweet.text = text;
       [self.tweets addObject:tweet];
       [tweet release];
   }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;  }&lt;/p&gt;
+<p>  }</p>
 
-&lt;p&gt;  [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-}</code></pre>
-</div>
-
+<p>  [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}{% endhighlight %}
 First, we see the implementation of our IBAction.  It simply calls one of our super handy methods in MGTwitterEngine.  The sendUpdate method, will asynchronously update your Twitter status and post back to the statusesReceived method with YOUR status info.  After that, we clear the text box that the user typed into.</p></li>
 </ul>
 
@@ -398,40 +381,34 @@ First, we see the implementation of our IBAction.  It simply calls one of our s
 <p>Go to File -&gt; New File and select <strong>Objective-C Class</strong>.  Name the file Tweet.m. And here is the code:</p>
 
 <p>The header...
-<div>
-  <pre><code class='objc'>// Tweet.h
-@interface Tweet : NSObject {&lt;/p&gt;
+{% highlight objc %}// Tweet.h
+@interface Tweet : NSObject {</p>
 
-&lt;pre&gt;&lt;code&gt;NSString *screenName;
+<pre><code>NSString *screenName;
 NSString *text;
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;}
-@property(retain) NSString &lt;em&gt;screenName;
-@property(retain) NSString &lt;/em&gt;text;
-@end</code></pre>
-</div>
-
+<p>}
+@property(retain) NSString <em>screenName;
+@property(retain) NSString </em>text;
+@end{% endhighlight %}
 And the source...
-<div>
-  <pre><code class='objc'>// Tweet.m&lt;/p&gt;
+{% highlight objc %}// Tweet.m</p>
 
-&lt;h1&gt;import &quot;Tweet.h&quot;&lt;/h1&gt;
+<h1>import "Tweet.h"</h1>
 
-&lt;p&gt;@implementation Tweet
+<p>@implementation Tweet
 @synthesize screenName;
 @synthesize text;
-- (void) dealloc {&lt;/p&gt;
+- (void) dealloc {</p>
 
-&lt;pre&gt;&lt;code&gt;[screenName release];
+<pre><code>[screenName release];
 [text release];
 [super dealloc];
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;}
-@end</code></pre>
-</div>
-
+<p>}
+@end{% endhighlight %}
 Next, we are going to set up our table view that will display the tweets.</p>
 
 <h4>Creating An NSTableView And ViewController</h4>
@@ -440,19 +417,16 @@ Next, we are going to set up our table view that will display the tweets.</p>
 <p>So, there are 2 ways to populate a table view in Cocoa.  The "newest" way is to use Cocoa bindings, however we are not going to do that today.  Since I assume most of you are coming from iOS dev, we will stick with the "old Skool" way which is actually quite similar to how the iPhone populates a UITableView.</p>
 
 <p>Start by adding a new Objective-C file to your project called TweetsController. Just take the default subclass of NSObject.  Once it's added, change it to be a subclass of NSViewController and let it implement NSTableViewDelegate.  Here is what the code for the header file should look like (The NSTableViewDelegate stuff isn't appear because of this WP plugin I'm using to display code &lt;NSTableViewDelegate&gt;). :
-<div>
-  <pre><code class='objc'>@interface TweetsController : NSViewController{&lt;/p&gt;
+{% highlight objc %}@interface TweetsController : NSViewController{</p>
 
-&lt;pre&gt;&lt;code&gt;IBOutlet NSTableView *tableView;
+<pre><code>IBOutlet NSTableView *tableView;
 NSMutableArray *tweets;
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;}
-@property (retain) IBOutlet NSTableView &lt;em&gt;tableView;
-@property (retain) NSMutableArray &lt;/em&gt;tweets;
-@end</code></pre>
-</div>
-
+<p>}
+@property (retain) IBOutlet NSTableView <em>tableView;
+@property (retain) NSMutableArray </em>tweets;
+@end{% endhighlight %}
 We have an IBOutlet to the table and an array of tweets that will populate the table.  Also, make sure to synthesize these properties in the .m file as well as release them in your dealloc method (not created automatically like the iPhone does).  We will come back to the implementation of the .m file.</p>
 
 <p>Now, double click on MainMenu.xib opening it up in Interface Builder.  There are a few steps involved here.</p>
@@ -477,111 +451,102 @@ We have an IBOutlet to the table and an array of tweets that will populate the t
 
 
 <p>The last steps are to pull the tweets using the MGTwitterEngine and display them in the tableview.  Open up TweetsController.m and let's add the first bit of code:
-<div>
-  <pre><code class='objc'>#import &quot;TweetsController.h&quot;&lt;/p&gt;
+{% highlight objc %}#import "TweetsController.h"</p>
 
-&lt;h1&gt;import &quot;MGTwitterEngine.h&quot;&lt;/h1&gt;
+<h1>import "MGTwitterEngine.h"</h1>
 
-&lt;h1&gt;import &quot;Tweet.h&quot;&lt;/h1&gt;
+<h1>import "Tweet.h"</h1>
 
-&lt;p&gt;@implementation TweetsController&lt;/p&gt;
+<p>@implementation TweetsController</p>
 
-&lt;p&gt;@synthesize tableView;
-@synthesize tweets;&lt;/p&gt;
+<p>@synthesize tableView;
+@synthesize tweets;</p>
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;(void)awakeFromNib {
-  self.tweets = [[NSMutableArray alloc] init];&lt;/p&gt;
+<ul>
+<li><p>(void)awakeFromNib {
+  self.tweets = [[NSMutableArray alloc] init];</p>
 
-&lt;p&gt;  MGTwitterEngine &lt;em&gt;twitterEngine = [MGTwitterEngine twitterEngineWithDelegate:self];
-  OAToken &lt;/em&gt;token = [[OAToken alloc] initWithKey:@&quot;16369316-GgqA00WO0poCAj0XAFhJYDDRthVvWMxTnVyKdfWa1&quot;&lt;/p&gt;
+<p>  MGTwitterEngine <em>twitterEngine = [MGTwitterEngine twitterEngineWithDelegate:self];
+  OAToken </em>token = [[OAToken alloc] initWithKey:@"16369316-GgqA00WO0poCAj0XAFhJYDDRthVvWMxTnVyKdfWa1"</p>
 
-&lt;pre&gt;&lt;code&gt;                                     secret:@&quot;someSecret&quot;];;
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code>                                     secret:@"someSecret"];;
+</code></pre>
 
-&lt;p&gt;  // Put your Twitter username and password here:
-  NSString &lt;em&gt;username = @&quot;brandontreb&quot;;
-  NSString &lt;/em&gt;consumerKey = @&quot;aKKEsJHTDNsv4xVlMHmMqw&quot;;
-  NSString *consumerSecret = @&quot;AnotherSecret&quot;;&lt;/p&gt;
+<p>  // Put your Twitter username and password here:
+  NSString <em>username = @"brandontreb";
+  NSString </em>consumerKey = @"aKKEsJHTDNsv4xVlMHmMqw";
+  NSString *consumerSecret = @"AnotherSecret";</p>
 
-&lt;p&gt;  // Create a TwitterEngine and set our login details.
+<p>  // Create a TwitterEngine and set our login details.
   twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
   [twitterEngine setUsesSecureConnection:NO];
   [twitterEngine setConsumerKey:consumerKey secret:consumerSecret];
   [twitterEngine setUsername:username];
-  [twitterEngine setAccessToken:token];&lt;/p&gt;
+  [twitterEngine setAccessToken:token];</p>
 
-&lt;p&gt;  [twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
-}</code></pre>
-</div>
-
+<p>  [twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
+}{% endhighlight %}
 So we see some of the usual suspects (imports, synthesize, etc...).  Now, take a look at the awakeFromNib method.  Like on the iPhone, this method fires when this controller is loaded from the nib.  This is where we will initialize our engine, and grab the user's timeline.  Most of this code should be familiar from the last tutorial.  We have one new addition, and that's setting ourself as the delegate. MGTwitterEngine has some nice delegate methods that it calls back to when it has grabbed all of the data.  Let's add that method to our code:
-<div>
-  <pre><code class='objc'>.
+{% highlight objc %}.
 .
-.&lt;/p&gt;
+.</p>
 
-&lt;h1&gt;pragma mark -&lt;/h1&gt;
+<h1>pragma mark -</h1>
 
-&lt;h1&gt;pragma mark MGTwitterEngineDelegate&lt;/h1&gt;&lt;/li&gt;
-&lt;li&gt;(void)statusesReceived:(NSArray &lt;em&gt;)statuses forRequest:(NSString &lt;/em&gt;)connectionIdentifier {
+<h1>pragma mark MGTwitterEngineDelegate</h1></li>
+<li>(void)statusesReceived:(NSArray <em>)statuses forRequest:(NSString </em>)connectionIdentifier {
   for(NSDictionary *tweetDict in statuses) {
 
-&lt;pre&gt;&lt;code&gt;  NSString *screenName = [[tweetDict objectForKey:@&quot;user&quot;] objectForKey:@&quot;screen_name&quot;];
-  NSString *text = [tweetDict objectForKey:@&quot;text&quot;];
+<pre><code>  NSString *screenName = [[tweetDict objectForKey:@"user"] objectForKey:@"screen_name"];
+  NSString *text = [tweetDict objectForKey:@"text"];
   Tweet *tweet = [[Tweet alloc] init];
   tweet.screenName = screenName;
   tweet.text = text;
   [self.tweets addObject:tweet];
   [tweet release];
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;  }&lt;/p&gt;
+<p>  }</p>
 
-&lt;p&gt;  [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-}</code></pre>
-</div>
-
+<p>  [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}{% endhighlight %}
 This method simply returns an NSArray of NSDictionaries containing all of the information about each tweet in the user's timeline.  We loop over this array, build a new Tweet object, and add it to our tweets array.  Finally, we reload the table view on the main application's thread (UI operations should always be done in the main thread).</p></li>
 </ul>
 
 
 <p>The last step is to implement the delgate/datasource methods for the tableview that will feed our tweets into it.  Let's add the final bit of code to TweetsController.m:
-<div>
-  <pre><code class='objc'>the#pragma mark -&lt;/p&gt;
+{% highlight objc %}the#pragma mark -</p>
 
-&lt;h1&gt;pragma mark TableView Data Source&lt;/h1&gt;
+<h1>pragma mark TableView Data Source</h1>
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
+<ul>
+<li><p>(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
   return [self.tweets count];
-}&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;(id)tableView:(NSTableView &lt;em&gt;)aTableView objectValueForTableColumn:(NSTableColumn &lt;/em&gt;)aTableColumn row:(NSInteger)rowIndex {
+}</p></li>
+<li><p>(id)tableView:(NSTableView <em>)aTableView objectValueForTableColumn:(NSTableColumn </em>)aTableColumn row:(NSInteger)rowIndex {
   return nil;
-}&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+}</p></li>
+</ul>
 
 
-&lt;h1&gt;pragma mark -&lt;/h1&gt;
+<h1>pragma mark -</h1>
 
-&lt;h1&gt;pragma mark TableView Delegate&lt;/h1&gt;
+<h1>pragma mark TableView Delegate</h1>
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+<ul>
+<li><p>(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
   return 50.0;
-}&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;(void)tableView:(NSTableView &lt;em&gt;)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn &lt;/em&gt;)aTableColumn row:(NSInteger)rowIndex {
+}</p></li>
+<li><p>(void)tableView:(NSTableView <em>)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn </em>)aTableColumn row:(NSInteger)rowIndex {
   Tweet *tweet = [self.tweets objectAtIndex:rowIndex];
-  [aCell setTitle:[NSString stringWithFormat:@&quot;%@: %@&quot;,tweet.screenName,tweet.text]];
+  [aCell setTitle:[NSString stringWithFormat:@"%@: %@",tweet.screenName,tweet.text]];
   [aCell setWraps:YES];
-}&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;(void) dealloc {
+}</p></li>
+<li><p>(void) dealloc {
   [tableView release];
   [tweets release];
   [super dealloc];
-}</code></pre>
-</div>
-
+}{% endhighlight %}
 These methods should look vaguely familiar to the iOS developer.  The method objectValueForTableColumn is not needed here but is required for a table view datasource so we just make it return nil.  willDisplayCell is very similar to the iOS cellForRowAtIndexPath only this time it passes the cell to us and we do the configuration.  In this case we display the tweet and tell the cell text to wrap.</p></li>
 </ul>
 
@@ -664,14 +629,11 @@ $ <strong>git clone git://github.com/ctshryock/oauthconsumer.git</strong></li>
 
 
 <p>Altogether, this is the order of commands you should have:
-<div>
-  <pre><code class='bash'>$ cd ~/Desktop
+{% highlight bash %}$ cd ~/Desktop
 $ git clone git://github.com/mattgemmell/MGTwitterEngine.git
 $ cd MGTwitterEngine
 $ git clone git://github.com/schwa/TouchJSON.git
-$ git clone git://github.com/ctshryock/oauthconsumer.git</code></pre>
-</div>
-</p>
+$ git clone git://github.com/ctshryock/oauthconsumer.git{% endhighlight %}</p>
 
 <h4>Building MGTwitterEngine (What a freakin pain)</h4>
 
@@ -699,14 +661,13 @@ $ git clone git://github.com/ctshryock/oauthconsumer.git</code></pre>
 
 
 <p>For today's tutorial, we will just be displaying our timeline and updating our status using the demo file provided by MGTwitterEngine.  In the next tutorial, we will actually be integrating the engine into a new project.  So, open up <strong>AppController.m</strong> in the <strong>Demo</strong> group.  Matt has given us some nice variables to fill in, in order to make this thing work.  Let's update to applicationDidFinishLaunching method to look like the code below:
-<div>
-  <pre><code class='objc'>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{&lt;/p&gt;
+{% highlight objc %}- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{</p>
 
-&lt;pre&gt;&lt;code&gt;    // Put your Twitter username and password here:
-    NSString *username = @&quot;brandontreb&quot;;
-NSString *consumerKey = @&quot;aKKEsJHTDNsv4xVlMHmMqw&quot;;
-NSString *consumerSecret = @&quot;oldpeoplenakedcriscotwister&quot;;
+<pre><code>    // Put your Twitter username and password here:
+    NSString *username = @"brandontreb";
+NSString *consumerKey = @"aKKEsJHTDNsv4xVlMHmMqw";
+NSString *consumerSecret = @"oldpeoplenakedcriscotwister";
 
     // Create a TwitterEngine and set our login details.
     twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
@@ -714,15 +675,13 @@ NSString *consumerSecret = @&quot;oldpeoplenakedcriscotwister&quot;;
 [twitterEngine setConsumerKey:consumerKey secret:consumerSecret];
 [twitterEngine setUsername:username];
 
-token = [[OAToken alloc] initWithKey:@&quot;16369316-GgqA00WO0poCAj0XAFhJYDDRthVvWMxTnVyKdfWa1&quot;
-                              secret:@&quot;StrongEnoughForAManButMadeForAWoman&quot;];
+token = [[OAToken alloc] initWithKey:@"16369316-GgqA00WO0poCAj0XAFhJYDDRthVvWMxTnVyKdfWa1"
+                              secret:@"StrongEnoughForAManButMadeForAWoman"];
 [twitterEngine setAccessToken:token];
 [twitterEngine getHomeTimelineSinceID:0 startingAtPage:0 count:20];
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;}</code></pre>
-</div>
-
+<p>}{% endhighlight %}
 So obviously I changed my consumer secret and Access Token Secret. You will need to fill this out with your information.  Here is how to obtain them.</p>
 
 <p><strong>Consumer Key &amp; Consumer Secret</strong></p>
@@ -751,10 +710,7 @@ So obviously I changed my consumer secret and Access Token Secret. You will nee
 <p>After you copy the tokens, keys, and secrets into the app, you should be able start making calls to Twitter using the engine.  Build and run the application at this point and watch your home timeline get output to the console.  One thing I want to point out is we are displaying an NSDictionary.  That means MGTwitterEngine did all of the parsing for us (using TouchJSON), which is super rad.</p>
 
 <p>One more thing to try for fun is to update your status.  It will even show that you updated it from YOUR application on Twitter.  Add the following line and run it again.
-<div>
-  <pre><code class='objc'>[twitterEngine sendUpdate:@&quot;@brandontreb is a code gangster!  Check out his #iDevBlogADay post on making your own Twitter client here http://bit.ly/gGrZvI&quot;];</code></pre>
-</div>
-
+{% highlight objc %}[twitterEngine sendUpdate:@"@brandontreb is a code gangster!  Check out his #iDevBlogADay post on making your own Twitter client here http://bit.ly/gGrZvI"];{% endhighlight %}
 Well, that does it for today.  Join me next week when I will show you how to move the engine into your own project and we will begin displaying tweets in a basic table view.</p>
 
 <p>Happy Coding!</p>
