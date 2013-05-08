@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Articles | Brandon Trebitowski]]></title>
   <link href="http://brandontreb.com/blog/categories/articles/atom.xml" rel="self"/>
   <link href="http://brandontreb.com/"/>
-  <updated>2013-05-08T13:56:11-06:00</updated>
+  <updated>2013-05-08T15:08:30-06:00</updated>
   <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
@@ -219,52 +219,54 @@
 
 <p>Here is the code to display the skin/head+hands in our layer.  As a note, I simply created a new Cocos2D project and am using the retina only mode for my display using [director enableRetinaDisplay:YES].  The offsets will change quite a bit if you are choosing to support non-retina.</p>
 
-<p>{% highlight objc %}
-int spriteX = 240;
-int spriteY = 160;</p>
+<p><div>
+  <pre><code class='objc'>int spriteX = 240;
+int spriteY = 160;&lt;/p&gt;
 
-<p>CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
+&lt;p&gt;CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
 [skin setPosition:ccp(spriteX, spriteY)];
-[self addChild:skin];
-{% endhighlight %}</p>
+[self addChild:skin];</code></pre>
+</div>
+</p>
 
 <p>This will draw our white(shaded) head on the screen.  That's pretty boring so let's draw the rest of the body.  Update your code to look like the following:</p>
 
-<p>{% highlight objc %}
-int spriteX = 240;
-int spriteY = 160;</p>
+<p><div>
+  <pre><code class='objc'>int spriteX = 240;
+int spriteY = 160;&lt;/p&gt;
 
-<p>CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
+&lt;p&gt;CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
 [skin setPosition:ccp(spriteX, spriteY)];
-[self addChild:skin];</p>
+[self addChild:skin];&lt;/p&gt;
 
-<p>int hairOffset = 11;</p>
+&lt;p&gt;int hairOffset = 11;&lt;/p&gt;
 
-<p>CCSprite *hair = [CCSprite spriteWithFile:@"hair.png"];
+&lt;p&gt;CCSprite *hair = [CCSprite spriteWithFile:@&quot;hair.png&quot;];
 [hair setPosition:ccp(spriteX, spriteY+hairOffset)];
-[self addChild:hair];</p>
+[self addChild:hair];&lt;/p&gt;
 
-<p>int shirtYOffset = -9;
-int shirtXOffset = 1;</p>
+&lt;p&gt;int shirtYOffset = -9;
+int shirtXOffset = 1;&lt;/p&gt;
 
-<p>CCSprite *shirt = [CCSprite spriteWithFile:@"shirt.png"];
+&lt;p&gt;CCSprite *shirt = [CCSprite spriteWithFile:@&quot;shirt.png&quot;];
 [shirt setPosition:ccp(spriteX + shirtXOffset, spriteY+shirtYOffset)];
-[self addChild:shirt];</p>
+[self addChild:shirt];&lt;/p&gt;
 
-<p>int pantsYOffset = -15;
-int pantsXOffset = 1;</p>
+&lt;p&gt;int pantsYOffset = -15;
+int pantsXOffset = 1;&lt;/p&gt;
 
-<p>CCSprite *pants = [CCSprite spriteWithFile:@"pants.png"];
+&lt;p&gt;CCSprite *pants = [CCSprite spriteWithFile:@&quot;pants.png&quot;];
 [pants setPosition:ccp(spriteX + pantsXOffset, spriteY+pantsYOffset)];
-[self addChild:pants];</p>
+[self addChild:pants];&lt;/p&gt;
 
-<p>int shoesYOffset = -17;
-int shoesXOffset = 1;</p>
+&lt;p&gt;int shoesYOffset = -17;
+int shoesXOffset = 1;&lt;/p&gt;
 
-<p>CCSprite *shoes = [CCSprite spriteWithFile:@"shoes.png"];
+&lt;p&gt;CCSprite *shoes = [CCSprite spriteWithFile:@&quot;shoes.png&quot;];
 [shoes setPosition:ccp(spriteX + shoesXOffset, spriteY+shoesYOffset)];
-[self addChild:shoes];
-{% endhighlight %}</p>
+[self addChild:shoes];</code></pre>
+</div>
+</p>
 
 <p>Now, you should see the lonely ghost of a Bitizen standing in the center of your screen.</p>
 
@@ -280,35 +282,37 @@ int shoesXOffset = 1;</p>
 
 <p>Let's start by tinting our Bitizen's shirt a random color.  Change the code that displays the shirt to look like this:</p>
 
-<p>{% highlight objc %}
-CCSprite *shirt = [CCSprite spriteWithFile:@"shirt.png"];
+<p><div>
+  <pre><code class='objc'>CCSprite *shirt = [CCSprite spriteWithFile:@&quot;shirt.png&quot;];
 [shirt setPosition:ccp(spriteX + shirtXOffset, spriteY+shirtYOffset)];
 ccColor3B shirtColor = {arc4random() % 255,arc4random() % 255,arc4random() % 255};
 [shirt setColor:shirtColor];
-[self addChild:shirt];
-{% endhighlight %}</p>
+[self addChild:shirt];</code></pre>
+</div>
+</p>
 
 <p>Now, every time you run the application, the Bitizen should have a different shirt color.  You can apply this principle to each of your sprites to completely customize your Bitizen.</p>
 
 <p>What if you only want to limit certain colors? (you ask).  Well, that's a great question. I solved this by creating an array of ccColor3Bs.  Basically an array of arrays.  And then I index into this array and set the color accordingly.  Here is an example of setting a random skin color to avoid having blue people (unless maybe you are making Smurfs).</p>
 
-<p>{% highlight objc %}
-ccColor3B skinColors[] = {</p>
+<p><div>
+  <pre><code class='objc'>ccColor3B skinColors[] = {&lt;/p&gt;
 
-<pre><code>{247,224,194},
+&lt;pre&gt;&lt;code&gt;{247,224,194},
 {255,232,214},
 {136,119,82},
 {245,232,205},
 {144,110,38}
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>};
-CCSprite *skin = [CCSprite spriteWithFile:@"skin.png"];
+&lt;p&gt;};
+CCSprite *skin = [CCSprite spriteWithFile:@&quot;skin.png&quot;];
 [skin setPosition:ccp(spriteX, spriteY)];
 ccColor3B skinColor = skinColors[arc4random() % 5];
 [skin setColor:skinColor];
-[self addChild:skin];
-{% endhighlight %}</p>
+[self addChild:skin];</code></pre>
+</div>
+</p>
 
 <p>I have an array of 5 different arrays and randomly index into it using skinColors[arc4random() % 5].  This will give me a random color within my skin color group.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iDevBlogADay | Brandon Trebitowski]]></title>
   <link href="http://brandontreb.com/blog/categories/idevblogaday/atom.xml" rel="self"/>
   <link href="http://brandontreb.com/"/>
-  <updated>2013-05-08T13:56:11-06:00</updated>
+  <updated>2013-05-08T15:08:30-06:00</updated>
   <id>http://brandontreb.com/</id>
   <author>
     <name><![CDATA[Brandon Trebitowski]]></name>
@@ -232,29 +232,32 @@
 
 <p>Open the console, cd into the directory where you want to create your application and type the following command to create a new Tweak application.</p>
 
-<p>{% highlight bash %}
-$THEOS/bin/nic.pl
-{% endhighlight %}</p>
+<p><div>
+  <pre><code class='bash'>$THEOS/bin/nic.pl</code></pre>
+</div>
+</p>
 
 <p>Now, when prompted select the number [5] for a tweak.  Next, you will enter all of the information about your project.  The resulting output should look like this:</p>
 
-<p>{% highlight bash %}</p>
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
 
-<h2>NIC 1.0 - New Instance Creator</h2>
+&lt;h2&gt;NIC 1.0 - New Instance Creator&lt;/h2&gt;
 
-<p>  [1.] iphone/application
+&lt;p&gt;  [1.] iphone/application
   [2.] iphone/library
   [3.] iphone/preference_bundle
   [4.] iphone/tool
   [5.] iphone/tweak
 Choose a Template (required): 5
 Project Name (required): WelcomeWagon
-Package Name [com.yourcompany.welcomewagon]:               <br/>
+Package Name [com.yourcompany.welcomewagon]:               &lt;br/&gt;
 Author/Maintainer Name [Brandon Trebitowski]:
 MobileSubstrate Bundle filter [com.apple.springboard]:
 Instantiating iphone/tweak in welcomewagon/...
-Done.
-{% endhighlight %}</p>
+Done.</code></pre>
+</div>
+</p>
 
 <h4>The Tweaks File</h4>
 
@@ -268,11 +271,12 @@ Done.
 
 <p><strong>%hook and %end</strong></p>
 
-<p>{% highlight objc %}
-%hook Springboard
+<p><div>
+  <pre><code class='objc'>%hook Springboard
 // overwrite methods here
-%end
-{% endhighlight %}</p>
+%end</code></pre>
+</div>
+</p>
 
 <p>The first command is called %hook followed by the name of the class you are hooking in to.  You choose the methods to overwrite within the context of %hook className and %end. In the above code, we are saying that we want to hook into some methods in the SpringBoard class.</p>
 
@@ -284,29 +288,31 @@ Done.
 
 <p>Open up Tweak.xm and add the following code.  Don't worry, I will explain it afterwards.</p>
 
-<p>{% highlight objc %}</p>
+<p><div>
+  <pre><code class='objc'>&lt;/p&gt;
 
-<h1>import &lt;SpringBoard/SpringBoard.h></h1>
+&lt;h1&gt;import &amp;lt;SpringBoard/SpringBoard.h&gt;&lt;/h1&gt;
 
-<p>%hook SpringBoard</p>
+&lt;p&gt;%hook SpringBoard&lt;/p&gt;
 
-<p>-(void)applicationDidFinishLaunching:(id)application {</p>
+&lt;p&gt;-(void)applicationDidFinishLaunching:(id)application {&lt;/p&gt;
 
-<pre><code>%orig;
+&lt;pre&gt;&lt;code&gt;%orig;
 
-UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome" 
-    message:@"Welcome to your iPhone Brandon!" 
+UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Welcome&quot; 
+    message:@&quot;Welcome to your iPhone Brandon!&quot; 
     delegate:nil 
-    cancelButtonTitle:@"Thanks" 
+    cancelButtonTitle:@&quot;Thanks&quot; 
     otherButtonTitles:nil];
 [alert show];
 [alert release];
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>}</p>
+&lt;p&gt;}&lt;/p&gt;
 
-<p>%end
-{% endhighlight %}</p>
+&lt;p&gt;%end</code></pre>
+</div>
+</p>
 
 <p>OK, so what's going on here.  First, we import the Springboard.h header.  This will allow us access to springboard.  Next, we tell the preprocessor to hook into the Springboard class.</p>
 
@@ -318,16 +324,18 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome"
 
 <p>If you were to type build to build this project at this point you would see an error like this:</p>
 
-<p>{% highlight bash %}
-Tweak.xm: In function ‘objc_object<em> $_ungrouped$SpringBoard$init(SpringBoard</em>, objc_selector<em>)’:
-Tweak.xm:6: error: declaration of ‘objc_object</em> self’ shadows a parameter
-{% endhighlight %}</p>
+<p><div>
+  <pre><code class='bash'>Tweak.xm: In function ‘objc_object&lt;em&gt; $_ungrouped$SpringBoard$init(SpringBoard&lt;/em&gt;, objc_selector&lt;em&gt;)’:
+Tweak.xm:6: error: declaration of ‘objc_object&lt;/em&gt; self’ shadows a parameter</code></pre>
+</div>
+</p>
 
 <p>This is because we depend on the UIKit framework to show alerts.  In order to tell theos that we want to link in UIKit, we must create an addition to the Makefile.  Add the following line to your Makefile.</p>
 
-<p>{% highlight bash %}
-WelcomeWagon_FRAMEWORKS = UIKit
-{% endhighlight %}</p>
+<p><div>
+  <pre><code class='bash'>WelcomeWagon_FRAMEWORKS = UIKit</code></pre>
+</div>
+</p>
 
 <p>This will ensure that UIKit gets linked in.</p>
 
@@ -337,9 +345,10 @@ WelcomeWagon_FRAMEWORKS = UIKit
 
 <p>In the terminal type:</p>
 
-<p>{% highlight bash %}
-make install
-{% endhighlight %}</p>
+<p><div>
+  <pre><code class='bash'>make install</code></pre>
+</div>
+</p>
 
 <p>This will build your tweak and install it on your device. When prompted to enter your password, the default is "alpine".  Also, make sure that SSH is installed on your device.</p>
 
